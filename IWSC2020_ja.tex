@@ -163,8 +163,28 @@ SuiteRecは，開発者からの関数単位のコード片を入力とし，そ
 
 \subsection{推薦ランキング}
 
+\section{Evaluation}
 
-\subsection{Maintaining the Integrity of the Specifications}
+このセクションでは，SuiteRecの定量的及び定性的に評価するために，被験者による実験結果を報告します．具体的には，以下のリサーチクエスチョンに答えて行きます．
+
+\begin{itemize}
+\item RQ1 : SuiteRecの利用は，開発者の作成したテストコードのカバレッジにどう影響するか？
+\item RQ2 : SuiteRecの利用は，開発者のテストコード作成時間に影響するか？
+\item RQ3 : SuiteRecの利用は，作成したテストコードの品質にどう影響するか？
+\end{itemize}
+
+\subsection{Participant Selection}
+我々は，基本的なプログラミングスキルを保有し，ソフトウェアテストに理解がある情報系の修士の学生10人対して行った．
+
+\subsection{Object Selection}
+実験を行うために，3つのプロダクションコードを用意した．被験者はテストコードを作成するためプロダクションコードの仕様を十分理解していることが前提のため，我々はプロダクションコードとして競技プログラミングをよく用いられる典型的な数学の問題を選択した．また，その問題の仕様を確認できるように自然言語で書かれた仕様書を用意した．3つの各問題で違いを出すために問題1,2,3の順に条件分岐の数を8,16,24と多くなるように設定した．実験後のアンケートで，実験タスクについての理解を確認したがすべての被験者が実験タスクの理解についてポジティブな意見を述べたことが分かっている．また，十分な実験時間があったかどうかに関する質問に対してもネガティブな回答はなかった．したがって，被験者は与えられた実験タスクに対して十分に理解し，作業時間も十分にあったことが分かる．
+
+\subsection{Experiment Procedure}
+まず初めにソフトウェアテストに関する基本的な知識からJUnitを使用に関する30分の講義と練習問題を実施し，テストコードの記述に対する理解を確認した．
+
+
+
+%\subsection{Maintaining the Integrity of the Specifications}
 
 The IEEEtran class file is used to format your paper and style the text. All margins, 
 column widths, line spaces, and text fonts are prescribed; please do not 
