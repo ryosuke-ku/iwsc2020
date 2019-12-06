@@ -133,6 +133,7 @@ SuiteRecは，開発者からの関数単位のコード片を入力とし，そ
 \end{figure}
 
 \begin{enumerate}
+\renewcommand{\labelenumi}{(\arabic{enumi})}
 \item テストコードを静的解析し，メソッド呼び出しを確認
 \item テストメソッドを区切り文字や大文字で分割し，対象メソッドと部分一致した時対応付ける
 \end{enumerate}
@@ -151,7 +152,7 @@ SuiteRecは，開発者からの関数単位のコード片を入力とし，そ
 \item Mystery Guest
 \end{itemize}
 
-また，前処理として推薦テストコードとしてふさわしくない以下のテストスメルを含むテストコードを事前にテストコードリポジトリから削除した
+また，前処理として推薦テストコードとしてふさわしくない以下のテストスメルを含むテストコードを事前にテストコードリポジトリから削除し，推薦コードでとして出力されないようにした．
 
 \begin{itemize}
 \item Empty Test
