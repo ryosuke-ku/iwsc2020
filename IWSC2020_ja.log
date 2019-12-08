@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.sjis) (TeX Live 2019/W32TeX) (preloaded format=platex 2019.9.17)  8 DEC 2019 15:21
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.sjis) (TeX Live 2019/W32TeX) (preloaded format=platex 2019.9.17)  8 DEC 2019 17:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -597,29 +597,27 @@ File: C1.pdf Graphic file (type pdf)
 <C1.pdf>
 File: time.pdf Graphic file (type pdf)
 <time.pdf>
+ [4]
 File: testsmell.pdf Graphic file (type pdf)
 <testsmell.pdf>
+ (I search kanjifont definition file: . . )
+(I search font definition file: . . . . . . . . )
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 285.
 
-Underfull \vbox (badness 1057) has occurred while \output is active []
 
- [4]
-(I search kanjifont definition file: . . ) (I search font definition file: . .
-. . . . . . )
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 282.
-
- (c:/texlive/2019/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+(c:/texlive/2019/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ) [5]
 File: fig1.pdf Graphic file (type pdf)
 <fig1.pdf>
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 398.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 401.
 
 
 (c:/texlive/2019/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 398.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 401.
  [6]
 
 ** Conference Paper **
@@ -645,10 +643,10 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  3870 strings out of 493230
  54436 string characters out of 6147555
- 130861 words of memory out of 5000000
+ 131861 words of memory out of 5000000
  7791 multiletter control sequences out of 15000+600000
  45219 words of font info for 136 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  30i,11n,35p,1377b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on IWSC2020_ja.dvi (7 pages, 53880 bytes).
+Output written on IWSC2020_ja.dvi (7 pages, 59132 bytes).
