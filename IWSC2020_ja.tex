@@ -8,6 +8,7 @@
 \usepackage[dvipdfmx]{color}
 \usepackage{textcomp}
 \usepackage{xcolor}
+
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
@@ -148,16 +149,21 @@ SuiteRecは，開発者からの関数単位のコード片を入力とし，そ
 \subsection{テストスメルの検出}
 本研究では，テストスメル検出ツールとしてtsDetect[6]を採用した．tsDetectはASTベースの検出手法で実装されたツールであり，19個のテストスメルを検出できるツールである．また，85％〜100％の精度と90％〜100％の再現率でテストスメルを正しく検出できることが報告されている．本研究では，tsDetectで検出できる19個のテストスメルの内テストコードの推薦を考える上で重要な以下の6種類のテストスメルを提示するように実装しました．
 
-\begin{itemize}
-\item Assetion Roulette
-\item Conditional Test Logic
-\item Default Test
-\item Eager Test
-\item Exception Handling
-\item Mystery Guest
-\end{itemize}
+\begin{table}[hbtp]
+\begin{tabular}{|c|p{5.5cm}|}
+\hline
+\textbf{Name}                   & \textbf{Description}                                                                                                       \\ \hline
+\textbf{Assetion Roulette}        & 1つのテストメソッド内に複数のassert文が存在するテストコード.各assert文は異なる条件をテストするが，テストが失敗した場合開発者へ各assert文のエラーメッセージは提供されないので，失敗を特定することが困難になる．  \\ \hline
+\textbf{Conditional Test Logic} &テストメソッド内に複数の制御文が含まれているテストスイート．テスト成功・失敗は制御フロー内にあるassert文に基づくの予測するのが難しい．                                                                                                                                                                                                           \\ \hline
+\textbf{Default Test}            &JUnitなどのテスティングフレームワークを使用したテストコードの内，テストクラスやテストメソッドの名前がデフォルトの状態であるテストコード．テストコードの可読性の向上ために適切な名前に変更する必要がある．                                                                                                      \\ \hline
+\textbf{Eager Test }             &テスト対象クラス内の複数のメソッドを呼び出しているテストコード．1つのテストメソッド内で複数のメソッド呼び出しを行うと，正確に何をテストしているかについて混乱が生じる．                                                                                                         \\ \hline
+\textbf{Exception Handling}      & テストメソッド内で例外処理が含まれているまたは例外を投げるテストコード．例外処理はプロダクションコードに記述し，テストコード内で例外処理が正しく行われるかどうかを確かめるようにリファクタリングする必要がある．                                                                                                    \\ \hline
+\textbf{Mystery Guest}          & テストメソッド内で、外部リソースを利用するテストコード．テストメソッド内だけで完結せず外部のファイルなど，外部リソースを利用すると外部との依存関係が生じ，外部リソースが壊れた場合テストも失敗してしまう．                                                                                                                \\ \hline
+\end{tabular}
+\end{table}
 
-また，前処理として推薦テストコードとしてふさわしくない以下のテストスメルを含むテストコードを事前にテストコードリポジトリから削除し，推薦コードでとして出力されないようにした．
+
+また，前処理として推薦テストコードとしてふさわしくない以下のテストスメルを含むテストコードを事前にテストコードリポジトリから削除し，推薦コードでとして出力されないようにした．　
 
 \begin{itemize}
 \item Empty Test
