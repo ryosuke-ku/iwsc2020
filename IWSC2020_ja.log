@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.sjis) (TeX Live 2019/W32TeX) (preloaded format=platex 2019.9.17)  10 DEC 2019 14:39
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.sjis) (TeX Live 2019/W32TeX) (preloaded format=platex 2019.9.17)  10 DEC 2019 17:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -610,8 +610,8 @@ File: time.pdf Graphic file (type pdf)
 <time.pdf>
 File: testsmell.pdf Graphic file (type pdf)
 <testsmell.pdf>
-File: SuiteRec_qa_result.pdf Graphic file (type pdf)
-<SuiteRec_qa_result.pdf>
+File: suiterec-expt.pdf Graphic file (type pdf)
+<suiterec-expt.pdf>
 
 Overfull \hbox (10.37598pt too wide) in paragraph at lines 245--246
  [] 
@@ -645,11 +645,11 @@ LaTeX Warning: There were multiply-defined labels.
  ) 
 Here is how much of TeX's memory you used:
  3850 strings out of 493230
- 54355 string characters out of 6147555
+ 54335 string characters out of 6147555
  129861 words of memory out of 5000000
  7780 multiletter control sequences out of 15000+600000
  45003 words of font info for 135 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 30i,11n,35p,1383b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 30i,11n,35p,1386b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on IWSC2020_ja.dvi (7 pages, 56028 bytes).
+Output written on IWSC2020_ja.dvi (7 pages, 55992 bytes).
