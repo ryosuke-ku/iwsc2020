@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.sjis) (TeX Live 2019/W32TeX) (preloaded format=platex 2019.9.17)  10 DEC 2019 19:05
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.sjis) (TeX Live 2019/W32TeX) (preloaded format=platex 2019.9.17)  10 DEC 2019 19:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -586,8 +586,8 @@ LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
 
 
 ]
-File: SuiteRec2.pdf Graphic file (type pdf)
-<SuiteRec2.pdf>
+File: SuiteRec.pdf Graphic file (type pdf)
+<SuiteRec.pdf>
 File: SuiteRec-OutLine.pdf Graphic file (type pdf)
 <SuiteRec-OutLine.pdf>
  [2]
@@ -645,7 +645,7 @@ LaTeX Warning: There were multiply-defined labels.
  ) 
 Here is how much of TeX's memory you used:
  3850 strings out of 493230
- 54335 string characters out of 6147555
+ 54331 string characters out of 6147555
  129861 words of memory out of 5000000
  7780 multiletter control sequences out of 15000+600000
  45003 words of font info for 135 fonts, out of 8000000 for 9000
