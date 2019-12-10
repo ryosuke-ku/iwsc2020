@@ -179,13 +179,13 @@ SuiteRecは，開発者からの関数単位のコード片を入力とし，そ
 
 \section{Evaluation}
 
-このセクションでは，SuiteRecの定量的及び定性的に評価するために，被験者による実験結果を報告します．具体的には，以下のリサーチクエスチョンに答えて行きます．
+このセクションでは，SuiteRecの定量的及び定性的に評価するために，被験者による実験を行います．被験者は，3つのプロダクションコードのテストコードを作成してもらいます．そしてSuiteRecを使用して作成した場合とそうでない場合のテストコードを比較することで評価を行います．実験を通してコードカバレッジ，実験タスクを終了するまでの時間およびテストコードの品質に関するデータを収集することで，以下のリサーチクエスチョンに答えることを目指します．
 
 \begin{itemize}
-\item RQ1 : SuiteRecの利用は，開発者の作成したテストコードのカバレッジにどう影響するか？
-\item RQ2 : SuiteRecの利用は，開発者のテストコード作成時間に影響するか？
-\item RQ3 : SuiteRecの利用は，作成したテストコードの品質にどう影響するか？
-\item RQ4 : SuiteRecの利用は，開発者のテストコード作成タスクの認識にどう影響しますか？
+\item RQ1 : \textbf{SuiteRecの利用は，開発者の作成したテストコードのカバレッジにどう影響するか？}ソフトウェアの品質を確認する1つの指標としてカバレッジは重要な要素である．テストコード内で一度も実行されない行が存在するとその部分の品質を確保することはできません．SuiteRecの利用は高いカバレッジを達成するために役に立つのでしょうか？
+\item RQ2 : \textbf{SuiteRecの利用は，開発者のテストコード作成時間に影響するか？}開発者はSuiteRecで推薦されるテストコードを参考にすることで，テストコード作成時間を短縮化できるのか？
+\item RQ3 : \textbf{SuiteRecの利用は，作成したテストコードの品質にどう影響するか？}開発者はSuiteRecで推薦されるテストコードを参考にすることで，品質の高いテストコードを作成することができるのか？
+\item RQ4 : \textbf{SuiteRecの利用は，開発者のテストコード作成タスクの認識にどう影響しますか？}SuiteRecを利用した場合，テストコードの作成が容易になり，自分で作成したテストコードに自信が持てるのか？
 \end{itemize}
 
 \subsection{Participant Selection}
@@ -240,6 +240,14 @@ SuiteRecは，開発者からの関数単位のコード片を入力とし，そ
 \label{fig}
 \end{figure}
 
+\begin{figure*}[t]
+ \begin{center}
+  \includegraphics[width=18.5cm]{SuiteRec_qa_result.pdf}
+  \caption{キャプション}
+  \label{}
+ \end{center}
+\end{figure*}
+
 \subsection{RQ4 : SuiteRecの利用は，開発者のテストコード作成タスクの認識にどう影響しますか？}
 
 
@@ -253,13 +261,7 @@ SuiteRecは，開発者からの関数単位のコード片を入力とし，そ
 
 
 
-\begin{figure*}[t]
- \begin{center}
-  \includegraphics[width=18.5cm]{SuiteRec_qa_result.pdf}
-  \caption{キャプション}
-  \label{}
- \end{center}
-\end{figure*}
+
 
 \begin{comment}
 
