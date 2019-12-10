@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.sjis) (TeX Live 2019/W32TeX) (preloaded format=platex 2019.9.17)  10 DEC 2019 19:59
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.sjis) (TeX Live 2019/W32TeX) (preloaded format=platex 2019.9.17)  10 DEC 2019 20:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -596,16 +596,11 @@ File: omsptm.fd
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 117.
  [2]
-File: SuiteRec-OutLine.pdf Graphic file (type pdf)
-<SuiteRec-OutLine.pdf>
+File: SuiteRec-outline.pdf Graphic file (type pdf)
+<SuiteRec-outline.pdf>
 File: mapping.pdf Graphic file (type pdf)
 <mapping.pdf>
-
-Overfull \hbox (7.98538pt too wide) in paragraph at lines 164--174
-[][][][] 
- []
-
-[3]
+ [3]
 File: src.pdf Graphic file (type pdf)
 <src.pdf>
  [4]
@@ -615,13 +610,14 @@ File: C1.pdf Graphic file (type pdf)
 <C1.pdf>
 File: time.pdf Graphic file (type pdf)
 <time.pdf>
- [5]
+
+[5]
 File: testsmell.pdf Graphic file (type pdf)
 <testsmell.pdf>
 File: suiterec-expt.pdf Graphic file (type pdf)
 <suiterec-expt.pdf>
 
-Overfull \hbox (10.37598pt too wide) in paragraph at lines 254--255
+Overfull \hbox (10.37598pt too wide) in paragraph at lines 256--257
  [] 
  []
 
@@ -654,4 +650,4 @@ Here is how much of TeX's memory you used:
  929 hyphenation exceptions out of 8191
  30i,11n,35p,1386b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on IWSC2020_ja.dvi (7 pages, 57824 bytes).
+Output written on IWSC2020_ja.dvi (7 pages, 58032 bytes).
