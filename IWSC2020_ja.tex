@@ -112,6 +112,15 @@ SuiteRecは，開発者からの関数単位のコード片を入力とし，そ
 \label{fig}
 \end{figure}
 
+ \begin{enumerate}
+\renewcommand{\labelenumi}{\textcircled{\scriptsize \theenumi}}
+\item{\textbf{Input Code.}開発者が入力した関数単位のプロダクションコードが表示されます．}
+\item{\textbf{Similarity Code.}入力コードに対する類似コードが表示されます．入力コードと類似度コードの違いが分かるように差分がハイライトされます．}
+\item{\textbf{Degree of similarity.}入力コードと類似コードの類似度が表示されます．類似度はNICADで用いられている計算方法Unique Percentage of Items(UPI)を採用しています．}
+\item{\textbf{Test Smells.}推薦されるテストスイート内にテストスメルが含まれている場合，そのテストスメルがオレンジ色にハイライトされ開発者にテストスメルの存在を提示させます．}
+\item{\textbf{Recommend Test Suites.}推薦されるテストスイートが表示されます．また，どのプロジェクトからテストコードが参照されたのかを示すためにファイルパスも表示されます．}
+\end{enumerate}
+
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=8.5cm]{SuiteRec-OutLine.pdf}}
 \caption{Example of a figure caption.}
