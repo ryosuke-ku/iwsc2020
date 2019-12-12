@@ -60,8 +60,11 @@ email address or ORCID}
 \maketitle
 
 \begin{abstract}
-It is important to support software testing, which is the key to ensuring software quality. So far, various automatic generation techniques have been proposed to reduce test creation costs. However, there is a problem that makes it difficult to carry out maintenance activities due to the fact that automatically generated test code is not generated based on the background and intention of creating the test target code. Ask questions about value. In this research, we introduce SuiteRec, a tool that recommends existing high-quality test codes on OSS to solve this problem. SuiteRec considers test reuse between clone pairs using a similar code search tool. A similar code is detected from the input code, and a test suite corresponding to the similar code is recommended to the developer. In addition, the recommendation ranking is ranked so that the test sumel, which is a metric representing the poor implementation of the test code, is presented to the developer and a higher quality test suite can be recommended. In the evaluation of the proposed tool, the test code was created depending on whether or not SuiteRec was used by the subject, and the degree of support for test creation was evaluated quantitatively and qualitatively. As a result, (1) it is effective in improving code coverage when creating test code for programs with many conditional branches, and (2) the test code created using SuiteRec is the number of detected test smells. (3) Developers were more confident in their own test code than when they were not using TestRec when it was created using SuiteRec.
+It is important to support software testing to ensure software quality. In previous studies, various automatic generation techniques have been proposed to reduce test creation costs. However, automatically generated tests are usually not based on the process and intention of creating the target code, and are therefore generally considered to be less readable. And it makes later maintenance activities difficult. This places a question mark over their practical value. In this research, we propose SuiteRec, a tool that recommends existing high quality test codes that exist on OSS to solve this problem. SuiteRec considers test reuse between clone pairs using similar code search technology. SuiteRec detects similar codes from the input code and recommends a test suite corresponding to the similar codes to the developer. Further, SuiteRec shows the developer a test smells that means a bad implementation of the test code. and the recommendation ranking is ranked so that a higher quality test suite can be recommended. In the evaluation of the proposed tool, the test code was created depending on whether the subject used SuiteRec or not, and the difference was compared. .With various experiments, we show that (1) it is effective to increase code coverage when creating test code for programs with many conditional branches, (2) The test code created using SuiteRec has a high quality with a small number of detected test smells, (3) When using SuiteRec, developers feel that it is easy to create test code, and they can be confident in the created code.
 
+\begin{comment}
+ソフトウェアの品質確保の要と言えるソフトウェアテストを支援することは重要です．これまでに，テスト作成コストを削減するために様々な自動生成技術が提案されてきました．しかし，自動生成されたテストコードはテスト対象コードの作成経緯や意図に基づいて生成されていないという性質から後のメンテナンス活動を困難にさせる課題があり，これは自動生成技術の実用的な利用の価値に疑問を提示させます．本研究では，この課題を解決するために，OSSに上に存在する既存の品質の高いテストコード推薦するツールSuiteRecを紹介します．SuiteRecは，類似コード検索ツールを用いてクローンペア間でのテスト再利用を考えます．入力コードに対して類似コードを検出し，その類似コードに対応するテストスイートを開発者に推薦します．さらに，テストコードの良くない実装を表すメトリクスであるテストスメルを開発者に提示し，より品質の高いテストスイートを推薦できるように推薦順位がランキングされています．提案ツールの評価では，被験者によってSuiteRecの使用した場合とそうでない場合でテストコードの作成してもらい，テスト作成をどの程度支援できるかを定量的および定性的に評価しました．その結果，(1) 条件分岐が多いプログラムのテストコードを作成する際にコードカバレッジの向上に効果的であること，(2) SuiteRecを使用して作成したテストコードは検出されたテストスメルの数が少なく品質が高いこと，(3) SuiteRecを使用してテストコードを作成した場合は使用しなかった場合と比べて開発者は，自身で作成したテストコードに自信が持てることが分かった．
+\end{comment}
 %This document is a model and instructions for \LaTeX.
 %This and the IEEEtran.cls file define the components of your paper [title, text, heads, etc.]. *CRITICAL: Do Not Use Symbols, Special Characters, Footnotes, 
 %or Math in Paper Title or Abstract.
@@ -72,17 +75,19 @@ It is important to support software testing, which is the key to ensuring softwa
 \end{IEEEkeywords}
 
 \section{Introduction}
-In recent years, the requirements for software have become more sophisticated and diversified, while the demand for software quality assurance and cost reduction from users has also increased [1]. Among them, the proportion of the total development cost is large, and interest in technology that supports software testing, which is the key to ensuring quality, is increasing. However, at present, most of the unit test creation work is done manually, and if you try to create many tests, the cost will increase accordingly. Against this background, various automation technologies have been proposed to achieve cost reduction while ensuring software quality.
+近年，ソフトウェアに求められる要件が高度化・多様化する一方，ユーザからはソフトウェアの品質確保やコスト削減に対する要求も増加している[1]．その中でも開発全体のコストに占める割合が大きく，品質確保の要ともいえるソフトウェアテストを支援する技術への関心が高まっている．しかし，現状では単体テスト作成作業の大部分が人手で行われており，多くのテストを作成しようとするとそれに比例してコストも増加してしまう．このような背景から，ソフトウェアの品質を確保しつつコスト削減を達成するために，様々な自動化技術が提案されている．
 
-EvoSuite [2] proposed in existing research is the most advanced tool for automatic unit test generation. EvoSuite statically analyzes the target code and expresses the program as a symbolic value. Then, conditions that pass the control path of the target code are collected, and concrete values that satisfy the conditions are generated. By automatically generating unit tests, developers can save manual creation time by automatic generation and improve code coverage. However, the test code that is automatically generated by existing tools is not readable because of the fact that it is not generated based on the creation process and intention of the target code, and it is not trusted by the developer and makes subsequent maintenance work difficult. There is a problem [3]. This raises questions about the value of practical use of auto-generation tools. Each time a test fails, the developer must identify the cause of the defect in the program under test or determine whether the test itself needs to be updated. It has been reported that auto-generated tests are more difficult to read than the time savings gained by auto-generation and interfere with rather than help maintenance work.
+既存研究で提案されているEvoSuite[2]は，単体テスト自動生成における最先端のツールである．EvoSuiteは，対象コードを静的解析しプログラムを記号値で表現する．そして，対象コードの制御パスを通るような条件を集め，条件を満たす具体値を生成する．単体テストを自動生成することで，開発者は手作業での作成時間が自動生成によって節約することができ，またコードカバレッジを向上することができる．しかし，既存ツールによって自動生成されるテストコードは対象のコードの作成経緯や意図に基づいて生成されていないという性質から可読性が低く開発者に信用されていないことや後の保守作業を困難にするという課題がある[3]．このことは、自動生成ツールの実用的な利用の価値に疑問を提示させる．テストが失敗するたびに，開発者はテスト対象のプログラム内での不具合を原因を特定するまたは，テスト自体を更新する必要があるかどうかを判断する必要がある．自動生成されたテストは，自動生成によって得られる時間の節約よりも読みづらく，保守作業に助けになるというよりかむしろ邪魔するという結果が報告されている．
 
-In this research, we introduce SuiteRec, a tool that recommends existing high quality test codes that exist in OSS to solve this problem. SuiteRec considers test reuse between clone pairs using a similar code detection tool. A similar code is detected from the input code, and a test suite corresponding to the similar code is recommended to the developer. In addition, the recommendation ranking is ranked so that the test sumel, which is a metric representing the poor implementation of the test code, is presented to the developer and a higher quality test suite can be recommended.
+本研究では，この課題を解決するためにOSSに存在する既存の品質の高いテストコード推薦するツールSuiteRecを紹介します．SuiteRecは類似コード検出ツールを用いてクローンペア間でのテスト再利用を考えます．入力コードに対して類似コードを検出し，その類似コードに対応するテストスイートを開発者に推薦します．さらに，テストコードの良くない実装を表すメトリクスであるテストスメルを開発者に提示し，より品質の高いテストスイートを推薦できるように推薦順位がランキングされています．
 
-In the evaluation of the proposed tool, the test code was created depending on whether the subject used SuiteRec or not, and the degree of support for test creation was evaluated quantitatively and qualitatively. As a result, it was found that the use of the proposed tool can improve the code coverage when creating a test suite for a complex program with many branches, and the quality of the test code created using the tool is high. In addition, a questionnaire was conducted after the experiment as a qualitative evaluation, and it was found that when using the recommendation tool, many subjects were confident in the test code they created.
+提案ツールの評価では，被験者によってSuiteRecの使用した場合とそうでない場合でテストコードの作成してもらい，テスト作成をどの程度支援できるかを定量的および定性的に評価した．その結果，提案ツールの利用は分岐が多く複雑なプログラムのテストスイートを作成する際に，コードカバレッジを向上させることができることや，ツールを使用して作成テストコードの品質が高いことが分かった．また，定性的な評価として実験後にアンケートを実施し，推薦ツールを使った場合多くの被験者は自分の作成したテストコードに自信が持てることが分かった．
+
 
 \section{BACKGROUND AND RELETED WORK}
-\textbf{Unit testing.}In the unit test execution task, the software is run, and it is confirmed whether the software behaves as expected in each test case. In order to reduce the cost of the test process, in test execution tasks, the use of automatic test execution tools such as JUnit is advancing in the industry for unit tests. However, test design tasks are still often performed manually, and the practical application and popularization of automation technology is expected.
+\textbf{Unit testing.}単体テストの実行タスクでは，ソフトウェアを動作させ，それぞれのテストケースにおいてソフトウェアが期待通りの振る舞いをするかを確認する．テスト工程のコスト削減のため，テスト実行タスクにおいて，単体テストではJUnitなどのテスト自動実行ツールの利用が産業界で進んでいる．しかし，テスト設計タスクは未だ手動で行うことが多く，自動化技術の実用化および普及が期待されている．
 
+単体テスト設計タスクで作成されるテストケースは，テスト手順，テスト入力値，テスト期待結果から構成される．テスト手順に従ってテスト対象のソフトウェアにテスト入力値を与え，その出力結果をテスト期待結果と比較する．これが一致していればテストは合格となり，一致しなければ不合格となる．単体テスト設計タスクにおいては，多くの場合同値分割法，境界地分析法などのテストケース作成技法を用いてテスト入力値を作成するが，ソフトウェアの要求通りに動作するかを確認するために多くのバリエーションのテスト入力値を作成する必要がある．
 
 \textbf{Test case generation.}既存の研究[4]は，既存のテストケースを再利用，自動生成，または再適用できることによって，ソフトウェア開発のテスト工程における時間とコストを大幅に節約できることを示している．テスト生成技術は，主にランダムテスト(RT)，記号実行(SE)，サーチベーステスト(SBST)，モデルベース(MBT)，組み合わせテストの5つに分類できる．SEはさらに静的記号実行(SSE)と動的記号実行(DSE)に分けられる．
 
@@ -102,7 +107,13 @@ CTは，パラメータ間の相互作用に起因する不具合を効果的に
 プロダクションコードだけでなく，テストコードのも適切なプログラミングの慣習に従って設計する必要があります[44]．テストコードのを適切に設計することの重要性は元々Beck[7]によって提唱されました．さらに，Van Deursenら[50]は11種類のテストスメルのカタログ，すなわちテストコードの良くない設計を表す実装とそれらを除去するためのリファクタリング技術を定義しました．このカタログはそれ以降，18個の新しいテスト臭を定義したMeszaros [42]によってより拡張されました。最近の研究では，テストスメルの存在は開発者のテストスイートの理解に悪い影響を与えるだけでなく，テストコードがプロダクションコード内の不具合を見つけるのにあまり効果的でなくなると言われています．
 
 \section{SuiteRec}
+SuiteRec takes a code fragment of a function unit from a developer as input code and searches for similar codes of the input code. Then, test suites corresponding to similar codes are sorted and presented to developers in order of priority.
+
+Figure 1 shows the flow until a test suite is recommended by SuiteRec. The recommendation method mainly consists of the following 4 steps.
+
+\begin{comment}
 SuiteRecは，開発者からの関数単位のコード片を入力とし，その入力コードの類似コードを検索します．そして類似コードに対応するテストスイートを優先順位の高い順に並び替え開発者に提示します．図1は，SuiteRecによってテストスイートが推薦されるまでの流れを示しています．推薦手法は，主に以下の4つのステップから構成されます．
+\end{comment}
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=8.5cm]{SuiteRec-outline.pdf}}
@@ -112,17 +123,17 @@ SuiteRecは，開発者からの関数単位のコード片を入力とし，そ
 
 \begin{enumerate}
 \renewcommand{\labelenumi}{(\arabic{enumi})}
-\item SuiteRecは，入力されたコード片を受け取ると，そのコード片をコードクローン検索ツールにかけ入力コード片の類似コードを検出します．
-\item 複数の類似コード片が検出されると，次にその類似コード片に対応するテストスイートをテストコードリポジトリ内から検索します．
-\item 各類似コード片のテストスイートが検出されると，次にそれらをテストスメル検出ツールにかけ各テストスイートに含まれるテストスメルを検出します
-\item 最後に，1で得られた類似コードと入力コードの類似度と3で検出されたテストスメルの数を基に出力されるテストスイートの順番がランキングされる．
+\item When SuiteRec receives a input code, it searches the source code repository for the corresponding similar code fragments using a existing code clone detection tool.
+\item Detected similar code fragments, SuiteRec searches the test code repository for the test suite corresponding to the similar code.
+\item SuiteRec detects test smells in the test suite collected by the previous step using existing test sumel detection tools.
+\item As the final step, SuiteRec sorts test suites in descending order of priority based on similarity and number of test smells.
 \end{enumerate}
 
 
 \subsection{Code Clone Detection}
-本研究では，類似コード検出ツールとしてNICAD[3]を採用した．NICADは検索対象のコードフラグメントのレイアウトを統一的に変換させ，行単位で関数単位のコードフラグメントを比較することで，クローンペア検出するツールであり，このような手法を取ることで，高精度・高再現率でのクローンペアの検出を実現している．
+In this study, NICAD [3] was adopted as a similar code detection tool. NICAD converts code fragment layouts uniformly and detects code pairs by comparing code fragments in units of functions. By adopting such a method, NICAD has realized clone pair detection with high accuracy and high recall. NICAD searches the Github repository hosting large open source projects for similar code corresponding to the input code.
 
-NICADは入力コード対応する類似コードを大規模なオープンソースプロジェクトをホストしているGithubのリポジトリから検索します．図1のソースコードリポジトリは，テストコードが存在するGithubプロジェクトが格納されています．具体的には，プロジェクト内にテストフォルダが存在し，JUnitのテスティングフレームワークを採用しているプロジェクトを選択しました．NICADは，一度に検索できるプロジェクトの規模限度があります．我々は，検索時間を短縮するために大規模なプロジェクトは分割し，小規模なプロジェクトは統合させた状態で検索処理を複数並列して走らせることで現実的な時間での類似コードの検索を実現しました．また，検出設定についてはNICADの標準設定で提案ツールに実装されている．
+The source code repository in Fig. 1 contains only the production code of the Github project with test code. Specifically, we selected a project that had a test folder in the project and adopted the JUnit testing framework. NICAD has a project size limit that can be searched at once.  In order to shorten the search time, large-scale projects were divided, small-scale projects were integrated, and multiple search processes were run in parallel, making it possible to search for similar codes in real time. The detection setting is implemented in the proposed tool as a standard setting of NICAD.
 
 \subsection{Test Code Detection}
 類似コード片から対応するテストコードを検索するためにテスト対象コードとテストコードの対応付けを行う．本研究では，厳密にテストコードと対象コードを対応付けるために以下の2つのステップを踏みます．

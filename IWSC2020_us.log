@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.sjis) (TeX Live 2019/W32TeX) (preloaded format=platex 2019.9.17)  12 DEC 2019 14:01
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.sjis) (TeX Live 2019/W32TeX) (preloaded format=platex 2019.9.17)  12 DEC 2019 18:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -510,7 +510,29 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 (c:/texlive/2019/texmf-dist/tex/latex/comment/comment.sty
 \CommentStream=\write3
 
-Excluding comment 'comment') (./IWSC2020_us.aux)
+Excluding comment 'comment') (./IWSC2020_us.aux
+
+LaTeX Warning: Label `fig' multiply defined.
+
+
+LaTeX Warning: Label `fig' multiply defined.
+
+
+LaTeX Warning: Label `fig' multiply defined.
+
+
+LaTeX Warning: Label `fig' multiply defined.
+
+
+LaTeX Warning: Label `fig' multiply defined.
+
+
+LaTeX Warning: Label `fig' multiply defined.
+
+
+LaTeX Warning: Label `fig' multiply defined.
+
+)
 \openout1 = `IWSC2020_us.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
@@ -531,8 +553,7 @@ LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 15.
-
-(c:/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
+ (c:/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 15.
@@ -553,18 +574,19 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Calculating math sizes for size <11> on input line 60.
 
+Excluding 'comment' comment.
 
 LaTeX Font Warning: Font shape `JT1/mc/m/sc' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 74.
+(Font)              using `JT1/mc/m/n' instead on input line 77.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 74.
+(Font)              using `JY1/mc/m/n' instead on input line 77.
 
 [1
 
 
-]
+] Excluding 'comment' comment.
 File: SuiteRec-outline.pdf Graphic file (type pdf)
 <SuiteRec-outline.pdf>
  [2]
@@ -573,13 +595,17 @@ File: mapping.pdf Graphic file (type pdf)
  [3]
 File: SuiteRec.pdf Graphic file (type pdf)
 <SuiteRec.pdf>
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 185.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 196.
 
- (c:/texlive/2019/texmf-dist/tex/latex/psnfss/omsptm.fd
+
+(c:/texlive/2019/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 185.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 196.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 File: task.pdf Graphic file (type pdf)
 <task.pdf>
  [4]
@@ -596,7 +622,7 @@ File: smells.pdf Graphic file (type pdf)
 File: suiterec-expt.pdf Graphic file (type pdf)
 <suiterec-expt.pdf>
 
-Overfull \hbox (10.37598pt too wide) in paragraph at lines 258--259
+Overfull \hbox (10.37598pt too wide) in paragraph at lines 269--270
  [] 
  []
 
@@ -619,16 +645,16 @@ Before submitting the final camera ready copy, remember to:
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
  3868 strings out of 493230
  54630 string characters out of 6147555
- 131861 words of memory out of 5000000
+ 129861 words of memory out of 5000000
  7794 multiletter control sequences out of 15000+600000
  45003 words of font info for 135 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 30i,11n,35p,1603b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 30i,11n,35p,1582b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on IWSC2020_us.dvi (7 pages, 59932 bytes).
+Output written on IWSC2020_us.dvi (7 pages, 61180 bytes).
