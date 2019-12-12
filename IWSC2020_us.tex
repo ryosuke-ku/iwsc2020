@@ -136,7 +136,7 @@ In this study, NICAD [3] was adopted as a similar code detection tool. NICAD con
 The source code repository in Fig. 1 contains only the production code of the Github project with test code. Specifically, we selected a project that had a test folder in the project and adopted the JUnit testing framework. NICAD has a project size limit that can be searched at once.  In order to shorten the search time, large-scale projects were divided, small-scale projects were integrated, and multiple search processes were run in parallel, making it possible to search for similar codes in real time. The detection setting is implemented in the proposed tool as a standard setting of NICAD.
 
 \subsection{Test Code Detection}
-類似コード片から対応するテストコードを検索するためにテスト対象コードとテストコードの対応付けを行う．本研究では，厳密にテストコードと対象コードを対応付けるために以下の2つのステップを踏みます．
+In order to search for test suites corresponding to similar code fragments, the target code is associated with the test code. In this research, the following two steps are taken in order to precisely associate the test code with the target code.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=8.5cm]{mapping.pdf}}
@@ -146,12 +146,14 @@ The source code repository in Fig. 1 contains only the production code of the Gi
 
 \begin{enumerate}
 \renewcommand{\labelenumi}{(\arabic{enumi})}
-\item テストコードを静的解析し，メソッド呼び出しを確認
-\item テストメソッドを区切り文字や大文字で分割し，対象メソッドと部分一致した時対応付ける
+\item Static analysis of test code and confirmation of method calls.
+\item Divide the test method with a delimiter or capital letter and associate it when the target method partially matches.
 \end{enumerate}
 
 
-単体テストでは，図の例のようにテストコード内でオブジェクトの生成が行い，テスト対象コードのメソッド呼び出して実行されます．すなわち，テストコードリポジトリ内のテストコードを静的解析し，メソッド呼び出しを取得することで，テスト対象コードとテストコードを対応付けます．しかし，テストメソッド内では複数のメソッドが呼び出されていることも考えられるのでさらに，メソッド名の比較も行います．テストメソッド名の記述方法としてテスト対象メソッドの処理の内容を忠実に表すことが推奨されており，対象メソッドの名前が記述されていることが多い．したがって，テストメソッドの名前を区切り文字や大文字で分割し，対象メソッドと部分一致した場合，対応付けるように実装した．
+In the unit test, an object is generated in the test code as shown in the figure 2, and it is executed by calling a method of the test target code. Therefore, the test code in the test code repository is statically analyzed and the method call is obtained to associate the test target code with the test code. However, multiple methods may be called in the test method, so the method names are also compared. It is recommended to faithfully represent the contents of the processing of the target method as the test method name description method, and the name of the target method is often described in the test method name. Therefore, the name of the test method is divided by a delimiter or capital letter, and it is linked if it partially matches the target method.
+
+The test code repository in Figure 1 stores test code corresponding to the production code in the source code repository. As a pre-processing, static analysis was performed on a large-scale project in advance, and information that linked production code and test code was stored in the DB, so that test code could be searched at high speed via the DB.
 
 図1のテストコードリポジトリには，ソースコードリポジトリ内のプロダクションコードに対応するテストコードが格納されています．我々は，テストコードの検索時間を短縮化するために前処理として事前に大規模なプロジェクトに対して静的解析を行い，プロダクションコードとテストコードの対応付けた情報をDBに保持し，DBを介して高速にテストコードを検索できるようにした．
 
