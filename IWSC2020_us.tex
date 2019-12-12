@@ -155,33 +155,29 @@ In the unit test, an object is generated in the test code as shown in the figure
 
 The test code repository in Figure 1 stores test code corresponding to the production code in the source code repository. As a pre-processing, static analysis was performed on a large-scale project in advance, and information that linked production code and test code was stored in the DB, so that test code could be searched at high speed via the DB.
 
-図1のテストコードリポジトリには，ソースコードリポジトリ内のプロダクションコードに対応するテストコードが格納されています．我々は，テストコードの検索時間を短縮化するために前処理として事前に大規模なプロジェクトに対して静的解析を行い，プロダクションコードとテストコードの対応付けた情報をDBに保持し，DBを介して高速にテストコードを検索できるようにした．
-
 \subsection{Test Smells Detection}
-本研究では，テストスメル検出ツールとしてtsDetect[6]を採用した．tsDetectはASTベースの検出手法で実装されたツールであり，19個のテストスメルを検出できるツールである．また，85％〜100％の精度と90％〜100％の再現率でテストスメルを正しく検出できることが報告されている．本研究では，tsDetectで検出できる19個のテストスメルの内テストコードの推薦を考える上で重要な以下の6種類のテストスメルを提示するように実装しました．
-
+In this study, tsDetect [6] was adopted as a test sumle detection tool. tsDetect is a tool implemented with an AST-based detection method that can detect 19 test smells. It has also been reported that test smells can be detected correctly with 85\% to 100\% accuracy and 90\% to 100\% recall. In this study, we implemented the following 6 types of test smells, which are important in considering the recommendation of test codes among 19 test smells that can be detected by tsDetect.
 \begin{table}[hbtp]
 \caption{Subject Test Smells}
 \begin{tabular}{|l|p{5.2cm}|}
 \hline
 \textbf{Name}                   & \textbf{Description}                                                                                                       \\ \hline
-\textbf{Assetion Roulette}        & 1つのテストメソッド内に複数のassert文が存在するテストコード.各assert文は異なる条件をテストするが，テストが失敗した場合開発者へ各assert文のエラーメッセージは提供されないので，失敗を特定することが困難になる．  \\ \hline
-\textbf{Conditional Test Logic} &テストメソッド内に複数の制御文が含まれているテストスイート．テスト成功・失敗は制御フロー内にあるassert文に基づくの予測するのが難しい．                                                                                                                                                                                                           \\ \hline
-\textbf{Default Test}            &JUnitなどのテスティングフレームワークを使用したテストコードの内，テストクラスやテストメソッドの名前がデフォルトの状態であるテストコード．テストコードの可読性の向上ために適切な名前に変更する必要がある．                                                                                                      \\ \hline
-\textbf{Eager Test }             &テスト対象クラス内の複数のメソッドを呼び出しているテストコード．1つのテストメソッド内で複数のメソッド呼び出しを行うと，正確に何をテストしているかについて混乱が生じる．                                                                                                         \\ \hline
-\textbf{Exception Handling}      & テストメソッド内で例外処理が含まれているまたは例外を投げるテストコード．例外処理はプロダクションコードに記述し，テストコード内で例外処理が正しく行われるかどうかを確かめるようにリファクタリングする必要がある．                                                                                                    \\ \hline
-\textbf{Mystery Guest}          & テストメソッド内で、外部リソースを利用するテストコード．テストメソッド内だけで完結せず外部のファイルなど，外部リソースを利用すると外部との依存関係が生じ，外部リソースが壊れた場合テストも失敗してしまう．                                                                                                                \\ \hline
+\textbf{Assetion Roulette}        & Occurs when a test method has multiple non-documented assertions. Multiple assertion statements in a test method without a descriptive message impacts readability/understandability/maintainability as it’s not possible to understand the reason for the failure of the test.  \\ \hline
+\textbf{Conditional Test Logic} & Test methods need to be simple and execute all statements in the production method. Conditions within the test method will alter the behavior of the test and its expected output, and would lead to situations where the test fails to detect defects in the production method since test statements were not executed as a condition was not met. Furthermore, conditional code within a test method negatively impacts the ease of comprehension by developers. \\ \hline
+\textbf{Default Test}            & Test code in which the test class or test method name is the default in test code using a testing framework such as JUnit. It is necessary to change the name appropriately to improve the readability of the code.                                                                                                      \\ \hline
+\textbf{Eager Test }             & Occurs when a test method invokes several methods of the production object. This smell results in difficulties in test comprehension and maintenance. \\ \hline
+\textbf{Exception Handling}      & This smell occurs when a test method explicitly a passing or failing of a test method is dependent on the production method throwing an exception. Developers should utilize JUnit's exception handling to automatically pass/fail the test instead of writing custom exception handling code or throwing an exception. \\ \hline
+\textbf{Mystery Guest}          & Occurs when a test method utilizes external resources (e.g. files, database, etc.). Use of external resources in test methods will result in stability and performance issues. Developers should use mock objects in place of external resources. \\ \hline
 \end{tabular}
 \end{table}
 
-
-また，前処理として推薦テストコードとしてふさわしくない以下の4つのテストスメルを含むテストコードを事前にテストコードリポジトリから削除し，推薦されるテストコードでとして出力されないようにした．　
+In addition, the test code including the following four test smells that are not suitable as recommended test code has been deleted from the test code repository in advance, so that it is not output as a recommended test code.　
 
 \begin{itemize}
-\item \textbf{Empty Test．}テストメソッド内にテストの記述はなくコメントのみが含まれているテストコード
-\item \textbf{Ignored Test．}@Ignoreアノテーションがあり，実行されないテストコード
-\item \textbf{Redundant Assertion．}必ずテストが成功する意味のないテストコード
-\item \textbf{Unknow Test．}assertメソッドが存在しないテストコード
+\item \textbf{Empty Test．}Occurs when a test method does not contain executable statements.
+\item \textbf{Ignored Test．}Test code that has the @Ignore annotation and is not executed.
+\item \textbf{Redundant Assertion．}This smell occurs when test methods contain assertion statements that are either always true or always false. 
+\item \textbf{Unknow Test．}A test method that does not contain a single assertion statement and @Test(expected) annotation parameter.
 \end{itemize}
 
 \subsection{Sort Recommended Test Suites}
