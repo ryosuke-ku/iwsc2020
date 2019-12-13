@@ -60,7 +60,7 @@ email address or ORCID}
 \maketitle
 
 \begin{abstract}
-It is important to support software testing to ensure software quality. In previous studies, various automatic generation techniques have been proposed to reduce test creation costs. However, automatically generated tests are usually not based on the process and intention of creating the target code, and are therefore generally considered to be less readable. And it makes later maintenance activities difficult. This places a question mark over their practical value. In this research, we propose SuiteRec, a tool that recommends existing high quality test codes that exist on OSS to solve this problem. SuiteRec considers test reuse between clone pairs using similar code search technology. SuiteRec detects similar codes from the input code and recommends a test suite corresponding to the similar codes to the developer. Further, SuiteRec shows the developer a test smells that means a bad implementation of the test code. and the recommendation ranking is sorted so that a higher quality test suite can be recommended. In the evaluation of the proposed tool, the test code was created depending on whether the subject used SuiteRec or not, and the difference was compared. .With various experiments, we show that (1) SuiteRec is effective to increase code coverage when creating test code for programs with many conditional branches, (2) Using SuiteRec takes a lot of time to create test code, (3) The test code created using SuiteRec has a high quality with a small number of detected test smells, (4) When using SuiteRec, developers feel that it is easy to create test code, and they can be confident in the created code.
+It is important to support software testing to ensure software quality. In previous studies, various automatic generation techniques have been proposed to reduce test creation costs. However, automatically generated tests are usually not based on the process and intention of creating the target code, and are therefore generally considered to be less readable. And it makes later maintenance activities difficult. This places a question mark over their practical value. In this research, we propose SuiteRec, a tool that recommends existing high quality test codes that exist on OSS to solve this problem. SuiteRec considers test reuse between clone pairs using similar code search technology. SuiteRec detects similar codes from the input code and recommends a test suite corresponding to the similar codes to the developer. Further, SuiteRec shows the developer a test smells that means a bad implementation of the test code. and the recommendation ranking is sorted so that a higher quality test suite can be recommended. In the evaluation of the proposed tool, the test code was created depending on whether the subject used SuiteRec or not, and the difference was compared. With various experiments, we show that (1) SuiteRec is effective to increase code coverage when creating test code for programs with many conditional branches, (2) Using SuiteRec takes a lot of time to create test code, (3) The test code created using SuiteRec has a high quality with a small number of detected test smells, (4) When using SuiteRec, developers feel that it is easy to create test code, and they can be confident in the created code.
 
 \begin{comment}
 ソフトウェアの品質確保の要と言えるソフトウェアテストを支援することは重要です．これまでに，テスト作成コストを削減するために様々な自動生成技術が提案されてきました．しかし，自動生成されたテストコードはテスト対象コードの作成経緯や意図に基づいて生成されていないという性質から後のメンテナンス活動を困難にさせる課題があり，これは自動生成技術の実用的な利用の価値に疑問を提示させます．本研究では，この課題を解決するために，OSSに上に存在する既存の品質の高いテストコード推薦するツールSuiteRecを紹介します．SuiteRecは，類似コード検索ツールを用いてクローンペア間でのテスト再利用を考えます．入力コードに対して類似コードを検出し，その類似コードに対応するテストスイートを開発者に推薦します．さらに，テストコードの良くない実装を表すメトリクスであるテストスメルを開発者に提示し，より品質の高いテストスイートを推薦できるように推薦順位がランキングされています．提案ツールの評価では，被験者によってSuiteRecの使用した場合とそうでない場合でテストコードの作成してもらい，テスト作成をどの程度支援できるかを定量的および定性的に評価しました．その結果，(1) 条件分岐が多いプログラムのテストコードを作成する際にコードカバレッジの向上に効果的であること，(2) SuiteRecを使用した場合，テストコードの作成に時間がかかること，(3) SuiteRecを使用して作成したテストコードは検出されたテストスメルの数が少なく品質が高いこと，(4) SuiteRecを使用してテストコードを作成した場合は使用しなかった場合と比べて開発者は，自身で作成したテストコードに自信が持てることが分かった．
@@ -309,16 +309,17 @@ When the test code was created without using SuiteRec, 40\% of the subjects were
 
 On the other hand, even when SuiteRec is used, there are negative opinions about the quality of the test code. The respondents reported that they understood Test Smells but didn't know how to refactor. This indicates the need for further improvement of SuiteRec, and we should add the function to present refactoring methods for each test smell.
 
+\begin{comment}
 \section{Related work}
 \textbf{Code recommendation.}コード推薦システムは，他のプログラムのコードフラグメントを提示し再利用できるようにしたりすることで開発者を支援します．Zhang[1]らはクローンペア間で，コードを移植を行い移植前と移植後のテスト結果を比較しその情報を基にテストを再利用する手法を提案している．Mostafa[2]らは，自身のプロジェクトだけでなく他のプロジェクトを横断してクローンペアを検出しテストコード再利用することの有効性を調査した．
+\end{comment}
 
 \section{Conclusion and Future Work}
-SuiteRec is a tool that recommends existing test codes that exist on OSS using a similar code detection tool for the input production code.
+SuiteRec is a tool that recommends existing test codes that exist on OSS using a similar code detection tool for the input production code. In addition, SuiteRec presents the test smell, an indicator of poor test code implementation, to the developer, and the order of recommendation is sorted so that higher quality test suites can be recommended.
 
-In addition, SuiteRec presents the test smell, an indicator of poor test code implementation, to the developer, and the order of recommendation is sorted so that higher quality test suites can be recommended.
+According to the evaluation of SuiteRec by 10 subjects, it may be possible to improve coverage by creating test code using SuiteRec for production code which there are many branches and it is difficult to create test items. However, it takes a lot of creation time. Using SuiteRec also allows you to create high quality test code that doesn't contain much test smells, and developers can be confident in the code they write. 
 
-SuiteRecは，ユーザーが入力した関数単位のプロダクションコードに対して，類似コード検出ツールを用いてOSS上に存在する既存のテストコードを推薦するツールです．さらに，テストコードの良くない実装を表すメトリクスであるテストスメルを開発者に提示し，より品質の高いテストスイートを推薦できるように推薦順位がランキングされています．被験者による評価実験によって分岐が多くテスト項目の作成が難しいプロダクションコードに対して，SuiteRecを使用してテストコード作成するとカバレッジを向上できる可能性があります．また，品質の高いテストコードを作成でき，開発者は自分で書いたコードに自信が持つことができます．今後の課題としては，より実践的な利用に備えてツールを改善する必要があります．さらにSuiteRecが推薦するテストスイートの優先順位に対する妥当性評価も実施する予定である．
-
+As a future task, SuiteRec needs to be improved for more practical use. Specifically, we are considering an automatic test code rewriting function. In addition, the validity of test suite priorities recommended by SuiteRec will be evaluated.
 
 
 \begin{comment}
@@ -526,6 +527,8 @@ citation first, followed by the original foreign-language citation \cite{b6}.
 \end{comment}
 
 \begin{thebibliography}{00}
+\bibitem{b1} S. Shamshiri, J. M. Rojas, J. P. Galeotti, ``How Do Automatically Generated Unit Tests Influence Software Maintenance?," In {\it Proceedings of the International Conference on Software Testing, Verification and Validation (ICST)}, pp.239--249, 2018. 
+
 \bibitem{b1} G. Eason, B. Noble, and I. N. Sneddon, ``On certain integrals of Lipschitz-Hankel type involving products of Bessel functions,'' Phil. Trans. Roy. Soc. London, vol. A247, pp. 529--551, April 1955.
 \bibitem{b2} J. Clerk Maxwell, A Treatise on Electricity and Magnetism, 3rd ed., vol. 2. Oxford: Clarendon, 1892, pp.68--73.
 \bibitem{b3} I. S. Jacobs and C. P. Bean, ``Fine particles, thin films and exchange anisotropy,'' in Magnetism, vol. III, G. T. Rado and H. Suhl, Eds. New York: Academic, 1963, pp. 271--350.
