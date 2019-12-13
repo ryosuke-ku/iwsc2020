@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.sjis) (TeX Live 2019/W32TeX) (preloaded format=platex 2019.9.17)  13 DEC 2019 17:44
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.sjis) (TeX Live 2019/W32TeX) (preloaded format=platex 2019.9.17)  13 DEC 2019 19:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -532,9 +532,6 @@ LaTeX Warning: Label `fig' multiply defined.
 
 LaTeX Warning: Label `fig' multiply defined.
 
-
-LaTeX Warning: Label `b1' multiply defined.
-
 )
 \openout1 = `IWSC2020_us.aux'.
 
@@ -623,7 +620,7 @@ Overfull \hbox (10.37598pt too wide) in paragraph at lines 293--294
  []
 
 Excluding 'comment' comment. [6] Excluding 'comment' comment.
-Excluding 'comment' comment.
+Excluding 'comment' comment. Excluding 'comment' comment.
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -644,12 +641,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3851 strings out of 493230
- 54343 string characters out of 6147555
+ 3859 strings out of 493230
+ 54381 string characters out of 6147555
  131861 words of memory out of 5000000
- 7780 multiletter control sequences out of 15000+600000
+ 7788 multiletter control sequences out of 15000+600000
  45003 words of font info for 135 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  30i,11n,35p,1647b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on IWSC2020_us.dvi (7 pages, 49820 bytes).
+Output written on IWSC2020_us.dvi (7 pages, 52260 bytes).
