@@ -241,10 +241,16 @@ To prevent the use effect of SuiteRec from being biased by tasks, subjects were 
 \section{Results}
 In this section we present the quantitative and qualitative evaluation results of SuiteRec by 10 subjects, as described in the previous section, for each of the research questions.
 
-このセクションでは，10人の被験者によるSuiteRecの定量的および定性的評価結果を報告する．前のセクションで説明したように，4つの研究課題について分析結果を提示します．
+\subsection{RQ1: Can SuiteRec support the creation of tests with high coverage?}
+In this experiment, we calculated two types of code coverage: statement coverage(C0) and branch coverage(C1) of test suites submitted by the subjects. To calculate the coverage, we used EclEmma[?], which is installed as a plug-in of the integrated development environment Eclipse[?]. Figures 1 and 2 show the average coverage of statement coverage and branch coverage, respectively. As a result, there is almost no difference in the coverage rate of statement coverage in all three tasks depending on whether SuiteRec is used or not, and the coverage of each task exceeds 90\%.
 
-\subsection{RQ1: SuiteRecの利用は，開発者の作成したテストコードのカバレッジにどう影響するか？}
-本実験では，被験者によって提出されたテストスイートの命令網羅と分岐網羅の2種類のコードカバレッジの計算した．カバレッジの計算には統合開発環境Eclipseのプラグインとして搭載されているEclEmmaを利用した．図1と図2はそれぞれ被験者による命令網羅と分岐網羅の平均カバレッジを示す．結果として，命令網羅の割合は3つの問題すべてにおいてツールを利用した場合とそうでない場合で網羅率にほとんど違いはなく，どの問題も網羅率が90\%を超えている．図2の分岐網羅についても分岐数が少ないTASK1とTASK2についてはツールを使用した場合とそうでない場合でほとんど差がないことが分かる．しかし，プロダクションコードの分岐数が最も多いTASK3については，実験者の平均カバレッジに10\%以上の差があることが分かった．この結果は，分岐が多いプロダクションコードのテストコードを作成する際に，SuiteRecで推薦されるテストコードは網羅率を向上するのに役に立つことが考えられる．実際に実験後のアンケートの記述欄には，推薦コードによって見落としていたテスト項目をフォローすることができたという報告が複数存在した．
+Regarding the branch coverage in Fig. 2, it can be seen that there is almost no difference between TASK1 and TASK2 with 8,16 branches depending on whether SuiteRec is used or not. 
+
+However, the results of TASK3 with the largest number of branches showed that there was a difference of more than 10\% in the average coverage of the subjects.
+
+This result suggests that the test code recommended by SuiteRec is useful for increasing the coverage rate when creating test code for production code with many branches. In fact, in the questionnaire after the experiment, there were multiple reports that the subjects were able to follow the test items that were overlooked by the recommendation code.
+
+
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=8.5cm]{C0.pdf}}
 \caption{Statement coverage (C0).}
@@ -257,7 +263,17 @@ In this section we present the quantitative and qualitative evaluation results o
 \label{fig}
 \end{figure}
 
-\subsection{RQ2: SuiteRecの利用は，開発者のテストコード作成時間に影響するか？}
+\subsection{RQ2: Can SuiteRec reduce test code creation time?}
+Figure 5 shows the results of comparing the time spent completing the test code creation task with and without SuiteRec.
+
+It can be seen that the test creation time is longer when SuiteRec is used for two tasks than when it is not.
+
+This result can take time to read and understand multiple test suites recommended by SuiteRec.
+
+Subjects cannot reuse the recommended test code as is.
+
+It is necessary to rewrite the test code by looking at the difference between the input production code and the detected similar code.
+
 
 図5は，SuiteRecを使用した場合と何も使用しない場合で，テストコード作成タスクの終了までに費やされた時間を比較しています．3つの問題の内，2つの問題でSuiteRecを使用した場合そうでない場合と比べてテスト作成時間が大きくなっていることが分かる．この結果はSuiteRecによって推薦される複数のテストスイートを読み理解するのに時間がかかる可能性があります．被験者は，推薦されるテストコードをそのままの形で再利用することができません．入力したプロダクションコードと検出された類似コードの差分を見てテストコードを書き換える必要があります．また，実験後のアンケートではテスト対象のオブジェクト生成の記述を再利用する際にその都度書き換える必要があり，時間がかかってしまったと述べている．問題2については，SuiteRecを利用した場合の方がテスト作成時間が短いことが分かる．我々は，提出されたテストコード調査したところカバレッジに差はないもののSuiteRecを使用しない場合はテストケース(項目)の数多くなっていることが分かった．この結果は，被験者は無駄なテストケースを多く記述するのに無駄な時間を費やしてしまった可能性がある．
 \begin{figure}[htbp]
@@ -266,7 +282,7 @@ In this section we present the quantitative and qualitative evaluation results o
 \label{fig}
 \end{figure}
 
-\subsection{RQ3 : SuiteRecの利用は，作成したテストコードの品質にどう影響するか？}
+\subsection{RQ3: Can SuiteRec support high quality test creation?}
 
 図6はSuiteRecを使用した場合とそうでない場合で，提出されたテストコード内のテストスメル数を比較しています．すべてのTASKに対して，SuiteRecを使用して作成されたテストコードはテストスメルをあまり含んでいないことが分かる．この結果は，推薦されるテストコード自体の品質が高く開発者はそれを再利用することで品質を維持したままテストコードを作成したと考えられる．また，ツールの出力画面で推薦されるテストスイート内に含まれているテストスメルを提示することで，それを基にテストコードを書き替えより品質が高いテストコードを提出した可能性が考えられる．実際のアンケートの記述でも提示されたテストスメルを理解し，それをなくすようにリファクタリングしテストコードを作成したという報告がされている．一方で，テストスメルが含まれていることは気づいていたがリファクタリングの方法が分からずそのまま提出したと述べている被験者も存在した．これは今後のツールの課題であり，テストスメルのリファクタリング方法も提示する改良の必要がある．SuiteRecを使用しなかった場合は，使用した場合と比べ全体として5倍以上の被験者はテストスメルを埋め込んでいた．その中でも多く埋め込まれていたテストスメルとして，Assertion Roulette, Default Test, Eager Testが挙げられる．多くの被験者は，初期状態のテストメソッドの名前を変更せず一つのテストメソッド内でコピーアンドペーストによってAssert文を記述していたのが原因だと考えられる．実際に既存研究でもこれらのテストスメルが既存プロジェクトで多く検出されていることが報告されている[6]． 
 
@@ -284,7 +300,7 @@ In this section we present the quantitative and qualitative evaluation results o
  \end{center}
 \end{figure*}
 
-\subsection{RQ4 : SuiteRecの利用は，開発者のテストコード作成タスクの認識にどう影響しますか？}
+\subsection{RQ4: How do using SuiteRec influence the developers’ perception of test code creation tasks tasks?}
 
 図7は，実験後のアンケートの回答の結果をまとめたものです．初めの2つの質問から，被験者は，実験タスクを明確に理解し(質問1)，実験タスクを終えるのに十分な時間があったことが分かる(質問2)．残りの質問については，SuiteRecを使用した場合とそうでない場合で，実験タスクに対する意見に違いがあることが分かります．
 
