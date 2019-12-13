@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.sjis) (TeX Live 2019/W32TeX) (preloaded format=platex 2019.9.17)  13 DEC 2019 11:02
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.sjis) (TeX Live 2019/W32TeX) (preloaded format=platex 2019.9.17)  13 DEC 2019 11:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -600,13 +600,6 @@ Underfull \hbox (badness 2961) in paragraph at lines 165--165
 [3]
 File: SuiteRec.pdf Graphic file (type pdf)
 <SuiteRec.pdf>
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 198.
-
- (c:/texlive/2019/texmf-dist/tex/latex/psnfss/omsptm.fd
-File: omsptm.fd 
-)
-LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 198.
  [4]
 File: task.pdf Graphic file (type pdf)
 <task.pdf>
@@ -647,12 +640,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3868 strings out of 493230
- 54630 string characters out of 6147555
+ 3851 strings out of 493230
+ 54343 string characters out of 6147555
  131861 words of memory out of 5000000
- 7794 multiletter control sequences out of 15000+600000
+ 7780 multiletter control sequences out of 15000+600000
  45003 words of font info for 135 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  30i,11n,35p,1582b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on IWSC2020_us.dvi (7 pages, 57100 bytes).
+Output written on IWSC2020_us.dvi (7 pages, 56912 bytes).
