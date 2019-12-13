@@ -174,14 +174,18 @@ In this study, tsDetect [6] was adopted as a test sumle detection tool. tsDetect
 In addition, the test code including the following four test smells that are not suitable as recommended test code has been deleted from the test code repository in advance, so that it is not output as a recommended test code.　
 
 \begin{itemize}
-\item \textbf{Empty Test．}Occurs when a test method does not contain executable statements.
-\item \textbf{Ignored Test．}Test code that has the @Ignore annotation and is not executed.
-\item \textbf{Redundant Assertion．}This smell occurs when test methods contain assertion statements that are either always true or always false. 
-\item \textbf{Unknow Test．}A test method that does not contain a single assertion statement and @Test(expected) annotation parameter.
+\item \textbf{Empty Test.}Occurs when a test method does not contain executable statements.
+\item \textbf{Ignored Test.}Test code that has the @Ignore annotation and is not executed.
+\item \textbf{Redundant Assertion.}This smell occurs when test methods contain assertion statements that are either always true or always false. 
+\item \textbf{Unknow Test.}A test method that does not contain a single assertion statement and @Test(expected) annotation parameter.
 \end{itemize}
 
 \subsection{Sort Recommended Test Suites}
-入力コードと検出された類似コードの類似度とテストスイート内に含まれるテストスメルの数を基に推薦されるテストスイートの並び替えを行った．我々の以前の調査で，OSS上の有名プロジェクト内の両方のコードフラグメントにテストコードが存在するクローンペアを対象にプロダクションコードとなるクローンペアの類似度とそれに対応するテストコードの類似度を調査した．その結果，テストコードの間の類似度と対象のクローンペアの類似度には相関関係があり，プロダクションコードの類似度が高いほど，テストコード間の類似度も高いことが分かっている．したがって，入力コードと類似コード間の類似度が高いクローンペアほどテストコードの再利用がしやすいと考える．SuiteRecではこの結果を基に類似度が高いクローンの順に並び替えさらに類似度が同じだった場合，テストスメルの数で順番を決めるような推薦ランキングを実装した．
+The recommended test suites were ranked based on the similarity between the input code and the detected similar code and the number of test smells included in test suites. We investigated the relationship between the similarity between clone pairs and the similarity between test code pairs for clone pairs with test code in both code fragments on OSS.
+
+As a result, there was a correlation between the similarity between the test code pairs and the similarity of the target clone pair. Therefore, we consider that the clone pairs with higher similarity between the input code and the similar code are easier to reuse the test code.
+
+SuiteRec implements a recommendation ranking that sorts the clones in the order of high similarity and determines the order based on the number of test sumels when the similarities are the same.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=8.7cm]{SuiteRec.pdf}}
@@ -191,17 +195,19 @@ In addition, the test code including the following four test smells that are not
 
  \begin{enumerate}
 \renewcommand{\labelenumi}{\textcircled{\scriptsize \theenumi}}
-\item{\textbf{Input Code.}開発者が入力した関数単位のプロダクションコードが表示されます．}
-\item{\textbf{Similarity Code.}入力コードに対する類似コードが表示されます．入力コードと類似度コードの違いが分かるように差分がハイライトされます．}
-\item{\textbf{Degree of similarity.}入力コードと類似コードの類似度が表示されます．類似度はNICADで用いられている計算方法Unique Percentage of Items(UPI)を採用しています．}
-\item{\textbf{Test Smells.}推薦されるテストスイート内にテストスメルが含まれている場合，そのテストスメルがオレンジ色にハイライトされ開発者にテストスメルの存在を提示させます．}
-\item{\textbf{Recommend Test Suites.}推薦されるテストスイートが表示されます．また，どのプロジェクトからテストコードが参照されたのかを示すためにファイルパスも表示されます．}
+\item{\textbf{Input Code.}The target code entered by the developer is displayed.}
+\item{\textbf{Similarity Code.}A similar code for the input code is displayed. The differences are highlighted so that you can see the difference between the input code and the similarity code.}
+\item{\textbf{Degree of similarity.}The similarity between the input code and the similar code is displayed. The similarity is calculated using the Unique Percentage of Items (UPI) method used by NICAD[?].}
+\item{\textbf{Test Smells.}If test smells are included in the test suite, the test smell is highlighted in orange, and the developer is presented with the presence of test smells.}
+\item{\textbf{Recommend Test Suites.}The recommended test suite is displayed. A file path is also displayed to indicate from which project the test code was referenced.}
 \end{enumerate}
 
 
 \section{Evaluation}
+In this section, we will conduct experiments with subjects to evaluate SuiteRec quantitatively and qualitatively. Subjects will be asked to create test codes for three production codes. Evaluate SuiteRec by comparing the test code with and without using SuiteRec. 
 
-このセクションでは，SuiteRecの定量的及び定性的に評価するために，被験者による実験を行います．被験者は，3つのプロダクションコードのテストコードを作成してもらいます．そしてSuiteRecを使用して作成した場合とそうでない場合のテストコードを比較することで評価を行います．実験を通してコードカバレッジ，実験タスクを終了するまでの時間およびテストコードの品質に関するデータを収集することで，以下のリサーチクエスチョンに答えることを目指します．
+By collecting data on code coverage, time to complete experimental tasks and test code quality throughout the experiment, we aim to answer the following research questions:
+
 
 \begin{itemize}
 \item RQ1 : \textbf{SuiteRecの利用は，開発者の作成したテストコードのカバレッジにどう影響するか？}ソフトウェアの品質を確認する1つの指標としてカバレッジは重要な要素である．テストコード内で一度も実行されない行が存在するとその部分の品質を確保することはできません．SuiteRecの利用は高いカバレッジを達成するために役に立つのでしょうか？
