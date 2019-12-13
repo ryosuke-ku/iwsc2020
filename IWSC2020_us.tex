@@ -264,16 +264,9 @@ This result suggests that the test code recommended by SuiteRec is useful for in
 \end{figure}
 
 \subsection{RQ2: Can SuiteRec reduce test code creation time?}
-Figure 5 shows the results of comparing the time spent completing the test code creation task with and without SuiteRec.
+Figure 5 shows the results of comparing the time spent completing the test code creation task with and without SuiteRec. It can be seen that the test creation time is longer when SuiteRec is used for tasks 1 and 3 than when it is not. This result can take time to read and understand multiple test suites recommended by SuiteRec. Subjects will not be able to reuse the recommended test code without modification. It is necessary to rewrite the test code by looking at the difference between the input production code and the detected similar code. In addition, according to the questionnaire after the experiment, it was necessary to rewrite each time the object creation sentence was reused, and it took time.
 
-It can be seen that the test creation time is longer when SuiteRec is used for two tasks than when it is not.
-
-This result can take time to read and understand multiple test suites recommended by SuiteRec.
-
-Subjects cannot reuse the recommended test code as is.
-
-It is necessary to rewrite the test code by looking at the difference between the input production code and the detected similar code.
-
+For Task 2, it can be seen that the test creation time is shorter when SuiteRec is used. We examined the submitted test code and found that there were many test cases (items) when SuiteRec was not used, although there was no difference in coverage. This result suggests that the subjects may have wasted time creating many useless test cases.
 
 図5は，SuiteRecを使用した場合と何も使用しない場合で，テストコード作成タスクの終了までに費やされた時間を比較しています．3つの問題の内，2つの問題でSuiteRecを使用した場合そうでない場合と比べてテスト作成時間が大きくなっていることが分かる．この結果はSuiteRecによって推薦される複数のテストスイートを読み理解するのに時間がかかる可能性があります．被験者は，推薦されるテストコードをそのままの形で再利用することができません．入力したプロダクションコードと検出された類似コードの差分を見てテストコードを書き換える必要があります．また，実験後のアンケートではテスト対象のオブジェクト生成の記述を再利用する際にその都度書き換える必要があり，時間がかかってしまったと述べている．問題2については，SuiteRecを利用した場合の方がテスト作成時間が短いことが分かる．我々は，提出されたテストコード調査したところカバレッジに差はないもののSuiteRecを使用しない場合はテストケース(項目)の数多くなっていることが分かった．この結果は，被験者は無駄なテストケースを多く記述するのに無駄な時間を費やしてしまった可能性がある．
 \begin{figure}[htbp]
