@@ -275,19 +275,12 @@ For Task 2, it can be seen that the test creation time is shorter when SuiteRec 
 \end{figure}
 
 \subsection{RQ3: Can SuiteRec support high quality test creation?}
-Figure 6 shows the results of comparing the number of test smells in the submitted test code with and without SuiteRec.
-
-For all TASKs, the test code created using SuiteRec contains less test smell than if it were not used.
-
-This result suggests that the quality of the recommended test code is high, and the developer can create the test code while maintaining the quality by reusing it. Also, by presenting the test smells included in the recommended test suite, the test code may be rewritten based on it and a high quality test code may have been submitted. In the actual questionnaire responses, it was reported that the test smells presented were understood and refactored to eliminate them.
+Figure 6 shows the results of comparing the number of test smells in the submitted test code with and without SuiteRec. For all TASKs, the test code created using SuiteRec contains less test smell than if it were not used. This result suggests that the quality of the recommended test code is high, and the developer can create the test code while maintaining the quality by reusing it. Also, by presenting the test smells included in the recommended test suite, the test code may be rewritten based on it and a high quality test code may have been submitted. In the actual questionnaire responses, it was reported that the test smells presented were understood and refactored to eliminate them.
 
 On the other hand, some subjects were aware that test smells were included, but did not know how to refactor. This is a topic for the future and needs to be improved to show how to refactor test smells.
 
-When SuiteRec was not used, the subjects embedded more than five times the test smells compared to the case where it was used.
+When SuiteRec was not used, the subjects embedded more than five times the test smells compared to the case where it was used. This is probably because many subjects did not rename the default test method and wrote the Assert statement by copy and paste within one test method. In fact, it has been reported that many of these test smells are detected in existing projects [6].
 
-
-
-図6はSuiteRecを使用した場合とそうでない場合で，提出されたテストコード内のテストスメル数を比較しています．すべてのTASKに対して，SuiteRecを使用して作成されたテストコードはテストスメルをあまり含んでいないことが分かる．この結果は，推薦されるテストコード自体の品質が高く開発者はそれを再利用することで品質を維持したままテストコードを作成したと考えられる．また，ツールの出力画面で推薦されるテストスイート内に含まれているテストスメルを提示することで，それを基にテストコードを書き替えより品質が高いテストコードを提出した可能性が考えられる．実際のアンケートの記述でも提示されたテストスメルを理解し，それをなくすようにリファクタリングしテストコードを作成したという報告がされている．一方で，テストスメルが含まれていることは気づいていたがリファクタリングの方法が分からずそのまま提出したと述べている被験者も存在した．これは今後のツールの課題であり，テストスメルのリファクタリング方法も提示する改良の必要がある．SuiteRecを使用しなかった場合は，使用した場合と比べ全体として5倍以上の被験者はテストスメルを埋め込んでいた．その中でも多く埋め込まれていたテストスメルとして，Assertion Roulette, Default Test, Eager Testが挙げられる．多くの被験者は，初期状態のテストメソッドの名前を変更せず一つのテストメソッド内でコピーアンドペーストによってAssert文を記述していたのが原因だと考えられる．実際に既存研究でもこれらのテストスメルが既存プロジェクトで多く検出されていることが報告されている[6]． 
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=8.5cm]{smells.pdf}}
@@ -304,14 +297,17 @@ When SuiteRec was not used, the subjects embedded more than five times the test 
 \end{figure*}
 
 \subsection{RQ4: How do using SuiteRec influence the developers’ perception of test code creation tasks tasks?}
+Figure 7 summarizes answers to the survey questions. Overall, the subjects found the task clear (Question 1), and the allocated time sufficient (Question 2). For the remaining questions, you can see that there is a difference in opinion on the experimental task with and without SuiteRec. 
 
-図7は，実験後のアンケートの回答の結果をまとめたものです．初めの2つの質問から，被験者は，実験タスクを明確に理解し(質問1)，実験タスクを終えるのに十分な時間があったことが分かる(質問2)．残りの質問については，SuiteRecを使用した場合とそうでない場合で，実験タスクに対する意見に違いがあることが分かります．
+When creating test codes, subjects can easily feel test code creation using SuiteRec. However, this result contrasts with the actual task end time and length (Figure 2), and it can be seen that the task end time is slower when SuiteRec is used. The subjects read and understand the recommended multiple suggested test suites and decide whether to reuse them. In addition, the test code cannot be applied without editing, and it is necessary to understand the difference between the input code and the detected similar code and make appropriate modifications to the test code. We speculate that when using SuiteRec, subjects may spend a lot of time on this part. 
 
-被験者はテストコードを作成する際に，SuiteRecを用いるとテストコード作成を容易に感じることができます．しかし，この結果はこの結果は実際のタスクの終了時間と長さ(図2)とは対照的であり，SuiteRecを使用した場合の方がタスクの終了時間が遅いことが分かります．被験者は，推薦された複数提案されるテストスイートを読み理解して再利用するかどうかを決定します．また，テストコードはそのままの状態で適用することはできず，入力コードと検出された類似コードの差分を理解しテストコードに適切な修正を加える必要があります．我々は，SuiteRecを使用した場合被験者はこの部分に多くの時間を費やすことがあると推測しています．アンケートによるツールの改善点への自由記述では，テストコードの編集作業を支援する機能(クラス名やメソッド名を入力コード対応する名前に自動編集する機能など)を追加した方が良いという多くの意見を頂来ました．SuiteRecの更なる改善は，実験タスクの完了時間を短縮できる可能性を示しています．
+Many opinions that it is better to add a function that supports test code editing work (such as a function that automatically edits the class name and method name to the name corresponding to the input code) in the free description of the tool improvement by questionnaire I received. Further improvements in SuiteRec show the potential for reducing the completion time of experimental tasks.
 
-被験者は，SuiteRecを使用した場合，自身で作成したテストコードのカバレッジに自信があることが分かる(質問5)．一方で，何も使用しなかった場合40\%の被験者がネガティブな回答を報告している．しかし，実際に提出されたテストコードのカバレッジにはほとんど差がないことが分かっています(図3)．自身が作成したテストコードのカバレッジに自信を持つことは重要です．開発者は，自分の書いたコードに責任を持ち，不安なくソフトウェアをユーザに提供できることは，ソフトウェアテストを行う目的の一つです．
+When using SuiteRec, the subject is confident in the coverage of the test code created by himself (Question 5). On the other hand, 40\% of subjects reported a negative response when nothing was used. However, it is known that there is almost no difference in the coverage of the test code actually submitted (Figure 3). It is important to be confident in the coverage of the test code you create. One of the purposes of software testing is that developers are responsible for the code they write and can provide software to users without anxiety.
 
-被験者は，何も使わずテストコードを作成した場合40\%の被験者が自身の書いたテストコードの品質に自信が持てません．実際の提出されたテストコード内のテストスメルの数もSuiteRecを使わなかった場合は，使った場合と比べて多く存在していることが分かります(図4)．開発者は無意識の内にテストスメルを埋め込みそれが後のメンテナンス活動を困難にさせます．SuiteRecの利用は，開発者にテストコードの品質に対する意識を与えることでテストメルの数を減らし，作成したコードに自信をもたらします．一方で，SuiteRecを利用した場合でも品質に関してネガティブな意見も存在します．アンケートの記述項目では，テストスメルの存在は意識できたが具体的にどう修正してなくすことができるのか分からなかったと報告されています．これはSuiteRecの更なる改善の必要性を示しており，各テストスメルに対するリファクタリング方法も提示する機能を追加すべきだと考えている．
+When the test code was created without using SuiteRec, 40\% of the subjects were not confident in the quality of the test code they wrote. It can be seen that the number of test smells in the actual submitted test code is greater when SuiteRec is not used than when it is used (Figure 4). Developers unknowingly embed test smells that make later maintenance activities difficult. The use of SuiteRec reduces the number of test mells by giving developers an awareness of the quality of the test code and brings confidence to the code they have created.
+
+On the other hand, even when SuiteRec is used, there are negative opinions about the quality of the test code. The respondents reported that they understood Test Smells but didn't know how to refactor. This indicates the need for further improvement of SuiteRec, and we should add the function to present refactoring methods for each test smell.
 
 \section{Related work}
 \textbf{Code recommendation.}コード推薦システムは，他のプログラムのコードフラグメントを提示し再利用できるようにしたりすることで開発者を支援します．Zhang[1]らはクローンペア間で，コードを移植を行い移植前と移植後のテスト結果を比較しその情報を基にテストを再利用する手法を提案している．Mostafa[2]らは，自身のプロジェクトだけでなく他のプロジェクトを横断してクローンペアを検出しテストコード再利用することの有効性を調査した．
