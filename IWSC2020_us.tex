@@ -85,11 +85,11 @@ It is important to support software testing to ensure software quality. In previ
 
 
 \section{BACKGROUND AND RELETED WORK}
-\textbf{Unit testing.}単体テストの実行タスクでは，ソフトウェアを動作させ，それぞれのテストケースにおいてソフトウェアが期待通りの振る舞いをするかを確認する．テスト工程のコスト削減のため，テスト実行タスクにおいて，単体テストではJUnitなどのテスト自動実行ツールの利用が産業界で進んでいる．しかし，テスト設計タスクは未だ手動で行うことが多く，自動化技術の実用化および普及が期待されている．
+\textbf{Unit testing. }単体テストの実行タスクでは，ソフトウェアを動作させ，それぞれのテストケースにおいてソフトウェアが期待通りの振る舞いをするかを確認する．テスト工程のコスト削減のため，テスト実行タスクにおいて，単体テストではJUnitなどのテスト自動実行ツールの利用が産業界で進んでいる．しかし，テスト設計タスクは未だ手動で行うことが多く，自動化技術の実用化および普及が期待されている．
 
 単体テスト設計タスクで作成されるテストケースは，テスト手順，テスト入力値，テスト期待結果から構成される．テスト手順に従ってテスト対象のソフトウェアにテスト入力値を与え，その出力結果をテスト期待結果と比較する．これが一致していればテストは合格となり，一致しなければ不合格となる．単体テスト設計タスクにおいては，多くの場合同値分割法，境界地分析法などのテストケース作成技法を用いてテスト入力値を作成するが，ソフトウェアの要求通りに動作するかを確認するために多くのバリエーションのテスト入力値を作成する必要がある．
 
-\textbf{Test case generation.}既存の研究[4]は，既存のテストケースを再利用，自動生成，または再適用できることによって，ソフトウェア開発のテスト工程における時間とコストを大幅に節約できることを示している．テスト生成技術は，主にランダムテスト(RT)，記号実行(SE)，サーチベーステスト(SBST)，モデルベース(MBT)，組み合わせテストの5つに分類できる．SEはさらに静的記号実行(SSE)と動的記号実行(DSE)に分けられる．
+\textbf{Test case generation. }既存の研究[4]は，既存のテストケースを再利用，自動生成，または再適用できることによって，ソフトウェア開発のテスト工程における時間とコストを大幅に節約できることを示している．テスト生成技術は，主にランダムテスト(RT)，記号実行(SE)，サーチベーステスト(SBST)，モデルベース(MBT)，組み合わせテストの5つに分類できる．SEはさらに静的記号実行(SSE)と動的記号実行(DSE)に分けられる．
 
 RTとは，ソフトウェアにランダムな入力を与えるテスト手法である．無造作・均一にテストを実行するランダムテストは自動化に適しているが，コードカバレッジ率向上，バグ検出の観点において，テストケース1件当たりの効率は著しく悪い．
 
@@ -103,7 +103,7 @@ CTは，パラメータ間の相互作用に起因する不具合を効果的に
 
 %\textbf{Test reuse using clone pairs.}
 
-\textbf{Test Smell．}
+\textbf{Test Smell. }
 プロダクションコードだけでなく，テストコードのも適切なプログラミングの慣習に従って設計する必要があります[44]．テストコードのを適切に設計することの重要性は元々Beck[7]によって提唱されました．さらに，Van Deursenら[50]は11種類のテストスメルのカタログ，すなわちテストコードの良くない設計を表す実装とそれらを除去するためのリファクタリング技術を定義しました．このカタログはそれ以降，18個の新しいテスト臭を定義したMeszaros [42]によってより拡張されました。最近の研究では，テストスメルの存在は開発者のテストスイートの理解に悪い影響を与えるだけでなく，テストコードがプロダクションコード内の不具合を見つけるのにあまり効果的でなくなると言われています．
 
 \section{SuiteRec}
@@ -174,10 +174,10 @@ In this study, tsDetect [6] was adopted as a test sumle detection tool. tsDetect
 In addition, the test code including the following four test smells that are not suitable as recommended test code has been deleted from the test code repository in advance, so that it is not output as a recommended test code.　
 
 \begin{itemize}
-\item \textbf{Empty Test.}Occurs when a test method does not contain executable statements.
-\item \textbf{Ignored Test.}Test code that has the @Ignore annotation and is not executed.
-\item \textbf{Redundant Assertion.}This smell occurs when test methods contain assertion statements that are either always true or always false. 
-\item \textbf{Unknow Test.}A test method that does not contain a single assertion statement and @Test(expected) annotation parameter.
+\item \textbf{Empty Test. }Occurs when a test method does not contain executable statements.
+\item \textbf{Ignored Test. }Test code that has the @Ignore annotation and is not executed.
+\item \textbf{Redundant Assertion. }This smell occurs when test methods contain assertion statements that are either always true or always false. 
+\item \textbf{Unknow Test. }A test method that does not contain a single assertion statement and @Test(expected) annotation parameter.
 \end{itemize}
 
 \subsection{Sort Recommended Test Suites}
@@ -195,11 +195,11 @@ SuiteRec implements a recommendation ranking that sorts the clones in the order 
 
  \begin{enumerate}
 \renewcommand{\labelenumi}{(\arabic{enumi})}
-\item{\textbf{Input Code.}The target code entered by the developer is displayed.}
-\item{\textbf{Similarity Code.}A similar code for the input code is displayed. The differences are highlighted so that you can see the difference between the input code and the similarity code.}
-\item{\textbf{Degree of similarity.}The similarity between the input code and the similar code is displayed. The similarity is calculated using the Unique Percentage of Items (UPI) method used by NICAD[?].}
-\item{\textbf{Test Smells.}If test smells are included in the test suite, the test smell is highlighted in orange, and the developer is presented with the presence of test smells.}
-\item{\textbf{Recommend Test Suites.}The recommended test suite is displayed. A file path is also displayed to indicate from which project the test code was referenced.}
+\item{\textbf{Input Code. }The target code entered by the developer is displayed.}
+\item{\textbf{Similarity Code. }A similar code for the input code is displayed. The differences are highlighted so that you can see the difference between the input code and the similarity code.}
+\item{\textbf{Degree of similarity. }The similarity between the input code and the similar code is displayed. The similarity is calculated using the Unique Percentage of Items (UPI) method used by NICAD[?]. }
+\item{\textbf{Test Smells. }If test smells are included in the test suite, the test smell is highlighted in orange, and the developer is presented with the presence of test smells. }
+\item{\textbf{Recommend Test Suites. }The recommended test suite is displayed. A file path is also displayed to indicate from which project the test code was referenced. }
 \end{enumerate}
 
 
