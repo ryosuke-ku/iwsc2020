@@ -217,12 +217,13 @@ By collecting data on code coverage, time to complete experimental tasks and tes
 \end{itemize}
 
 \subsection{Participant Selection}
-We recruited students with basic programming skills and an understanding of software testing. The experiment was conducted with 10 master students who majored in information science.
-
-According to the preliminary questionnaire, more than 90\% of the students had more than 2 years of programming experience, and more than 80\% of the subjects had more than 1 year of Java language experience. All students had basic knowledge about software testing in lectures and other lectures, and more than 80\% had experience creating unit tests.
+We recruited students with basic programming skills and an understanding of software testing. The experiment was conducted with 10 master students who majored in information science.According to the preliminary questionnaire, more than 90\% of the students had more than 2 years of programming experience, and more than 80\% of the subjects had more than 1 year of Java language experience. All students had basic knowledge about software testing in lectures and other lectures, and more than 80\% had experience creating unit tests.
 
 \subsection{Object Selection}
-実験を行うために，3つのプロダクションコードを用意した．被験者はテストコードを作成するのでプロダクションコードの仕様を十分理解していることが前提になる．そこで，我々はプロダクションコードとして競技プログラミングをよく用いられる典型的な計算問題を選択した．また，そのプロダクションコードの仕様を確認できるように自然言語で書かれた仕様書を用意した．3つの各問題で違いを出すために問題1，2，3の順に条件分岐の数を8，16，24と多くなるように設定した．図4は，出題したプロダクションコードの一例である．実験後のアンケートで，実験タスクについての理解を確認したがすべての被験者が実験タスクの理解についてポジティブな意見を述べたことが分かっている．また，十分な実験時間があったかどうかに関する質問に対してもネガティブな回答はなかった．したがって，被験者は与えられた実験タスクに対して十分に理解し，作業時間も十分にあったことが分かる．
+To conduct the experiment we prepared three production codes. It is assumed that the subjects fully understand the specifications of production code in order to create test code. Therefore, we selected a typical computational problem that often uses competitive programming as production code. In addition, a specification written in natural language was prepared so that the specification of the production code could be confirmed. In order to make a difference in each task, the number of conditional branches in each task was increased to 8, 16, and 24.
+
+Figure 4 is an example of the production code that was presented. In the post-experimental questionnaire, it was confirmed that all the subjects expressed a positive opinion about the understanding of the experimental task. Also, there was no negative answer to the question about whether there was enough experiment time. Therefore, it can be seen that the subject fully understood the given experimental task and had sufficient work time.
+
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=8.5cm]{task.pdf}}
@@ -231,9 +232,14 @@ According to the preliminary questionnaire, more than 90\% of the students had m
 \end{figure}
 
 \subsection{Experiment Procedure}
-まず初めにソフトウェアテストに関する基本的な知識からJUnitを使用に関する30分の講義と練習問題を実施し，テストコードの記述に対する理解を確認した．そして本番の実験課題の3つのプロダクションコードのテストコードを作成してもらった．実験タスクの終了は被験者に判断してもらう．具体的には，被験者自身が作成したテストコードのカバレッジ・品質に満足した時，実験タスクを終了してもらった．実験時間は1問につき最大25分の時間を設けた．推薦ツールの利用効果が問題によって偏らないように，被験者によってツールを利用の有無を問題によって変えるように割り当てた．また，推薦ツールを利用した場合の学習効果を防ぐために，3つの問題で連続してツールを利用しないようにタスクの割り当てを行った．また，過去の回答を参考にできないようにした．
+First, we conducted a 30-minute lecture and practice task on using JUnit from basic knowledge about software testing, and confirmed understanding of the test code description. And we asked them to create test codes for the three production codes for the actual experiment.
+
+Ask the subjects to judge the end of the experimental task. Specifically, the test task was completed when the subjects were satisfied with the coverage and quality of the test code they created. The experiment time was a maximum of 25 minutes per task.
+
+To prevent the use effect of SuiteRec from being biased by tasks, subjects were assigned to change whether or not SuiteRec was used depending on the task. In order to prevent the learning effect when SuiteRec is used, tasks are assigned so that SuiteRec is not used continuously in three tasks. The subjects were not allowed to refer to past answers.
 
 \section{Results}
+In this section we present the quantitative and qualitative evaluation results of SuiteRec by 10 subjects, as described in the previous section, for each of the research questions.
 
 このセクションでは，10人の被験者によるSuiteRecの定量的および定性的評価結果を報告する．前のセクションで説明したように，4つの研究課題について分析結果を提示します．
 
