@@ -15,44 +15,44 @@
 \begin{document}
 
 \title{SuiteRec: Automatic Test Suite Recommendation System Using Code Clone Detection Tool\\
-{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
-should not be used}
+%{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
+%should not be used}
 \thanks{Identify applicable funding agency here. If none, delete this.}
 }
 
 \author{\IEEEauthorblockN{1\textsuperscript{st} Ryosuke Kurachi}
-\IEEEauthorblockA{\textit{Information Science} \\
-\textit{Nara Institute of Science and Technology}\\
+\IEEEauthorblockA{\textit{Nara Institute of Science and Technology} \\
+%\textit{Nara Institute of Science and Technology}\\
 Nara, Japan \\
 kurachi.ryosuke.kp0@is.naist.jp}
 \and
 \IEEEauthorblockN{2\textsuperscript{nd} Eunjong Choi}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{Kyoto Institute of Technology}\\
+\IEEEauthorblockA{\textit{Kyoto Institute of Technology} \\
+%\textit{Kyoto Institute of Technology}\\
 Kyoto, Japan \\
 echoi@kit.ac.jp}
 \and
 \IEEEauthorblockN{3\textsuperscript{rd} Given Name Surname}
 \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
+%\textit{name of organization (of Aff.)}\\
 City, Country \\
 email address or ORCID}
 \and
 \IEEEauthorblockN{4\textsuperscript{th} Given Name Surname}
 \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
+%\textit{name of organization (of Aff.)}\\
 City, Country \\
 email address or ORCID}
 \and
 \IEEEauthorblockN{5\textsuperscript{th} Given Name Surname}
 \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
+%\textit{name of organization (of Aff.)}\\
 City, Country \\
 email address or ORCID}
 \and
 \IEEEauthorblockN{6\textsuperscript{th} Given Name Surname}
 \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
+%\textit{name of organization (of Aff.)}\\
 City, Country \\
 email address or ORCID}
 }
@@ -75,9 +75,9 @@ It is important to support software testing to ensure software quality. In previ
 \end{IEEEkeywords}
 
 \section{Introduction}
-近年，ソフトウェアに求められる要件が高度化・多様化する一方，ユーザからはソフトウェアの品質確保やコスト削減に対する要求も増加している[1]．その中でも開発全体のコストに占める割合が大きく，品質確保の要ともいえるソフトウェアテストを支援する技術への関心が高まっている．しかし，現状では単体テスト作成作業の大部分が人手で行われており，多くのテストを作成しようとするとそれに比例してコストも増加してしまう．このような背景から，ソフトウェアの品質を確保しつつコスト削減を達成するために，様々な自動化技術が提案されている．
+近年，ソフトウェアに求められる要件が高度化・多様化する一方，ユーザからはソフトウェアの品質確保やコスト削減に対する要求も増加している．その中でも開発全体のコストに占める割合が大きく，品質確保の要ともいえるソフトウェアテストを支援する技術への関心が高まっている\cite{b20}．しかし，現状では単体テスト作成作業の大部分が人手で行われており，多くのテストを作成しようとするとそれに比例してコストも増加してしまう．このような背景から，ソフトウェアの品質を確保しつつコスト削減を達成するために，様々な自動化技術が提案されている\cite{b3}，\cite{b16}，\cite{b17}，\cite{b18}，\cite{b19}．
 
-既存研究で提案されているEvoSuite[2]は，単体テスト自動生成における最先端のツールである．EvoSuiteは，対象コードを静的解析しプログラムを記号値で表現する．そして，対象コードの制御パスを通るような条件を集め，条件を満たす具体値を生成する．単体テストを自動生成することで，開発者は手作業での作成時間が自動生成によって節約することができ，またコードカバレッジを向上することができる．しかし，既存ツールによって自動生成されるテストコードは対象のコードの作成経緯や意図に基づいて生成されていないという性質から可読性が低く開発者に信用されていないことや後の保守作業を困難にするという課題がある[3]．このことは、自動生成ツールの実用的な利用の価値に疑問を提示させる．テストが失敗するたびに，開発者はテスト対象のプログラム内での不具合を原因を特定するまたは，テスト自体を更新する必要があるかどうかを判断する必要がある．自動生成されたテストは，自動生成によって得られる時間の節約よりも読みづらく，保守作業に助けになるというよりかむしろ邪魔するという結果が報告されている．
+既存研究で提案されているEvoSuite\cite{b3}は，単体テスト自動生成における最先端のツールである．EvoSuiteは，対象コードを静的解析しプログラムを記号値で表現する．そして，対象コードの制御パスを通るような条件を集め，条件を満たす具体値を生成する．単体テストを自動生成することで，開発者は手作業での作成時間が自動生成によって節約することができ，またコードカバレッジを向上することができる．しかし，既存ツールによって自動生成されるテストコードは対象のコードの作成経緯や意図に基づいて生成されていないという性質から可読性が低く開発者に信用されていないことや後の保守作業を困難にするという課題がある\cite{b13}，\cite{b14}，\cite{b15}．このことは、自動生成ツールの実用的な利用の価値に疑問を提示させる．テストが失敗するたびに，開発者はテスト対象のプログラム内での不具合を原因を特定するまたは，テスト自体を更新する必要があるかどうかを判断する必要がある．自動生成されたテストは，自動生成によって得られる時間の節約よりも読みづらく，保守作業に助けになるというよりかむしろ邪魔するという結果が報告されている\cite{b1}．
 
 本研究では，この課題を解決するためにOSSに存在する既存の品質の高いテストコード推薦するツールSuiteRecを紹介します．SuiteRecは類似コード検出ツールを用いてクローンペア間でのテスト再利用を考えます．入力コードに対して類似コードを検出し，その類似コードに対応するテストスイートを開発者に推薦します．さらに，テストコードの良くない実装を表すメトリクスであるテストスメルを開発者に提示し，より品質の高いテストスイートを推薦できるように推薦順位がランキングされています．
 
@@ -89,7 +89,7 @@ It is important to support software testing to ensure software quality. In previ
 
 単体テスト設計タスクで作成されるテストケースは，テスト手順，テスト入力値，テスト期待結果から構成される．テスト手順に従ってテスト対象のソフトウェアにテスト入力値を与え，その出力結果をテスト期待結果と比較する．これが一致していればテストは合格となり，一致しなければ不合格となる．単体テスト設計タスクにおいては，多くの場合同値分割法，境界地分析法などのテストケース作成技法を用いてテスト入力値を作成するが，ソフトウェアの要求通りに動作するかを確認するために多くのバリエーションのテスト入力値を作成する必要がある．
 
-\textbf{Test case generation. }既存の研究[4]は，既存のテストケースを再利用，自動生成，または再適用できることによって，ソフトウェア開発のテスト工程における時間とコストを大幅に節約できることを示している．テスト生成技術は，主にランダムテスト(RT)，記号実行(SE)，サーチベーステスト(SBST)，モデルベース(MBT)，組み合わせテストの5つに分類できる．SEはさらに静的記号実行(SSE)と動的記号実行(DSE)に分けられる．
+\textbf{Test case generation. }既存の研究\cite{b12}は，既存のテストケースを再利用，自動生成，または再適用できることによって，ソフトウェア開発のテスト工程における時間とコストを大幅に節約できることを示している．テスト生成技術は，主にランダムテスト(RT)，記号実行(SE)，サーチベーステスト(SBST)，モデルベース(MBT)，組み合わせテストの5つに分類できる．SEはさらに静的記号実行(SSE)と動的記号実行(DSE)に分けられる．
 
 RTとは，ソフトウェアにランダムな入力を与えるテスト手法である．無造作・均一にテストを実行するランダムテストは自動化に適しているが，コードカバレッジ率向上，バグ検出の観点において，テストケース1件当たりの効率は著しく悪い．
 
@@ -104,7 +104,7 @@ CTは，パラメータ間の相互作用に起因する不具合を効果的に
 %\textbf{Test reuse using clone pairs.}
 
 \textbf{Test Smell. }
-プロダクションコードだけでなく，テストコードのも適切なプログラミングの慣習に従って設計する必要があります[44]．テストコードのを適切に設計することの重要性は元々Beck[7]によって提唱されました．さらに，Van Deursenら[50]は11種類のテストスメルのカタログ，すなわちテストコードの良くない設計を表す実装とそれらを除去するためのリファクタリング技術を定義しました．このカタログはそれ以降，18個の新しいテスト臭を定義したMeszaros [42]によってより拡張されました。最近の研究では，テストスメルの存在は開発者のテストスイートの理解に悪い影響を与えるだけでなく，テストコードがプロダクションコード内の不具合を見つけるのにあまり効果的でなくなると言われています．
+プロダクションコードだけでなく，テストコードのも適切なプログラミングの慣習に従って設計する必要があります\cite{b4}．テストコードのを適切に設計することの重要性は元々Beck\cite{b5}によって提唱されました．さらに，Van Deursenら\cite{b7}は11種類のテストスメルのカタログ，すなわちテストコードの良くない設計を表す実装とそれらを除去するためのリファクタリング技術を定義しました．このカタログはそれ以降，18個の新しいテスト臭を定義したMeszaros\cite{b6}によって拡張されました。最近の研究では，テストスメルの存在は開発者のテストスイートの理解に悪い影響を与えるだけでなく，テストコードがプロダクションコード内の不具合を見つけるのにあまり効果的でなくなると言われています\cite{b8}．
 
 \section{SuiteRec}
 SuiteRec takes a code fragment of a function unit from a developer as input code and searches for similar codes of the input code. Then, test suites corresponding to similar codes are sorted and presented to developers in order of priority.
@@ -112,13 +112,13 @@ SuiteRec takes a code fragment of a function unit from a developer as input code
 Figure 1 shows the flow until a test suite is recommended by SuiteRec. The recommendation method mainly consists of the following 4 steps.
 
 \begin{comment}
-SuiteRecは，開発者からの関数単位のコード片を入力とし，その入力コードの類似コードを検索します．そして類似コードに対応するテストスイートを優先順位の高い順に並び替え開発者に提示します．図1は，SuiteRecによってテストスイートが推薦されるまでの流れを示しています．推薦手法は，主に以下の4つのステップから構成されます．
+SuiteRecは，開発者からの関数単位のコード片を入力とし，その入力コードの類似コードを検索します．そして類似コードに対応するテストスイートを優先順位の高い順に並び替え開発者に提示します．図\ref{fig1}は，SuiteRecによってテストスイートが推薦されるまでの流れを示しています．推薦手法は，主に以下の4つのステップから構成されます．
 \end{comment}
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=8.5cm]{SuiteRec-outline.pdf}}
 \caption{Overview of SuiteRec.}
-\label{fig}
+\label{fig1}
 \end{figure}
 
 \begin{enumerate}
@@ -131,7 +131,7 @@ SuiteRecは，開発者からの関数単位のコード片を入力とし，そ
 
 
 \subsection{Code Clone Detection}
-In this study, NICAD [3] was adopted as a similar code detection tool. NICAD converts code fragment layouts uniformly and detects code pairs by comparing code fragments in units of functions. By adopting such a method, NICAD has realized clone pair detection with high accuracy and high recall. NICAD searches the Github repository hosting large open source projects for similar code corresponding to the input code.
+In this study, NICAD\cite{b2} was adopted as a similar code detection tool. NICAD converts code fragment layouts uniformly and detects code pairs by comparing code fragments in units of functions. By adopting such a method, NICAD has realized clone pair detection with high accuracy and high recall. NICAD searches the Github repository hosting large open source projects for similar code corresponding to the input code.
 
 The source code repository in Fig. 1 contains only the production code of the Github project with test code. Specifically, we selected a project that had a test folder in the project and adopted the JUnit testing framework. NICAD has a project size limit that can be searched at once.  In order to shorten the search time, large-scale projects were divided, small-scale projects were integrated, and multiple search processes were run in parallel, making it possible to search for similar codes in real time. The detection setting is implemented in the proposed tool as a standard setting of NICAD.
 
@@ -150,13 +150,12 @@ In order to search for test suites corresponding to similar code fragments, the 
 \item Divide the test method with a delimiter or capital letter and associate it when the target method partially matches.
 \end{enumerate}
 
-
 In the unit test, an object is generated in the test code as shown in the figure 2, and it is executed by calling a method of the test target code. Therefore, the test code in the test code repository is statically analyzed and the method call is obtained to associate the test target code with the test code. However, multiple methods may be called in the test method, so the method names are also compared. It is recommended to faithfully represent the contents of the processing of the target method as the test method name description method, and the name of the target method is often described in the test method name. Therefore, the name of the test method is divided by a delimiter or capital letter, and it is linked if it partially matches the target method.
 
 The test code repository in Figure 1 stores test code corresponding to the production code in the source code repository. As a pre-processing, static analysis was performed on a large-scale project in advance, and information that linked production code and test code was stored in the DB, so that test code could be searched at high speed via the DB.
 
 \subsection{Test Smells Detection}
-In this study, tsDetect [6] was adopted as a test sumle detection tool. tsDetect is a tool implemented with an AST-based detection method that can detect 19 test smells. It has also been reported that test smells can be detected correctly with 85\% to 100\% accuracy and 90\% to 100\% recall. In this study, we implemented the following 6 types of test smells, which are important in considering the recommendation of test codes among 19 test smells that can be detected by tsDetect.
+In this study, tsDetect\cite{b10} was adopted as a test sumle detection tool. tsDetect is a tool implemented with an AST-based detection method that can detect 19 test smells. It has also been reported that test smells can be detected correctly with 85\% to 100\% accuracy and 90\% to 100\% recall. In this study, we implemented the following 6 types of test smells, which are important in considering the recommendation of test codes among 19 test smells that can be detected by tsDetect\cite{b9}.
 \begin{table}[hbtp]
 \caption{Subject Test Smells}
 \begin{tabular}{|l|p{5.2cm}|}
@@ -321,7 +320,7 @@ According to the evaluation of SuiteRec by 10 subjects, it may be possible to im
 
 As a future task, SuiteRec needs to be improved for more practical use. Specifically, we are considering an automatic test code rewriting function. In addition, the validity of test suite priorities recommended by SuiteRec will be evaluated.
 
-\begin{thebibliography}{00}
+\begin{thebibliography}{15}
 \bibitem{b1} S. Shamshiri, J. M. Rojas, and J. P. Galeotti, ``How Do Automatically Generated Unit Tests Influence Software Maintenance?," In {\it Proceedings of the International Conference on Software Testing, Verification and Validation (ICST)}, pp.239--249, 2018. 
 
 \bibitem{b2} C. K. Roy and J. R. Cordy, ``NICAD: Accurate Detection of Near-Miss Intentional Clones Using Flexible Pretty-Printing and Code Normalization," In {\it Proceedings of the International Conference on Program Comprehension (ICPC)}, pp.172--181, 2008.
@@ -351,6 +350,16 @@ As a future task, SuiteRec needs to be improved for more practical use. Specific
 \bibitem{b14} E. Daka, J. Campos, G. Fraser, J. Dorn, and W. Weimer, ``Modeling readability to improve unit tests," In {\it Proceedings of the Joint Meeting on Foundations of Software Engineering (ESEC/FSE)}, pp. 107--118, 2015.
 
 \bibitem{b15} F. Palomba, A. Panichella, A. Zaidman, R. Oliveto, and A. De Lucia, ``Automatic test case generation: what if test code quality matters?," In {\it Proceedings of the International Symposium on Software Testing and Analysis (ISSTA)}, pp. 130--141, 2016.
+
+\bibitem{b16} L. Ma, C. Artho, C. Zhang, H. Sato, J. Gmeiner, and R. Ramler. ``Grt: Program-analysis-guided random testing (t)," In {\it Proceedings of the International Conference on Automated Software Engineering (ASE)}, pp. 212--223, 2015.
+
+\bibitem{b17} A. Panichella, F. Kifetew, and P. Tonella. ``Reformulating branch coverage as a many-objective optimization problem," In {\it Proceedings of the International Conference on Software Testing, Verification and Validation (ICST)}, pp. 1--10, 2015. 
+
+\bibitem{b18} I. W. B. Prasetya. ``T3, a Combinator-Based Random Testing Tool for Java: Benchmarking," In {\it International Workshop on Future Internet Testing}, pp. 101--110. Springer, 2014.
+
+\bibitem{b19} A. Sakti, G. Pesant, and Y.-G. Gu\'{e}h\'{e}neuc. ``Instance Generator and Problem Representation to Improve Object Oriented Code Coverage," {\it Transactions on Software Engineering}, pp. 294--313, 2015.
+
+\bibitem{b20} M. Ellims, J. Bridges, and D. C. Ince, ``The economics of unit testing," Empir. Softw. Eng., vol. 11, no. 1, pp. 5--31, 2006.
 
 \end{thebibliography}
 
