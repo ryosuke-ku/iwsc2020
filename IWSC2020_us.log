@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.sjis) (TeX Live 2019/W32TeX) (preloaded format=platex 2019.9.17)  14 DEC 2019 11:15
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.sjis) (TeX Live 2019/W32TeX) (preloaded format=platex 2019.9.17)  14 DEC 2019 21:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -523,12 +523,6 @@ LaTeX Warning: Label `fig' multiply defined.
 
 LaTeX Warning: Label `fig' multiply defined.
 
-
-LaTeX Warning: Label `fig' multiply defined.
-
-
-LaTeX Warning: Label `fig' multiply defined.
-
 )
 \openout1 = `IWSC2020_us.aux'.
 
@@ -582,40 +576,45 @@ LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
 [1
 
 
-] Excluding 'comment' comment.
+]
 File: SuiteRec-outline.pdf Graphic file (type pdf)
 <SuiteRec-outline.pdf>
  [2]
 File: mapping.pdf Graphic file (type pdf)
 <mapping.pdf>
 
-Underfull \hbox (badness 2961) in paragraph at lines 164--164
+Underfull \hbox (badness 2961) in paragraph at lines 159--159
 []\OT1/ptm/m/n/8 Occurs when a test method has mul-ti-
  []
 
 [3]
 File: SuiteRec.pdf Graphic file (type pdf)
 <SuiteRec.pdf>
-
-Underfull \vbox (badness 1014) has occurred while \output is active []
-
 File: task.pdf Graphic file (type pdf)
 <task.pdf>
  [4]
+
+LaTeX Warning: Reference `fig5' on page 5 undefined on input line 239.
+
+
+LaTeX Warning: Reference `fig6' on page 5 undefined on input line 239.
+
+
+LaTeX Warning: Reference `fig6' on page 5 undefined on input line 241.
+
 File: C0.pdf Graphic file (type pdf)
 <C0.pdf>
 File: C1.pdf Graphic file (type pdf)
 <C1.pdf>
 File: duration.pdf Graphic file (type pdf)
 <duration.pdf>
-
 [5]
 File: smells.pdf Graphic file (type pdf)
 <smells.pdf>
 File: suiterec-expt.pdf Graphic file (type pdf)
 <suiterec-expt.pdf>
 
-Overfull \hbox (10.37598pt too wide) in paragraph at lines 292--293
+Overfull \hbox (10.37598pt too wide) in paragraph at lines 285--286
  [] 
  []
 
@@ -636,16 +635,19 @@ Before submitting the final camera ready copy, remember to:
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3862 strings out of 493230
- 54379 string characters out of 6147555
- 131861 words of memory out of 5000000
- 7793 multiletter control sequences out of 15000+600000
+ 3867 strings out of 493230
+ 54408 string characters out of 6147555
+ 132861 words of memory out of 5000000
+ 7798 multiletter control sequences out of 15000+600000
  44033 words of font info for 132 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 30i,11n,35p,1619b,428s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 30i,11n,35p,1623b,428s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on IWSC2020_us.dvi (7 pages, 53492 bytes).
+Output written on IWSC2020_us.dvi (7 pages, 53792 bytes).

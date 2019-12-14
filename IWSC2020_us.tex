@@ -101,19 +101,14 @@ MBTはモデルに基づいてテストスイートを生成する技術の総�
 
 CTは，パラメータ間の相互作用に起因する不具合を効果的に発見するためにテストケースとしてパラメータに割り当てる値の組み合わせを生成する手法である．
 
-%\textbf{Test reuse using clone pairs.}
 
-\textbf{Test Smell. }
-プロダクションコードだけでなく，テストコードのも適切なプログラミングの慣習に従って設計する必要があります\cite{b4}．テストコードのを適切に設計することの重要性は元々Beck\cite{b5}によって提唱されました．さらに，Van Deursenら\cite{b7}は11種類のテストスメルのカタログ，すなわちテストコードの良くない設計を表す実装とそれらを除去するためのリファクタリング技術を定義しました．このカタログはそれ以降，18個の新しいテスト臭を定義したMeszaros\cite{b6}によって拡張されました。最近の研究では，テストスメルの存在は開発者のテストスイートの理解に悪い影響を与えるだけでなく，テストコードがプロダクションコード内の不具合を見つけるのにあまり効果的でなくなると言われています\cite{b8}．
+\textbf{Test Smell. }プロダクションコードだけでなく，テストコードのも適切なプログラミングの慣習に従って設計する必要があります\cite{b4}．テストコードのを適切に設計することの重要性は元々Beck\cite{b5}によって提唱されました．さらに，Van Deursenら\cite{b7}は11種類のテストスメルのカタログ，すなわちテストコードの良くない設計を表す実装とそれらを除去するためのリファクタリング技術を定義しました．このカタログはそれ以降，18個の新しいテスト臭を定義したMeszaros\cite{b6}によって拡張されました。最近の研究では，テストスメルの存在は開発者のテストスイートの理解に悪い影響を与えるだけでなく，テストコードがプロダクションコード内の不具合を見つけるのにあまり効果的でなくなると言われています\cite{b8}．
 
 \section{SuiteRec}
 SuiteRec takes a code fragment of a function unit from a developer as input code and searches for similar codes of the input code. Then, test suites corresponding to similar codes are sorted and presented to developers in order of priority.
 
-Figure 1 shows the flow until a test suite is recommended by SuiteRec. The recommendation method mainly consists of the following 4 steps.
+Figure \ref{fig1} shows the flow until a test suite is recommended by SuiteRec. The recommendation method mainly consists of the following 4 steps.
 
-\begin{comment}
-SuiteRecは，開発者からの関数単位のコード片を入力とし，その入力コードの類似コードを検索します．そして類似コードに対応するテストスイートを優先順位の高い順に並び替え開発者に提示します．図\ref{fig1}は，SuiteRecによってテストスイートが推薦されるまでの流れを示しています．推薦手法は，主に以下の4つのステップから構成されます．
-\end{comment}
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=8.5cm]{SuiteRec-outline.pdf}}
@@ -124,38 +119,38 @@ SuiteRecは，開発者からの関数単位のコード片を入力とし，そ
 \begin{enumerate}
 \renewcommand{\labelenumi}{(\arabic{enumi})}
 \item When SuiteRec receives a input code, it searches the source code repository for the corresponding similar code fragments using a existing code clone detection tool.
-\item Detected similar code fragments, SuiteRec searches the test code repository for the test suite corresponding to the similar code.
-\item SuiteRec detects test smells in the test suite collected by the previous step using existing test sumel detection tools.
+\item Detected similar code fragments, SuiteRec searches the test code repository for test suites corresponding to similar code fragments.
+\item SuiteRec detects test smells in the test suite collected by the previous step using existing test smell detection tool.
 \item As the final step, SuiteRec sorts test suites in descending order of priority based on similarity and number of test smells.
 \end{enumerate}
 
 
 \subsection{Code Clone Detection}
-In this study, NICAD\cite{b2} was adopted as a similar code detection tool. NICAD converts code fragment layouts uniformly and detects code pairs by comparing code fragments in units of functions. By adopting such a method, NICAD has realized clone pair detection with high accuracy and high recall. NICAD searches the Github repository hosting large open source projects for similar code corresponding to the input code.
+In this study, NICAD\cite{b2} was adopted as a code clone detection tool. NICAD converts code fragment layouts uniformly and detects code pairs by comparing code fragments in units of functions. By adopting such a method, NICAD has realized clone pair detection with high accuracy and high recall. NICAD searches the Github repository hosting large open source projects for similar code fragments corresponding to the input code.
 
-The source code repository in Fig. 1 contains only the production code of the Github project with test code. Specifically, we selected a project that had a test folder in the project and adopted the JUnit testing framework. NICAD has a project size limit that can be searched at once.  In order to shorten the search time, large-scale projects were divided, small-scale projects were integrated, and multiple search processes were run in parallel, making it possible to search for similar codes in real time. The detection setting is implemented in the proposed tool as a standard setting of NICAD.
+The source code repository in Figure \ref{fig1} contains only target code fragments of the Github projects with test codes. Specifically, we selected a project that had a test folder in the project and adopted the JUnit testing framework. NICAD has a project size limit that can be searched at once.  In order to shorten the search time, large-scale projects were divided, small-scale projects were integrated, and multiple search processes were run in parallel, making it possible to search for similar code fragments in real time. The detection setting is implemented in the SuiteRec as a standard setting of NICAD.
 
 \subsection{Test Code Detection}
-In order to search for test suites corresponding to similar code fragments, the target code is associated with the test code. In this research, the following two steps are taken in order to precisely associate the test code with the target code.
+In order to search for test suites corresponding to similar code fragments, the target code is linked with test code fragments. In this research, the following two steps are taken in order to precisely link the target code with test code fragments.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=8.5cm]{mapping.pdf}}
 \caption{Example of mapping test code to target code.}
-\label{fig}
+\label{fig2}
 \end{figure}
 
 \begin{enumerate}
 \renewcommand{\labelenumi}{(\arabic{enumi})}
-\item Static analysis of test code and confirmation of method calls.
-\item Divide the test method with a delimiter or capital letter and associate it when the target method partially matches.
+\item Statically analyze the test code and obtain the method call of the target code.
+\item Divide the test method with a delimiter or capital letter and link it when the target method partially matches.
 \end{enumerate}
 
-In the unit test, an object is generated in the test code as shown in the figure 2, and it is executed by calling a method of the test target code. Therefore, the test code in the test code repository is statically analyzed and the method call is obtained to associate the test target code with the test code. However, multiple methods may be called in the test method, so the method names are also compared. It is recommended to faithfully represent the contents of the processing of the target method as the test method name description method, and the name of the target method is often described in the test method name. Therefore, the name of the test method is divided by a delimiter or capital letter, and it is linked if it partially matches the target method.
+In the unit test, the target object is generated in the test code as shown in the figure \ref{fig2}, and it is executed by calling a method of the target code. Therefore, to link the test target code to the test code, the test code in the test code repository is statically analyzed and the method call is obtained. However, multiple methods may be called in the test method, so the method names are also compared. It is recommended to faithfully represent the contents of the processing of the target method as the test method name description method, and the name of the target method is often described in the test method name\cite{b22}. Therefore, the name of the test method is divided by a delimiter or capital letter, and it is linked if it partially matches the target method.
 
-The test code repository in Figure 1 stores test code corresponding to the production code in the source code repository. As a pre-processing, static analysis was performed on a large-scale project in advance, and information that linked production code and test code was stored in the DB, so that test code could be searched at high speed via the DB.
+The test code repository in Figure \ref{fig1} stores test code corresponding to the production code in the source code repository. As a pre-processing, static analysis was performed on large-scale projects in advance, and information that linked target code and test code was stored in the DB, so that test code could be searched at high speed via the DB.
 
 \subsection{Test Smells Detection}
-In this study, tsDetect\cite{b10} was adopted as a test sumle detection tool. tsDetect is a tool implemented with an AST-based detection method that can detect 19 test smells. It has also been reported that test smells can be detected correctly with 85\% to 100\% accuracy and 90\% to 100\% recall. In this study, we implemented the following 6 types of test smells, which are important in considering the recommendation of test codes among 19 test smells that can be detected by tsDetect\cite{b9}.
+In this study, tsDetect\cite{b10} was adopted as a test smell detection tool. tsDetect is a tool implemented with an AST-based detection method that can detect 19 test smells. It has also been reported that test smells can be detected correctly with 85\% to 100\% accuracy and 90\% to 100\% recall. In this study, we implemented the following 6 test smells, which are important in considering the recommendation of test codes among 19 test smells that can be detected by tsDetect\cite{b9}.
 \begin{table}[hbtp]
 \caption{Subject Test Smells}
 \begin{tabular}{|l|p{5.2cm}|}
@@ -170,21 +165,21 @@ In this study, tsDetect\cite{b10} was adopted as a test sumle detection tool. ts
 \end{tabular}
 \end{table}
 
-In addition, the test code including the following four test smells that are not suitable as recommended test code has been deleted from the test code repository in advance, so that it is not output as a recommended test code.　
+In addition, the test suites including the following 4 test smells that are not suitable as recommended test code has been deleted from the test code repository in advance, so that it is not output as a recommended test suites.　
 
 \begin{itemize}
 \item \textbf{Empty Test. }Occurs when a test method does not contain executable statements.
 \item \textbf{Ignored Test. }Test code that has the @Ignore annotation and is not executed.
 \item \textbf{Redundant Assertion. }This smell occurs when test methods contain assertion statements that are either always true or always false. 
-\item \textbf{Unknow Test. }A test method that does not contain a single assertion statement and @Test(expected) annotation parameter.
+\item \textbf{Unknown Test. }A test method that does not contain a single assertion statement and @Test(expected) annotation parameter.
 \end{itemize}
 
 \subsection{Sort Recommended Test Suites}
-The recommended test suites were ranked based on the similarity between the input code and the detected similar code and the number of test smells included in test suites. We investigated the relationship between the similarity between clone pairs and the similarity between test code pairs for clone pairs with test code in both code fragments on OSS.
+The recommended test suites were ranked based on the similarity between the input code and the detected similar code and the number of test smells included in test suites. We investigated the relationship between the similarity between clone pairs and the similarity between test code pairs for clone pairs with test code in both code fragments on OSS projects.
 
-As a result, there was a correlation between the similarity between the test code pairs and the similarity of the target clone pair. Therefore, we consider that the clone pairs with higher similarity between the input code and the similar code are easier to reuse the test code.
+As a result, there is a correlation between the similarity between the test code pairs and the similarity of the target clone pair. Therefore, we consider that the clone pairs with higher similarity between the input code and the similar code are easier to reuse the test code.
 
-SuiteRec implements a recommendation ranking that sorts the clones in the order of high similarity and determines the order based on the number of test sumels when the similarities are the same.
+SuiteRec implements a recommendation ranking that sorts the clones in the order of high similarity and determines the order based on the number of test smells when the similarities are the same.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=8.7cm]{SuiteRec.pdf}}
@@ -194,46 +189,46 @@ SuiteRec implements a recommendation ranking that sorts the clones in the order 
 
  \begin{enumerate}
 \renewcommand{\labelenumi}{(\arabic{enumi})}
-\item{\textbf{Input Code. }The target code entered by the developer is displayed.}
-\item{\textbf{Similarity Code. }A similar code for the input code is displayed. The differences are highlighted so that you can see the difference between the input code and the similarity code.}
-\item{\textbf{Degree of similarity. }The similarity between the input code and the similar code is displayed. The similarity is calculated using the Unique Percentage of Items (UPI) method used by NICAD. }
-\item{\textbf{Test Smells. }If test smells are included in the test suite, the test smell is highlighted in orange, and the developer is presented with the presence of test smells. }
-\item{\textbf{Recommend Test Suites. }The recommended test suite is displayed. A file path is also displayed to indicate from which project the test code was referenced. }
+\item{\textbf{Input Code fragment. }The target code entered by the developer is displayed.}
+\item{\textbf{Similarity Code fragment. }A similar code for the input code is displayed. The differences are highlighted so that you can see the difference between the input code and the similarity code.}
+\item{\textbf{Degree of similarity. }The similarity between the input code fragment and the similar code fragment is displayed. The similarity is calculated using the Unique Percentage of Items (UPI) method used by NICAD. }
+\item{\textbf{Test Smells. }If test smells are included in the test suite, test smells are highlighted in orange, and the developer is presented with the presence of test smells. }
+\item{\textbf{Recommend Test Suites. }The recommended test suite is displayed. File paths are also displayed to indicate from which project the test code was referenced. }
 \end{enumerate}
 
 
 \section{Evaluation}
-In this section, we will conduct experiments with subjects to evaluate SuiteRec quantitatively and qualitatively. Subjects will be asked to create test codes for three production codes. Evaluate SuiteRec by comparing the test code with and without using SuiteRec. 
+In this section, we will conduct experiments with the subjects to evaluate SuiteRec quantitatively and qualitatively. The subjects will be asked to create test suites for three production codes. Evaluate SuiteRec by comparing the test code with and without using SuiteRec. 
 
 By collecting data on code coverage, time to complete experimental tasks and test code quality throughout the experiment, we aim to answer the following research questions:
 
 
 \begin{itemize}
-\item RQ1: \textbf{Can SuiteRec support the creation of tests with high coverage?} Coverage is an important factor as an indicator of software quality. If there is a line that is never executed in the test code, the quality of that part cannot be ensured. Can SuiteRec help increase coverage?
+\item RQ1: \textbf{Can SuiteRec support the creation of tests with high coverage?} Coverage is an important factor as an indicator of software quality. If there is a statement that is never executed in the test code, the quality of that part cannot be ensured. Can SuiteRec help increase coverage?
 \item RQ2: \textbf{Can SuiteRec reduce test code creation time?} Can developers shorten test code creation time by referring to test codes recommended by SuiteRec?
 \item RQ3: \textbf{Can SuiteRec support high quality test creation?} Can developers create high-quality test code by referring to the test code recommended by SuiteRec?
 \item RQ4: \textbf{How do using SuiteRec influence the developers’ perception of test code creation tasks tasks? } Do developers find it easier to create test code when using SuiteRec, and are they more confident in their created test code?
 \end{itemize}
 
 \subsection{Participant Selection}
-We recruited students with basic programming skills and an understanding of software testing. The experiment was conducted with 10 master students who majored in information science.According to the preliminary questionnaire, more than 90\% of the students had more than 2 years of programming experience, and more than 80\% of the subjects had more than 1 year of Java language experience. All students had basic knowledge about software testing in lectures and other lectures, and more than 80\% had experience creating unit tests.
+We recruited the subjects with basic programming skills and an understanding of software testing. The experiment was conducted with 10 master students who majored in information science. According to the preliminary questionnaire, more than 90\% of the subjects had more than 2 years of programming experience, and more than 80\% of the subjects had more than 1 year of Java language experience. All the subjects had basic knowledge about software testing in lectures and other situations, and more than 80\% had experience creating unit tests.
 
 \subsection{Object Selection}
-To conduct the experiment we prepared three production codes. It is assumed that the subjects fully understand the specifications of production code in order to create test code. Therefore, we selected a typical computational problem that often uses competitive programming as production code. In addition, a specification written in natural language was prepared so that the specification of the production code could be confirmed. In order to make a difference in each task, the number of conditional branches in each task was increased to 8, 16, and 24.
+To conduct the experiment we prepared three production codes. It is assumed that the subjects fully understand the specifications of production code in order to create test code. Therefore, we selected a typical computational problem that often uses competitive programming as production code. In addition, specifications written in natural language were prepared so that the specification of the production code could be confirmed. In order to make a difference in each task, the number of conditional branches in each task was increased to 8, 16, and 24.
 
-Figure 4 is an example of the production code that was presented. In the post-experimental questionnaire, it was confirmed that all the subjects expressed a positive opinion about the understanding of the experimental task. Also, there was no negative answer to the question about whether there was enough experiment time. Therefore, it can be seen that the subject fully understood the given experimental task and had sufficient work time.
+Figure \ref{fig4} is an example of the production code that was presented. In the post-experimental questionnaire, it was confirmed that all the subjects expressed a positive opinion about the understanding of the experimental task. Also, there was no negative answer to the question about whether there was enough experiment time. Therefore, it can be seen that the subjects fully understood the given experimental task and had sufficient work time.
 
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=8.5cm]{task.pdf}}
 \caption{Example of a experimental task.}
-\label{fig}
+\label{fig4}
 \end{figure}
 
 \subsection{Experiment Procedure}
-First, we conducted a 30-minute lecture and practice task on using JUnit from basic knowledge about software testing, and confirmed understanding of the test code description. And we asked them to create test codes for the three production codes for the actual experiment.
+First, we conducted a 30-minute lecture and practice task on using JUnit from basic knowledge about software testing, and confirmed understanding of the test code description. And we asked them to create test suites for the three production codes for the actual experiment.
 
-Ask the subjects to judge the end of the experimental task. Specifically, the test task was completed when the subjects were satisfied with the coverage and quality of the test code they created. The experiment time was a maximum of 25 minutes per task.
+Ask the subjects to judge the end of the experimental task. Specifically, the task was completed when the subjects were satisfied with the coverage and quality of the test code they created. The experiment time was a maximum of 25 minutes per task.
 
 To prevent the use effect of SuiteRec from being biased by tasks, subjects were assigned to change whether or not SuiteRec was used depending on the task. In order to prevent the learning effect when SuiteRec is used, tasks are assigned so that SuiteRec is not used continuously in three tasks. The subjects were not allowed to refer to past answers.
 
@@ -241,11 +236,9 @@ To prevent the use effect of SuiteRec from being biased by tasks, subjects were 
 In this section we present the quantitative and qualitative evaluation results of SuiteRec by 10 subjects, as described in the previous section, for each of the research questions.
 
 \subsection{RQ1: Can SuiteRec support the creation of tests with high coverage?}
-In this experiment, we calculated two types of code coverage: statement coverage(C0) and branch coverage(C1) of test suites submitted by the subjects. To calculate the coverage, we used EclEmma\cite{b11}, which is installed as a plug-in of the integrated development environment Eclipse\cite{b21}. Figures 1 and 2 show the average coverage of statement coverage and branch coverage, respectively. As a result, there is almost no difference in the coverage rate of statement coverage in all three tasks depending on whether SuiteRec is used or not, and the coverage of each task exceeds 90\%.
+In this experiment, we calculated two types of code coverage: statement coverage(C0) and branch coverage(C1) of test suites submitted by the subjects. To calculate the coverage, we used EclEmma\cite{b11}, which is installed as a plug-in of the integrated development environment Eclipse\cite{b21}. Figures \ref{fig5} and \ref{fig6} show the average coverage of statement coverage and branch coverage, respectively. As a result, there is almost no difference in the coverage rate of statement coverage in all three tasks depending on whether SuiteRec is used or not, and the coverage of each task exceeds 90\%.
 
-Regarding the branch coverage in Fig. 2, it can be seen that there is almost no difference between TASK1 and TASK2 with 8,16 branches depending on whether SuiteRec is used or not. 
-
-However, the results of TASK3 with the largest number of branches showed that there was a difference of more than 10\% in the average coverage of the subjects.
+Regarding the branch coverage in Fig. \ref{fig6}, it can be seen that there is almost no difference between TASK1 and TASK2 with 8,16 branches depending on whether SuiteRec is used or not. However, the results of TASK3 with the largest number of branches showed that there was a difference of more than 10\% in the average coverage of the subjects.
 
 This result suggests that the test code recommended by SuiteRec is useful for increasing the coverage rate when creating test code for production code with many branches. In fact, in the questionnaire after the experiment, there were multiple reports that the subjects were able to follow the test items that were overlooked by the recommendation code.
 
@@ -253,28 +246,28 @@ This result suggests that the test code recommended by SuiteRec is useful for in
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=8.5cm]{C0.pdf}}
 \caption{Statement coverage (C0).}
-\label{fig}
+\label{fig5}
 \end{figure}
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=8.5cm]{C1.pdf}}
 \caption{Branch coverage (C1).}
-\label{fig}
+\label{fig6}
 \end{figure}
 
 \subsection{RQ2: Can SuiteRec reduce test code creation time?}
-Figure 5 shows the results of comparing the time spent completing the test code creation task with and without SuiteRec. It can be seen that the test creation time is longer when SuiteRec is used for tasks 1 and 3 than when it is not. This result can take time to read and understand multiple test suites recommended by SuiteRec. Subjects will not be able to reuse the recommended test code without modification. It is necessary to rewrite the test code by looking at the difference between the input production code and the detected similar code. In addition, according to the questionnaire after the experiment, it was necessary to rewrite each time the object creation sentence was reused, and it took time.
+Figure \ref{fig7} shows the results of comparing the time spent completing the test code creation task with and without SuiteRec. It can be seen that the test creation time is longer when SuiteRec is used for tasks 1 and 3 than when it is not. This result can take time to read and understand multiple test suites recommended by SuiteRec. The subjects will not be able to reuse the recommended test code without modification. It is necessary to rewrite the test code by looking at the difference between the input production code and the detected similar code. In addition, according to the questionnaire after the experiment, it was necessary to rewrite each time the object creation statement was reused, and it took time.
 
 For Task 2, it can be seen that the test creation time is shorter when SuiteRec is used. We examined the submitted test code and found that there were many test cases (test items) when SuiteRec was not used, although there was no difference in coverage. This result suggests that the subjects may have wasted time creating many useless test cases.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=8.5cm]{duration.pdf}}
 \caption{Time taken to create test code.}
-\label{fig}
+\label{fig7}
 \end{figure}
 
 \subsection{RQ3: Can SuiteRec support high quality test creation?}
-Figure 6 shows the results of comparing the number of test smells in the submitted test code with and without SuiteRec. For all TASKs, the test code created using SuiteRec contains less test smell than if it were not used. This result suggests that the quality of the recommended test code is high, and the developer can create the test code while maintaining the quality by reusing it. Also, by presenting the test smells included in the recommended test suite, the test code may be rewritten based on it and a high quality test code may have been submitted. In the actual questionnaire responses, it was reported that the test smells presented were understood and refactored to eliminate them.
+Figure \ref{fig8} shows the results of comparing the number of test smells in the submitted test suites with and without SuiteRec. For all tasks, the test code created using SuiteRec contains less test smell than if it were not used. This result suggests that the quality of the recommended test code is high, and the subjects can create the test code while maintaining the quality by reusing it. Also, by presenting the test smells included in the recommended test suite, the test code may be rewritten based on it and a high quality test code may have been submitted. In the actual questionnaire responses, it was reported that the test smells presented were understood and refactored to eliminate them.
 
 On the other hand, some subjects were aware that test smells were included, but did not know how to refactor. This is a topic for the future and needs to be improved to show how to refactor test smells.
 
@@ -284,27 +277,27 @@ When SuiteRec was not used, the subjects embedded more than five times the test 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=8.5cm]{smells.pdf}}
 \caption{Number of detected test smells.}
-\label{fig}
+\label{fig8}
 \end{figure}
 
 \begin{figure*}[t]
  \begin{center}
   \includegraphics[width=18.5cm]{suiterec-expt.pdf}
-  \caption{キャプション}
-  \label{}
+  \caption{Overview of the survey responses relating to test code creation tasks}
+  \label{fig9}
  \end{center}
 \end{figure*}
 
 \subsection{RQ4: How do using SuiteRec influence the developers’ perception of test code creation tasks tasks?}
-Figure 7 summarizes answers to the survey questions. Overall, the subjects found the task clear (Question 1), and the allocated time sufficient (Question 2). For the remaining questions, you can see that there is a difference in opinion on the experimental task with and without SuiteRec. 
+Figure \ref{fig9} summarizes answers to the survey questions. Overall, the subjects found the task clear (Question 1), and the allocated time sufficient (Question 2). For the remaining questions, you can see that there is a difference in opinion on the experimental task with and without SuiteRec. 
 
-When creating test codes, subjects can easily feel test code creation using SuiteRec. However, this result contrasts with the actual task end time and length (Figure 2), and it can be seen that the task end time is slower when SuiteRec is used. The subjects read and understand the recommended multiple suggested test suites and decide whether to reuse them. In addition, the test code cannot be applied without editing, and it is necessary to understand the difference between the input code and the detected similar code and make appropriate modifications to the test code. We speculate that when using SuiteRec, subjects may spend a lot of time on this part. 
+When creating test codes, subjects can easily feel test code creation using SuiteRec. However, this result contrasts with the actual task end time and length (Figure \ref{fig2}), and it can be seen that the task end time is slower when SuiteRec is used. The subjects read and understand the recommended multiple suggested test suites and decide whether to reuse them. In addition, the test code cannot be applied without editing, and it is necessary to understand the difference between the input code and the detected similar code and make appropriate modifications to the test code. We speculate that when using SuiteRec, subjects may spend a lot of time on this part. 
 
-Many opinions that it is better to add a function that supports test code editing work (such as a function that automatically edits the class name and method name to the name corresponding to the input code) in the free description of the tool improvement by questionnaire I received. Further improvements in SuiteRec show the potential for reducing the completion time of experimental tasks.
+Many opinions that it is better to add a function that supports test code editing work (such as a function that automatically edits the class name and method name to the name corresponding to the input code) in the free description of the tool improvement by questionnaire we received. Further improvements in SuiteRec show the potential for reducing the completion time of experimental tasks.
 
-When using SuiteRec, the subject is confident in the coverage of the test code created by himself (Question 5). On the other hand, 40\% of subjects reported a negative response when nothing was used. However, it is known that there is almost no difference in the coverage of the test code actually submitted (Figure 3). It is important to be confident in the coverage of the test code you create. One of the purposes of software testing is that developers are responsible for the code they write and can provide software to users without anxiety.
+When using SuiteRec, the subjects are confident in the coverage of the test code created by themselves (Question 5). On the other hand, 40\% of subjects reported a negative response when nothing was used. However, it is known that there is almost no difference in the coverage of the test code actually submitted (Figure \ref{fig5},\ref{fig6}). It is important to be confident in the coverage of the test code you create. One of the purposes of software testing is that developers are responsible for the code they write and can provide software to users without anxiety.
 
-When the test code was created without using SuiteRec, 40\% of the subjects were not confident in the quality of the test code they wrote. It can be seen that the number of test smells in the actual submitted test code is greater when SuiteRec is not used than when it is used (Figure 4). Developers unknowingly embed test smells that make later maintenance activities difficult. The use of SuiteRec reduces the number of test mells by giving developers an awareness of the quality of the test code and brings confidence to the code they have created.
+When the test code was created without using SuiteRec, 40\% of the subjects were not confident in the quality of the test code they wrote. It can be seen that the number of test smells in the actual submitted test code is greater when SuiteRec is not used than when it is used (Figure \ref{fig8}). Developers unknowingly embed test smells that make later maintenance activities difficult. The use of SuiteRec reduces the number of test mells by giving developers an awareness of the quality of the test code and brings confidence to the code they have created.
 
 On the other hand, even when SuiteRec is used, there are negative opinions about the quality of the test code. The respondents reported that they understood Test Smells but didn't know how to refactor. This indicates the need for further improvement of SuiteRec, and we should add the function to present refactoring methods for each test smell.
 
@@ -362,6 +355,8 @@ As a future task, SuiteRec needs to be improved for more practical use. Specific
 \bibitem{b19} A. Sakti, G. Pesant, and Y.-G. Gu\'{e}h\'{e}neuc. ``Instance Generator and Problem Representation to Improve Object Oriented Code Coverage," {\it Transactions on Software Engineering}, pp. 294--313, 2015.
 
 \bibitem{b20} M. Ellims, J. Bridges, and D. C. Ince, ``The economics of unit testing," Empir. Softw. Eng., vol. 11, no. 1, pp. 5--31, 2006.
+
+\bibitem{b22} F. Appel. Testing with JUnit. Packt, 2015.
 
 \end{thebibliography}
 
