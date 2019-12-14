@@ -60,7 +60,7 @@ email address or ORCID}
 \maketitle
 
 \begin{abstract}
-It is important to support software testing to ensure software quality. In previous studies, various automatic generation techniques have been proposed to reduce test creation costs. However, automatically generated tests are usually not based on the process and intention of creating the target code, and are therefore generally considered to be less readable. And it makes later maintenance activities difficult. This places a question mark over their practical value. In this research, we propose SuiteRec, a tool that recommends existing high quality test codes that exist on OSS to solve this problem. SuiteRec considers test reuse between clone pairs using similar code search technology. SuiteRec detects similar codes from the input code and recommends a test suite corresponding to the similar codes to the developer. Further, SuiteRec shows the developer a test smells that means a bad implementation of the test code. and the recommendation ranking is sorted so that a higher quality test suite can be recommended. In the evaluation of the proposed tool, the test code was created depending on whether the subject used SuiteRec or not, and the difference was compared. With various experiments, we show that (1) SuiteRec is effective to increase code coverage when creating test code for programs with many conditional branches, (2) Using SuiteRec takes a lot of time to create test code, (3) The test code created using SuiteRec has a high quality with a small number of detected test smells, (4) When using SuiteRec, developers feel that it is easy to create test code, and they can be confident in the created code.
+It is important to support software testing to ensure software quality. In previous studies, various automatic generation techniques have been proposed to reduce test creation costs. However, automatically generated tests are usually not based on the process and intention of creating the target code, and are therefore generally considered to be less readable. It makes later maintenance activities difficult. This places a question mark over their practical value. In this research, we propose SuiteRec, a tool that recommends existing high quality test codes that exist on OSS to solve this problem. SuiteRec considers test reuse between clone pairs using similar code search technology. SuiteRec detects similar codes from the input code and recommends a test suite corresponding to the similar codes to the developer. Further, SuiteRec shows the developer a test smells that means a bad implementation of the test code. and the recommendation ranking is sorted so that a higher quality test suite can be recommended. In the evaluation of the proposed tool, the test code was created depending on whether the subject used SuiteRec or not, and the difference was compared. With various experiments, we show that (1) SuiteRec is effective to increase code coverage when creating test code for programs with many conditional branches, (2) Using SuiteRec takes a lot of time to create test code, (3) The test code created using SuiteRec has a high quality with a small number of detected test smells, (4) When using SuiteRec, developers feel that it is easy to create test code, and they can be confident in the created code.
 
 \begin{comment}
 ソフトウェアの品質確保の要と言えるソフトウェアテストを支援することは重要です．これまでに，テスト作成コストを削減するために様々な自動生成技術が提案されてきました．しかし，自動生成されたテストコードはテスト対象コードの作成経緯や意図に基づいて生成されていないという性質から後のメンテナンス活動を困難にさせる課題があり，これは自動生成技術の実用的な利用の価値に疑問を提示させます．本研究では，この課題を解決するために，OSSに上に存在する既存の品質の高いテストコード推薦するツールSuiteRecを紹介します．SuiteRecは，類似コード検索ツールを用いてクローンペア間でのテスト再利用を考えます．入力コードに対して類似コードを検出し，その類似コードに対応するテストスイートを開発者に推薦します．さらに，テストコードの良くない実装を表すメトリクスであるテストスメルを開発者に提示し，より品質の高いテストスイートを推薦できるように推薦順位がランキングされています．提案ツールの評価では，被験者によってSuiteRecの使用した場合とそうでない場合でテストコードの作成してもらい，テスト作成をどの程度支援できるかを定量的および定性的に評価しました．その結果，(1) 条件分岐が多いプログラムのテストコードを作成する際にコードカバレッジの向上に効果的であること，(2) SuiteRecを使用した場合，テストコードの作成に時間がかかること，(3) SuiteRecを使用して作成したテストコードは検出されたテストスメルの数が少なく品質が高いこと，(4) SuiteRecを使用してテストコードを作成した場合は使用しなかった場合と比べて開発者は，自身で作成したテストコードに自信が持てることが分かった．
@@ -196,7 +196,7 @@ SuiteRec implements a recommendation ranking that sorts the clones in the order 
 \renewcommand{\labelenumi}{(\arabic{enumi})}
 \item{\textbf{Input Code. }The target code entered by the developer is displayed.}
 \item{\textbf{Similarity Code. }A similar code for the input code is displayed. The differences are highlighted so that you can see the difference between the input code and the similarity code.}
-\item{\textbf{Degree of similarity. }The similarity between the input code and the similar code is displayed. The similarity is calculated using the Unique Percentage of Items (UPI) method used by NICAD[?]. }
+\item{\textbf{Degree of similarity. }The similarity between the input code and the similar code is displayed. The similarity is calculated using the Unique Percentage of Items (UPI) method used by NICAD. }
 \item{\textbf{Test Smells. }If test smells are included in the test suite, the test smell is highlighted in orange, and the developer is presented with the presence of test smells. }
 \item{\textbf{Recommend Test Suites. }The recommended test suite is displayed. A file path is also displayed to indicate from which project the test code was referenced. }
 \end{enumerate}
@@ -241,7 +241,7 @@ To prevent the use effect of SuiteRec from being biased by tasks, subjects were 
 In this section we present the quantitative and qualitative evaluation results of SuiteRec by 10 subjects, as described in the previous section, for each of the research questions.
 
 \subsection{RQ1: Can SuiteRec support the creation of tests with high coverage?}
-In this experiment, we calculated two types of code coverage: statement coverage(C0) and branch coverage(C1) of test suites submitted by the subjects. To calculate the coverage, we used EclEmma[?], which is installed as a plug-in of the integrated development environment Eclipse[?]. Figures 1 and 2 show the average coverage of statement coverage and branch coverage, respectively. As a result, there is almost no difference in the coverage rate of statement coverage in all three tasks depending on whether SuiteRec is used or not, and the coverage of each task exceeds 90\%.
+In this experiment, we calculated two types of code coverage: statement coverage(C0) and branch coverage(C1) of test suites submitted by the subjects. To calculate the coverage, we used EclEmma\cite{b11}, which is installed as a plug-in of the integrated development environment Eclipse\cite{b21}. Figures 1 and 2 show the average coverage of statement coverage and branch coverage, respectively. As a result, there is almost no difference in the coverage rate of statement coverage in all three tasks depending on whether SuiteRec is used or not, and the coverage of each task exceeds 90\%.
 
 Regarding the branch coverage in Fig. 2, it can be seen that there is almost no difference between TASK1 and TASK2 with 8,16 branches depending on whether SuiteRec is used or not. 
 
@@ -265,7 +265,7 @@ This result suggests that the test code recommended by SuiteRec is useful for in
 \subsection{RQ2: Can SuiteRec reduce test code creation time?}
 Figure 5 shows the results of comparing the time spent completing the test code creation task with and without SuiteRec. It can be seen that the test creation time is longer when SuiteRec is used for tasks 1 and 3 than when it is not. This result can take time to read and understand multiple test suites recommended by SuiteRec. Subjects will not be able to reuse the recommended test code without modification. It is necessary to rewrite the test code by looking at the difference between the input production code and the detected similar code. In addition, according to the questionnaire after the experiment, it was necessary to rewrite each time the object creation sentence was reused, and it took time.
 
-For Task 2, it can be seen that the test creation time is shorter when SuiteRec is used. We examined the submitted test code and found that there were many test cases (items) when SuiteRec was not used, although there was no difference in coverage. This result suggests that the subjects may have wasted time creating many useless test cases.
+For Task 2, it can be seen that the test creation time is shorter when SuiteRec is used. We examined the submitted test code and found that there were many test cases (test items) when SuiteRec was not used, although there was no difference in coverage. This result suggests that the subjects may have wasted time creating many useless test cases.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=8.5cm]{duration.pdf}}
@@ -278,7 +278,7 @@ Figure 6 shows the results of comparing the number of test smells in the submitt
 
 On the other hand, some subjects were aware that test smells were included, but did not know how to refactor. This is a topic for the future and needs to be improved to show how to refactor test smells.
 
-When SuiteRec was not used, the subjects embedded more than five times the test smells compared to the case where it was used. This is probably because many subjects did not rename the default test method and wrote the Assert statement by copy and paste within one test method. In fact, it has been reported that many of these test smells are detected in existing projects [6].
+When SuiteRec was not used, the subjects embedded more than five times the test smells compared to the case where it was used. This is probably because many subjects did not rename the default test method and wrote the Assert statement by copy and paste within one test method. In fact, it has been reported that many of these test smells are detected in existing projects \cite{b9}.
 
 
 \begin{figure}[htbp]
@@ -337,11 +337,13 @@ As a future task, SuiteRec needs to be improved for more practical use. Specific
 
 \bibitem{b8} D. Spadini, F. Palomba, A. Zaiaman, M. Bruntink, and A.Bacchelli, ``On The Relation of Test Smells to Software Code Quality," In {\it Proceedings of the International Conference on Software Maintenance and Evolution (ICSME)}, pp. 1--12, 2018. 
 
-\bibitem{b9} A. Peruma, K. Almalki, C. D. Newman, M. W. Mkaouer, and A. Ouni, F. Palomba, ``On the distribution of test smells in open source Android applications: an exploratory study," In {\it Proceedings of the International Conference on Computer Science and Software Engineering (CASCON)}, pp. 193--202, 2019.
+\bibitem{b9} A. Peruma, K. Almalki, C. D. Newman, M. W. Mkaouer, A. Ouni, and F. Palomba, ``On the Distribution of Test Smells in Open Source Android Applications: An Exploratory Study," In {\it Proceedings of the International Conference on Computer Science and Software Engineering (CASCON)}, pp. 193--202, 2019.
 
 \bibitem{b10} S. U. T. Smells. http://testsmells.github.io/, 2018.
 
 \bibitem{b11} https://www.eclemma.org/
+
+\bibitem{b21} https://www.eclipse.org/
 
 \bibitem{b12} P. Machado and A. Sampaio, ``Automatic Test-Case Generation," Testing Techniques in Software Eng., vol. 6153, pp. 59--103, 2010. 
 
