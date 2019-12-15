@@ -14,7 +14,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{SuiteRec: Automatic Test Suite Recommendation System Using Code Clone Detection Tool\\
+\title{SuiteRec: Automatic Test Suite Recommendation System Using Clone Detection Techniques\\
 %{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
 %should not be used}
 \thanks{Identify applicable funding agency here. If none, delete this.}
@@ -32,23 +32,23 @@ kurachi.ryosuke.kp0@is.naist.jp}
 Kyoto, Japan \\
 echoi@kit.ac.jp}
 \and
-\IEEEauthorblockN{3\textsuperscript{rd} Given Name Surname}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\IEEEauthorblockN{3\textsuperscript{rd} Kisub Kim}
+\IEEEauthorblockA{\textit{University of Luxembourg} \\
 %\textit{name of organization (of Aff.)}\\
-City, Country \\
+Luxembourg, Luxembourg \\
 email address or ORCID}
 \and
-\IEEEauthorblockN{4\textsuperscript{th} Given Name Surname}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\IEEEauthorblockN{4\textsuperscript{th} Keichi Takahashi}
+\IEEEauthorblockA{\textit{Nara Institute of Science and Technology} \\
 %\textit{name of organization (of Aff.)}\\
-City, Country \\
+Nara, Japan \\
 email address or ORCID}
 \and
-\IEEEauthorblockN{5\textsuperscript{th} Given Name Surname}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\IEEEauthorblockN{5\textsuperscript{th} Hajimu Iida}
+\IEEEauthorblockA{\textit{Nara Institute of Science and Technology} \\
 %\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address or ORCID}
+Nara, Japan \\
+iida@itc.naist.jp}
 \and
 \IEEEauthorblockN{6\textsuperscript{th} Given Name Surname}
 \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
@@ -60,7 +60,7 @@ email address or ORCID}
 \maketitle
 
 \begin{abstract}
-It is important to support software testing to ensure software quality. In previous studies, various automatic generation techniques have been proposed to reduce test creation costs. However, automatically generated tests are usually not based on the process and intention of creating the target code, and are therefore generally considered to be less readable. It makes later maintenance activities difficult. This places a question mark over their practical value. To solve this problem, we propose SuiteRec, which recommends existing high-quality test code from OSS projects. SuiteRec considers test reuse between clone pairs using similar code search technology. SuiteRec detects similar codes from the input code and recommends a test suite corresponding to the similar codes to the developer. Further, SuiteRec shows the developer a test smells that means a bad implementation of the test code. and the recommendation ranking is sorted so that a higher quality test suite can be recommended. In the evaluation of the SuiteRec, the test code was created depending on whether the subjects used SuiteRec or not, and the difference was compared. With various experiments, we show that (1) SuiteRec is effective to increase code coverage when creating test code for target code with many conditional branches, (2) Using SuiteRec takes a lot of time to create test code, (3) The test code created using SuiteRec has a high quality with a small number of detected test smells, (4) When using SuiteRec, developers feel that it is easy to create test code, and they can be confident in the created test code.
+Software testing is vital to ensure the quality of software. In previous studies, various techniques to automatically generate test codes have been proposed to reduce development costs. However, automatically generated tests tend to ignore the development process and intention behind the target code, and therefore generally considered to be less readable and maintainable. This places a question mark over their practical value. To solve this problem, we propose SuiteRec, a recommendation tool to find existing high-quality test codes from OSS projects. The basic idea behind SuiteRec is that test codes can be reused between code clone pairs. SuiteRec finds code clones of the input code from OSS projects and recommends test suites corresponding to the clones. The recommended test suites are sorted by their quality and presented to the developer. Furthermore, test smells, which indicate bad implementation of test codes, are shown for each test suite. In the evaluation, we asked subjects to develop test codes with and without using SuiteRec and compared the developed test codes. We show that (1) SuiteRec improves code coverage when developing test codes for target codes with many conditional branches, (2) test codes created using SuiteRec have higher quality and less test smells, and (3) developers feel that it is easier to develop test codes, and they are more confident in the resulting test codes when using SuiteRec.
 
 \begin{comment}
 ソフトウェアの品質確保の要と言えるソフトウェアテストを支援することは重要です．これまでに，テスト作成コストを削減するために様々な自動生成技術が提案されてきました．しかし，自動生成されたテストコードはテスト対象コードの作成経緯や意図に基づいて生成されていないという性質から後のメンテナンス活動を困難にさせる課題があり，これは自動生成技術の実用的な利用の価値に疑問を提示させます．本研究では，この課題を解決するために，OSSに上に存在する既存の品質の高いテストコード推薦するツールSuiteRecを紹介します．SuiteRecは，類似コード検索ツールを用いてクローンペア間でのテスト再利用を考えます．入力コードに対して類似コードを検出し，その類似コードに対応するテストスイートを開発者に推薦します．さらに，テストコードの良くない実装を表すメトリクスであるテストスメルを開発者に提示し，より品質の高いテストスイートを推薦できるように推薦順位がランキングされています．提案ツールの評価では，被験者によってSuiteRecの使用した場合とそうでない場合でテストコードの作成してもらい，テスト作成をどの程度支援できるかを定量的および定性的に評価しました．その結果，(1) 条件分岐が多いプログラムのテストコードを作成する際にコードカバレッジの向上に効果的であること，(2) SuiteRecを使用した場合，テストコードの作成に時間がかかること，(3) SuiteRecを使用して作成したテストコードは検出されたテストスメルの数が少なく品質が高いこと，(4) SuiteRecを使用してテストコードを作成した場合は使用しなかった場合と比べて開発者は，自身で作成したテストコードに自信が持てることが分かった．
@@ -75,11 +75,12 @@ It is important to support software testing to ensure software quality. In previ
 \end{IEEEkeywords}
 
 \section{Introduction}
-近年，ソフトウェアに求められる要件が高度化・多様化する一方，ユーザからはソフトウェアの品質確保やコスト削減に対する要求も増加している．その中でも開発全体のコストに占める割合が大きく，品質確保の要ともいえるソフトウェアテストを支援する技術への関心が高まっている\cite{b20}．しかし，現状では単体テスト作成作業の大部分が人手で行われており，多くのテストを作成しようとするとそれに比例してコストも増加してしまう．このような背景から，ソフトウェアの品質を確保しつつコスト削減を達成するために，様々な自動化技術が提案されている\cite{b3}，\cite{b16}，\cite{b17}，\cite{b18}，\cite{b19}．
+In recent years, the requirements for software have become more sophisticated and diversified, while the demands from users for ensuring software quality and reducing costs have also increased. Among them, it is important to support software testing, which accounts for a large percentage of the total software development cost\cite{b20}. However, at present, most of unit tests are created manually, and if you try to create many tests, the cost will increase proportionally. Against this background, various automation technologies have been proposed to ensure software quality and achieve cost reduction\cite{b3},\cite{b16},\cite{b17},\cite{b18},\cite{b19}. 
 
-既存研究で提案されているEvoSuite\cite{b3}は，単体テスト自動生成における最先端のツールである．EvoSuiteは，対象コードを静的解析しプログラムを記号値で表現する．そして，対象コードの制御パスを通るような条件を集め，条件を満たす具体値を生成する．単体テストを自動生成することで，開発者は手作業での作成時間が自動生成によって節約することができ，またコードカバレッジを向上することができる．しかし，既存ツールによって自動生成されるテストコードは対象のコードの作成経緯や意図に基づいて生成されていないという性質から可読性が低く開発者に信用されていないことや後の保守作業を困難にするという課題がある\cite{b13}，\cite{b14}，\cite{b15}．このことは、自動生成ツールの実用的な利用の価値に疑問を提示させる．テストが失敗するたびに，開発者はテスト対象のプログラム内での不具合を原因を特定するまたは，テスト自体を更新する必要があるかどうかを判断する必要がある．自動生成されたテストは，自動生成によって得られる時間の節約よりも読みづらく，保守作業に助けになるというよりかむしろ邪魔するという結果が報告されている\cite{b1}．
+For example, EvoSuite\cite{b3} is the most advanced tool for automatic unit test generation. EvoSuite statically analyzes the target code and expresses the program as symbolic values. Then, conditions that pass the control path of the target code are collected, and concrete values that satisfy the conditions are generated. By automatically generating tests, developers can save creation time and increase code coverage. However, the automatically generated test code is low readability and is not trusted by developers because it is not based on the process and intention of creating the target code, which makes later maintenance activities difficult\cite{b13},\cite{b14},\cite{b15}. Every time a test fails, the developer has to identify the cause of the failure in the production code or determine whether the test itself needs to be updated. Previous studies have reported that automatically generated tests are harder to read outweigh the time-savings gained by their automated generation, and render them more of a hindrance than a help for software maintenance\cite{b1}.
 
-本研究では，この課題を解決するためにOSSに存在する既存の品質の高いテストコード推薦するツールSuiteRecを紹介します．SuiteRecは類似コード検出ツールを用いてクローンペア間でのテスト再利用を考えます．入力コードに対して類似コードを検出し，その類似コードに対応するテストスイートを開発者に推薦します．さらに，テストコードの良くない実装を表すメトリクスであるテストスメルを開発者に提示し，より品質の高いテストスイートを推薦できるように推薦順位がランキングされています．
+In this paper, to solve this problem, we propose SuiteRec, a recommendation tool to find existing high-quality test codes from OSS projects. The basic idea behind SuiteRec is that test codes can be reused between code clone pairs. SuiteRec finds code clones of the input code from OSS projects and recommends test suites corresponding to the clones. The recommended test suites are sorted by their quality and presented to the developer. Furthermore, test smells, which indicate bad implementation of test codes, are shown for each test suite.
+
 
 提案ツールの評価では，被験者によってSuiteRecの使用した場合とそうでない場合でテストコードの作成してもらい，テスト作成をどの程度支援できるかを定量的および定性的に評価した．その結果，提案ツールの利用は分岐が多く複雑なプログラムのテストスイートを作成する際に，コードカバレッジを向上させることができることや，ツールを使用して作成テストコードの品質が高いことが分かった．また，定性的な評価として実験後にアンケートを実施し，推薦ツールを使った場合多くの被験者は自分の作成したテストコードに自信が持てることが分かった．
 
@@ -118,9 +119,9 @@ Figure \ref{fig1} shows the flow until a test suite is recommended by SuiteRec. 
 
 \begin{enumerate}
 \renewcommand{\labelenumi}{(\arabic{enumi})}
-\item When SuiteRec receives a input code, it searches the source code repository for the corresponding similar code fragments using a existing code clone detection tool.
+\item When SuiteRec receives a input code, it searches the source code repository for the corresponding similar code fragments using a existing clone detection tool.
 \item Detected similar code fragments, SuiteRec searches the test code repository for test suites corresponding to similar code fragments.
-\item SuiteRec detects test smells in the test suite collected by the previous step using existing test smell detection tool.
+\item SuiteRec detects test smells in the test suites collected by the previous step using a existing test smell detection tool.
 \item As the final step, SuiteRec sorts test suites in descending order of priority based on similarity and number of test smells.
 \end{enumerate}
 
