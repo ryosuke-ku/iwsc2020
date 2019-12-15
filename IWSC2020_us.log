@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.sjis) (TeX Live 2019/W32TeX) (preloaded format=platex 2019.9.17)  15 DEC 2019 21:40
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.sjis) (TeX Live 2019/W32TeX) (preloaded format=platex 2019.9.17)  15 DEC 2019 21:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -561,120 +561,33 @@ LaTeX Font Warning: Font shape `JT1/mc/m/sc' undefined
 LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
 (Font)              using `JY1/mc/m/n' instead on input line 79.
 
-
-LaTeX Warning: Citation `b20' on page 1 undefined on input line 80.
-
-
-LaTeX Warning: Citation `b3' on page 1 undefined on input line 80.
+[1
 
 
-LaTeX Warning: Citation `b16' on page 1 undefined on input line 80.
-
-
-LaTeX Warning: Citation `b17' on page 1 undefined on input line 80.
-
-
-LaTeX Warning: Citation `b18' on page 1 undefined on input line 80.
-
-
-LaTeX Warning: Citation `b19' on page 1 undefined on input line 80.
-
-
-LaTeX Warning: Citation `b3' on page 1 undefined on input line 82.
-
-
-LaTeX Warning: Citation `b13' on page 1 undefined on input line 82.
-
-
-LaTeX Warning: Citation `b14' on page 1 undefined on input line 82.
-
-
-LaTeX Warning: Citation `b15' on page 1 undefined on input line 82.
-
-
-LaTeX Warning: Citation `b1' on page 1 undefined on input line 82.
-
-Excluding 'comment' comment. [1
-
-
-]
-
-LaTeX Warning: Citation `b12' on page 2 undefined on input line 105.
-
-
-LaTeX Warning: Reference `fig1' on page 2 undefined on input line 122.
-
+] Excluding 'comment' comment.
 File: SuiteRec-outline.pdf Graphic file (type pdf)
 <SuiteRec-outline.pdf>
-
-LaTeX Warning: Citation `b2' on page 2 undefined on input line 141.
-
-
-LaTeX Warning: Reference `fig1' on page 2 undefined on input line 143.
-
+ [2]
 File: mapping.pdf Graphic file (type pdf)
 <mapping.pdf>
-[2]
-
-LaTeX Warning: Reference `fig2' on page 3 undefined on input line 160.
-
-
-LaTeX Warning: Citation `b22' on page 3 undefined on input line 160.
-
-
-LaTeX Warning: Reference `fig1' on page 3 undefined on input line 162.
-
-
-LaTeX Warning: Citation `b10' on page 3 undefined on input line 165.
-
-
-LaTeX Warning: Citation `b9' on page 3 undefined on input line 165.
-
 
 Underfull \hbox (badness 2961) in paragraph at lines 171--171
 []\OT1/ptm/m/n/8 Occurs when a test method has mul-ti-
  []
 
+[3]
 File: SuiteRec.pdf Graphic file (type pdf)
 <SuiteRec.pdf>
-[3]
-
-LaTeX Warning: Reference `fig4' on page 4 undefined on input line 231.
-
+ [4]
 File: task.pdf Graphic file (type pdf)
 <task.pdf>
-[4]
-
-LaTeX Warning: Citation `b11' on page 5 undefined on input line 251.
-
-
-LaTeX Warning: Citation `b21' on page 5 undefined on input line 251.
-
-
-LaTeX Warning: Reference `fig5' on page 5 undefined on input line 251.
-
-
-LaTeX Warning: Reference `fig6' on page 5 undefined on input line 251.
-
-
-LaTeX Warning: Reference `fig6' on page 5 undefined on input line 253.
-
 File: C0.pdf Graphic file (type pdf)
 <C0.pdf>
 File: C1.pdf Graphic file (type pdf)
 <C1.pdf>
-
-LaTeX Warning: Reference `fig7' on page 5 undefined on input line 271.
-
 File: duration.pdf Graphic file (type pdf)
 <duration.pdf>
-
-LaTeX Warning: Reference `fig8' on page 5 undefined on input line 282.
-
-[5]
-
-LaTeX Warning: Citation `b9' on page 6 undefined on input line 286.
-
+ [5]
 File: smells.pdf Graphic file (type pdf)
 <smells.pdf>
 File: suiterec-expt.pdf Graphic file (type pdf)
@@ -684,22 +597,11 @@ Overfull \hbox (10.37598pt too wide) in paragraph at lines 297--298
  [] 
  []
 
+Excluding 'comment' comment. [6]
+Underfull \vbox (badness 1810) has occurred while \output is active []
 
-LaTeX Warning: Reference `fig9' on page 6 undefined on input line 304.
-
-
-LaTeX Warning: Reference `fig2' on page 6 undefined on input line 306.
-
-
-LaTeX Warning: Reference `fig5' on page 6 undefined on input line 310.
-
-
-LaTeX Warning: Reference `fig6' on page 6 undefined on input line 310.
-
-
-LaTeX Warning: Reference `fig8' on page 6 undefined on input line 312.
-
-Excluding 'comment' comment. [6] Excluding 'comment' comment.
+ [7]
+Excluding 'comment' comment.
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -711,15 +613,11 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[7] (./IWSC2020_us.aux)
+[8
+
+] (./IWSC2020_us.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
@@ -731,4 +629,4 @@ Here is how much of TeX's memory you used:
  929 hyphenation exceptions out of 8191
  30i,11n,35p,1458b,428s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on IWSC2020_us.dvi (7 pages, 50760 bytes).
+Output written on IWSC2020_us.dvi (8 pages, 51856 bytes).
