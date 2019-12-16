@@ -98,21 +98,21 @@ $\bullet$ \textbf{Quantitative and qualitative evaluation of SuiteRec.} We asked
 
 
 \section{BACKGROUND AND RELETED WORK}
-\textbf{Unit testing. }単体テストの実行タスクでは，ソフトウェアを動作させ，それぞれのテストケースにおいてソフトウェアが期待通りの振る舞いをするかを確認する．テスト工程のコスト削減のため，テスト実行タスクにおいて，単体テストではJUnitなどのテスト自動実行ツールの利用が産業界で進んでいる．しかし，テスト設計タスクは未だ手動で行うことが多く，自動化技術の実用化および普及が期待されている．
+% \textbf{Unit testing. }単体テストの実行タスクでは，ソフトウェアを動作させ，それぞれのテストケースにおいてソフトウェアが期待通りの振る舞いをするかを確認する．テスト工程のコスト削減のため，テスト実行タスクにおいて，単体テストではJUnitなどのテスト自動実行ツールの利用が産業界で進んでいる．しかし，テスト設計タスクは未だ手動で行うことが多く，自動化技術の実用化および普及が期待されている．
 
-単体テスト設計タスクで作成されるテストケースは，テスト手順，テスト入力値，テスト期待結果から構成される．テスト手順に従ってテスト対象のソフトウェアにテスト入力値を与え，その出力結果をテスト期待結果と比較する．これが一致していればテストは合格となり，一致しなければ不合格となる．単体テスト設計タスクにおいては，多くの場合同値分割法，境界地分析法などのテストケース作成技法を用いてテスト入力値を作成するが，ソフトウェアの要求通りに動作するかを確認するために多くのバリエーションのテスト入力値を作成する必要がある．
+% 単体テスト設計タスクで作成されるテストケースは，テスト手順，テスト入力値，テスト期待結果から構成される．テスト手順に従ってテスト対象のソフトウェアにテスト入力値を与え，その出力結果をテスト期待結果と比較する．これが一致していればテストは合格となり，一致しなければ不合格となる．単体テスト設計タスクにおいては，多くの場合同値分割法，境界地分析法などのテストケース作成技法を用いてテスト入力値を作成するが，ソフトウェアの要求通りに動作するかを確認するために多くのバリエーションのテスト入力値を作成する必要がある．
 
-\textbf{Test case generation. }既存の研究\cite{b12}は，既存のテストケースを再利用，自動生成，または再適用できることによって，ソフトウェア開発のテスト工程における時間とコストを大幅に節約できることを示している．テスト生成技術は，主にランダムテスト(RT)，記号実行(SE)，サーチベーステスト(SBST)，モデルベース(MBT)，組み合わせテストの5つに分類できる．SEはさらに静的記号実行(SSE)と動的記号実行(DSE)に分けられる．
+% \textbf{Test case generation. }既存の研究\cite{b12}は，既存のテストケースを再利用，自動生成，または再適用できることによって，ソフトウェア開発のテスト工程における時間とコストを大幅に節約できることを示している．テスト生成技術は，主にランダムテスト(RT)，記号実行(SE)，サーチベーステスト(SBST)，モデルベース(MBT)，組み合わせテストの5つに分類できる．SEはさらに静的記号実行(SSE)と動的記号実行(DSE)に分けられる．
 
-RTとは，ソフトウェアにランダムな入力を与えるテスト手法である．無造作・均一にテストを実行するランダムテストは自動化に適しているが，コードカバレッジ率向上，バグ検出の観点において，テストケース1件当たりの効率は著しく悪い．
+% RTとは，ソフトウェアにランダムな入力を与えるテスト手法である．無造作・均一にテストを実行するランダムテストは自動化に適しているが，コードカバレッジ率向上，バグ検出の観点において，テストケース1件当たりの効率は著しく悪い．
 
-SEは対象コードを静的解析してプログラムを記号値で表現し，コード上のそれぞれのパスに対応する条件を抽出し，パスごとにパスを通るような入力値が満たすべき条件を集める．そして，パスごとにその条件をSMTソルバ[5]などの制約ソルバを用いて解き，得られた具体値をテスト入力値とする．
+% SEは対象コードを静的解析してプログラムを記号値で表現し，コード上のそれぞれのパスに対応する条件を抽出し，パスごとにパスを通るような入力値が満たすべき条件を集める．そして，パスごとにその条件をSMTソルバ[5]などの制約ソルバを用いて解き，得られた具体値をテスト入力値とする．
 
-SBSTは，達成したい要件に対する達成度合いを定量的に評価できるように設計した評価関数に基づいて，ヒューリスティック探索アルゴリズムを用いて達成したい要件を満足するテストスイートを生成する技術の総称である．
+% SBSTは，達成したい要件に対する達成度合いを定量的に評価できるように設計した評価関数に基づいて，ヒューリスティック探索アルゴリズムを用いて達成したい要件を満足するテストスイートを生成する技術の総称である．
 
-MBTはモデルに基づいてテストスイートを生成する技術の総称である．モデルは何らかの形でテスト対象を記述したものであり，要求分析や設計のためのモデルを活用することもあれば，テストのためにモデルを作成することもある．
+% MBTはモデルに基づいてテストスイートを生成する技術の総称である．モデルは何らかの形でテスト対象を記述したものであり，要求分析や設計のためのモデルを活用することもあれば，テストのためにモデルを作成することもある．
 
-CTは，パラメータ間の相互作用に起因する不具合を効果的に発見するためにテストケースとしてパラメータに割り当てる値の組み合わせを生成する手法である．
+% CTは，パラメータ間の相互作用に起因する不具合を効果的に発見するためにテストケースとしてパラメータに割り当てる値の組み合わせを生成する手法である．
 
 \textbf{Test Smell.} The importance of having well-designed test code was initially put forward by Beck\cite{b4}. Beck argued that test cases respecting good design principles are desirable since these test cases are easier to comprehend, maintain, and can be successfully exploited to diagnose problems in the production code. Inspired by these arguments, van Deursen et al.\cite{b7} coined the them test smells and defined the first catalog of 11 poor design choices to write tests, together with refactoring operations aimed at removing them. Such a catalog has been then extended more recently by practitioners, such as Meszaros\cite{b6} who defined 18 new test smells. As reported by recent studies, their presence might not only negatively affect the comprehension of test suites but can also lead to test cases being less effective in finding bugs in production code\cite{b8}.
 
@@ -140,7 +140,7 @@ Figure \ref{fig1} shows the flow until a test suite is recommended by SuiteRec. 
 \subsection{Code Clone Detection}
 In this study, NICAD\cite{b2} was adopted as a code clone detection tool. NICAD converts code fragment layouts uniformly and detects code pairs by comparing code fragments in units of functions. By adopting such a method, NICAD has realized clone pair detection with high accuracy and high recall. NICAD searches the Github repository hosting large open source projects for similar code fragments corresponding to the input code.
 
-The source code repository in Figure \ref{fig1} contains only target code fragments of the Github projects with test codes. Specifically, we selected a project that had a test folder in the project and adopted the JUnit testing framework. NICAD has a project size limit that can be searched at once.  In order to shorten the search time, large-scale projects were divided, small-scale projects were integrated, and multiple search processes were run in parallel, making it possible to search for similar code fragments in real time. The detection setting is implemented in the SuiteRec as a standard setting of NICAD.
+The source code repository in Figure \ref{fig1} contains only target code fragments of the Github projects with test codes. Specifically, we selected projects that had  test folders in the projects and adopted the JUnit testing framework. NICAD has a project size limit that can be searched at once.  In order to shorten the search time, large-scale projects were divided, small-scale projects were integrated, and multiple search processes were run in parallel, making it possible to search for similar code fragments in real time. The detection setting is implemented in the SuiteRec as a standard setting of NICAD.
 
 \subsection{Test Code Detection}
 In order to search for test suites corresponding to similar code fragments, the target code is linked with test code fragments. In this research, the following two steps are taken in order to precisely link the target code with test code fragments.
@@ -209,7 +209,7 @@ SuiteRec implements a recommendation ranking that sorts the clones in the order 
 \end{enumerate}
 
 
-\section{Evaluation}
+\section{Experimental setup}
 In this section, we will conduct experiments with the subjects to evaluate SuiteRec quantitatively and qualitatively. The subjects will be asked to create test suites for three production codes. Evaluate SuiteRec by comparing the test code with and without using SuiteRec. 
 
 By collecting data on code coverage, time to complete experimental tasks and test code quality throughout the experiment, we aim to answer the following research questions:
@@ -242,7 +242,7 @@ First, we conducted a 30-minute lecture and practice task on using JUnit from ba
 
 Ask the subjects to judge the end of the experimental task. Specifically, the task was completed when the subjects were satisfied with the coverage and quality of the test code they created. The experiment time was a maximum of 25 minutes per task.
 
-To prevent the use effect of SuiteRec from being biased by tasks, subjects were assigned to change whether or not SuiteRec was used depending on the task. In order to prevent the learning effect when SuiteRec is used, tasks are assigned so that SuiteRec is not used continuously in three tasks. The subjects were not allowed to refer to past answers.
+To prevent the use effect of SuiteRec from being biased by tasks, subjects were assigned to change whether or not SuiteRec was used depending on the task. In order to prevent the learning effect when SuiteRec is used, tasks are assigned so that SuiteRec is not used continuously in three tasks. The subjects were not allowed to refer to past answers. Finally, after the completion of the experimental task, subjects were asked to answer a questionnaire on test code development.
 
 \section{Results}
 In this section we present the quantitative and qualitative evaluation results of SuiteRec by 10 subjects, as described in the previous section, for each of the research questions.

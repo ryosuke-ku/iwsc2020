@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.sjis) (TeX Live 2019/W32TeX) (preloaded format=platex 2019.9.17)  16 DEC 2019 10:23
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.sjis) (TeX Live 2019/W32TeX) (preloaded format=platex 2019.9.17)  16 DEC 2019 15:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -567,27 +567,25 @@ LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
 ] Excluding 'comment' comment.
 File: SuiteRec-outline.pdf Graphic file (type pdf)
 <SuiteRec-outline.pdf>
- [2]
 File: mapping.pdf Graphic file (type pdf)
 <mapping.pdf>
-
+ [2]
 Underfull \hbox (badness 2961) in paragraph at lines 171--171
 []\OT1/ptm/m/n/8 Occurs when a test method has mul-ti-
  []
 
-[3]
 File: SuiteRec.pdf Graphic file (type pdf)
 <SuiteRec.pdf>
- [4]
+[3]
 File: task.pdf Graphic file (type pdf)
 <task.pdf>
+ [4]
 File: C0.pdf Graphic file (type pdf)
 <C0.pdf>
 File: C1.pdf Graphic file (type pdf)
 <C1.pdf>
 File: duration.pdf Graphic file (type pdf)
 <duration.pdf>
- [5]
 File: smells.pdf Graphic file (type pdf)
 <smells.pdf>
 File: suiterec-expt.pdf Graphic file (type pdf)
@@ -597,10 +595,10 @@ Overfull \hbox (10.37598pt too wide) in paragraph at lines 297--298
  [] 
  []
 
-Excluding 'comment' comment. [6]
-Underfull \vbox (badness 1810) has occurred while \output is active []
+[5] Excluding 'comment' comment.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [7]
+ [6]
 Excluding 'comment' comment.
 
 ** Conference Paper **
@@ -613,20 +611,23 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[8
+[7
 
 ] (./IWSC2020_us.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
  3869 strings out of 493230
  54424 string characters out of 6147555
- 132861 words of memory out of 5000000
+ 131861 words of memory out of 5000000
  7800 multiletter control sequences out of 15000+600000
  44033 words of font info for 132 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  30i,11n,35p,1458b,428s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on IWSC2020_us.dvi (8 pages, 51848 bytes).
+Output written on IWSC2020_us.dvi (7 pages, 46648 bytes).
