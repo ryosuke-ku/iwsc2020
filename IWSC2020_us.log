@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.sjis) (TeX Live 2019/W32TeX) (preloaded format=platex 2019.9.17)  16 DEC 2019 15:08
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.sjis) (TeX Live 2019/W32TeX) (preloaded format=platex 2019.9.17)  16 DEC 2019 15:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -576,7 +576,7 @@ Underfull \hbox (badness 2961) in paragraph at lines 171--171
 
 File: SuiteRec.pdf Graphic file (type pdf)
 <SuiteRec.pdf>
-[3]
+[3] Excluding 'comment' comment.
 File: task.pdf Graphic file (type pdf)
 <task.pdf>
  [4]
@@ -591,7 +591,7 @@ File: smells.pdf Graphic file (type pdf)
 File: suiterec-expt.pdf Graphic file (type pdf)
 <suiterec-expt.pdf>
 
-Overfull \hbox (10.37598pt too wide) in paragraph at lines 297--298
+Overfull \hbox (10.37598pt too wide) in paragraph at lines 306--307
  [] 
  []
 
@@ -616,9 +616,6 @@ Before submitting the final camera ready copy, remember to:
 ] (./IWSC2020_us.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
