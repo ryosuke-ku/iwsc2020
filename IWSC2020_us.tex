@@ -19,46 +19,45 @@
 \title{SuiteRec: Automatic Test Suite Recommendation System based on Code Clone Detection\\
 %{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
 %should not be used}
-\thanks{Identify applicable funding agency here. If none, delete this.}
+%\thanks{Identify applicable funding agency here. If none, delete this.}
 }
-
-\author{\IEEEauthorblockN{1\textsuperscript{st} Ryosuke Kurachi}
-\IEEEauthorblockA{\textit{Nara Institute of Science and Technology} \\
+%\author{\IEEEauthorblockN{1\textsuperscript{st} Ryosuke Kurachi}
+%\IEEEauthorblockA{\textit{Nara Institute of Science and Technology} \\
 %\textit{Nara Institute of Science and Technology}\\
-Nara, Japan \\
-kurachi.ryosuke.kp0@is.naist.jp}
-\and
-\IEEEauthorblockN{2\textsuperscript{nd} Eunjong Choi}
-\IEEEauthorblockA{\textit{Kyoto Institute of Technology} \\
+%Nara, Japan \\
+%kurachi.ryosuke.kp0@is.naist.jp}
+%\and
+%\IEEEauthorblockN{2\textsuperscript{nd} Eunjong Choi}
+%\IEEEauthorblockA{\textit{Kyoto Institute of Technology} \\
 %\textit{Kyoto Institute of Technology}\\
-Kyoto, Japan \\
-echoi@kit.ac.jp}
-\and
-\IEEEauthorblockN{3\textsuperscript{rd} Kisub Kim}
-\IEEEauthorblockA{\textit{University of Luxembourg} \\
+%Kyoto, Japan \\
+%echoi@kit.ac.jp}
+%\and
+%\IEEEauthorblockN{3\textsuperscript{rd} Kisub Kim}
+%\IEEEauthorblockA{\textit{University of Luxembourg} \\
+%%\textit{name of organization (of Aff.)}\\
+%Luxembourg, Luxembourg \\
+%email address or ORCID}
+%\and
+%\IEEEauthorblockN{4\textsuperscript{th} Keichi Takahashi}
+%\IEEEauthorblockA{\textit{Nara Institute of Science and Technology} \\
 %\textit{name of organization (of Aff.)}\\
-Luxembourg, Luxembourg \\
-email address or ORCID}
-\and
-\IEEEauthorblockN{4\textsuperscript{th} Keichi Takahashi}
-\IEEEauthorblockA{\textit{Nara Institute of Science and Technology} \\
-%\textit{name of organization (of Aff.)}\\
-Nara, Japan \\
-keichi@is.naist.jp}
-\and
-\IEEEauthorblockN{5\textsuperscript{th} Hajimu Iida}
-\IEEEauthorblockA{\textit{Nara Institute of Science and Technology} \\
-%\textit{name of organization (of Aff.)}\\
-Nara, Japan \\
-iida@itc.naist.jp}
-\and
-\IEEEauthorblockN{6\textsuperscript{th} Given Name Surname}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-%\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address or ORCID}
-}
+%Nara, Japan \\
+%keichi@is.naist.jp}
+%\and
+%\IEEEauthorblockN{5\textsuperscript{th} Hajimu Iida}
+%\IEEEauthorblockA{\textit{Nara Institute of Science and Technology} \\
+%%\textit{name of organization (of Aff.)}\\
+%Nara, Japan \\
+%iida@itc.naist.jp}
+%}
 
+%%%%%
+\author{\IEEEauthorblockN{Ryosuke Kurachi\IEEEauthorrefmark{1},  Eunjong Choi\IEEEauthorrefmark{2}, Dongsun Kim\IEEEauthorrefmark{3},Keichi Takahashi\IEEEauthorrefmark{1},  and Hajimu Iida\IEEEauthorrefmark{1}}
+\IEEEauthorblockA{\IEEEauthorrefmark{1}Nara Institute of Science and Technology, Japan, \{kurachi.ryosuke.kp0, keichi\}@is.naist.jp,iida@itc.nais}
+\IEEEauthorblockA{\IEEEauthorrefmark{2}Kyoto Institute of Technology, Japan, echoi@kit.ac.jp\\}
+\IEEEauthorblockA{\IEEEauthorrefmark{3}FuriosaAI, South Korea, darkrsw@furiosa.ai\\}
+}
 \maketitle
 
 \begin{abstract}
@@ -98,6 +97,23 @@ $\bullet$ \textbf{Quantitative and qualitative evaluation of SuiteRec.} We asked
 
 
 \section{BACKGROUND AND RELETED WORK}
+In the unit test execution task, the software is run, and it is confirmed whether the software behaves as expected in each test case. In order to reduce the cost of the test process, in test execution tasks, the use of automatic test execution tools such as JUnit is advancing in the industry for unit tests. However, test design tasks are still often performed manually, and the practical application and popularization of automation technology is expected.
+
+Test cases created by unit test design tasks consist of test procedures, test input values, and expected test results. The test input value is given to the software under test according to the test procedure, and the output result is compared with the expected test result. If they match, the test passes, otherwise it fails. In unit test design tasks, test input values are often created using test case creation techniques such as equivalence partitioning and boundary analysis, but there are many variations to verify that the software works as required. You need to create test input values for.
+
+\textbf {Test case generation.} Existing research \cite {b12} demonstrates that existing test cases can be reused, automatically generated, or reapplied to save significant time and money in the software development testing process. It shows. There are five main test generation techniques: random test (RT), symbol execution (SE), search base test (SBST), model base (MBT), and combination test. SE is further divided into static symbol execution (SSE) and dynamic symbol execution (DSE).
+
+RT is a test method that gives random input to the software. Random tests that run randomly and uniformly are suitable for automation, but the efficiency per test case is extremely poor in terms of improving code coverage and bug detection.
+
+SE analyzes the target code statically, expresses the program as a symbolic value, extracts the conditions corresponding to each path in the code, and collects the conditions that the input values that pass through the path must satisfy. For each path, the conditions are solved using a constraint solver such as the SMT solver [5], and the obtained concrete value is used as the test input value.
+
+SBST is a generic name for technologies that generate test suites that satisfy the requirements to be achieved using a heuristic search algorithm based on an evaluation function designed to quantitatively evaluate the degree of achievement for the requirements to be achieved.
+
+MBT is a general term for technologies that generate test suites based on models. The model describes the test target in some form. The model for requirements analysis and design may be used, or the model may be created for testing.
+
+CT is a method of generating combinations of values assigned to parameters as test cases in order to effectively find defects caused by interaction between parameters.
+
+
 % \textbf{Unit testing. }単体テストの実行タスクでは，ソフトウェアを動作させ，それぞれのテストケースにおいてソフトウェアが期待通りの振る舞いをするかを確認する．テスト工程のコスト削減のため，テスト実行タスクにおいて，単体テストではJUnitなどのテスト自動実行ツールの利用が産業界で進んでいる．しかし，テスト設計タスクは未だ手動で行うことが多く，自動化技術の実用化および普及が期待されている．
 
 % 単体テスト設計タスクで作成されるテストケースは，テスト手順，テスト入力値，テスト期待結果から構成される．テスト手順に従ってテスト対象のソフトウェアにテスト入力値を与え，その出力結果をテスト期待結果と比較する．これが一致していればテストは合格となり，一致しなければ不合格となる．単体テスト設計タスクにおいては，多くの場合同値分割法，境界地分析法などのテストケース作成技法を用いてテスト入力値を作成するが，ソフトウェアの要求通りに動作するかを確認するために多くのバリエーションのテスト入力値を作成する必要がある．
@@ -117,9 +133,9 @@ $\bullet$ \textbf{Quantitative and qualitative evaluation of SuiteRec.} We asked
 \textbf{Test Smell.} The importance of having well-designed test code was initially put forward by Beck\cite{b4}. Beck argued that test cases respecting good design principles are desirable since these test cases are easier to comprehend, maintain, and can be successfully exploited to diagnose problems in the production code. Inspired by these arguments, van Deursen et al.\cite{b7} coined the them test smells and defined the first catalog of 11 poor design choices to write tests, together with refactoring operations aimed at removing them. Such a catalog has been then extended more recently by practitioners, such as Meszaros\cite{b6} who defined 18 new test smells. As reported by recent studies, their presence might not only negatively affect the comprehension of test suites but can also lead to test cases being less effective in finding bugs in production code\cite{b8}.
 
 \section{SuiteRec}
-SuiteRec takes a code fragment of a function unit from a developer as input code and searches for similar codes of the input code. Then, test suites corresponding to similar codes are sorted and presented to developers in order of priority.
+SuiteRec takes a code fragment from the developer and searches in exsiting OSS projects to identify test suites that are correspond to the developer’s input. Furthermore, test smells in test suites are detected, and test suites are ranked in descending order of quality.
 
-Figure \ref{fig1} shows the flow until a test suite is recommended by SuiteRec. The recommendation method mainly consists of the following 4 steps.
+Figure \ref{fig1} shows the flow until test suites are recommended by SuiteRec. The recommendation method mainly consists of the following 4 steps.
 
 
 \begin{figure}[htbp]
@@ -132,18 +148,20 @@ Figure \ref{fig1} shows the flow until a test suite is recommended by SuiteRec. 
 \renewcommand{\labelenumi}{(\arabic{enumi})}
 \item When SuiteRec receives a input code, it searches the source code repository for the corresponding similar code fragments using a existing clone detection tool.
 \item Detected similar code fragments, SuiteRec searches the test code repository for test suites corresponding to similar code fragments.
-\item SuiteRec detects test smells in the test suites collected by the previous step using a existing test smell detection tool.
-\item As the final step, SuiteRec sorts test suites in descending order of priority based on similarity and number of test smells.
+\item SuiteRec detects test smells in the test suites collected by the previous step using a test smell detection tool.
+\item As the final step, SuiteRec ranks recommended test suites based on similarity and number of test smells.
 \end{enumerate}
 
 
 \subsection{Code Clone Detection}
-In this study, NICAD\cite{b2} was adopted as a code clone detection tool. NICAD converts code fragment layouts uniformly and detects code pairs by comparing code fragments in units of functions. By adopting such a method, NICAD has realized clone pair detection with high accuracy and high recall. NICAD searches the Github repository hosting large open source projects for similar code fragments corresponding to the input code.
+In this study, NICAD\cite{b2} was adopted as a code clone detection tool. NICAD detects clone pairs by converting the layout of code fragments and comparing code fragments line by line. By taking this approach, NICAD has realized clone pair detection with high accuracy and high recall. NICAD searches a large number of projects in GitHub for similar code fragments corresponding to the input code.
 
-The source code repository in Figure \ref{fig1} contains only target code fragments of the Github projects with test codes. Specifically, we selected projects that had  test folders in the projects and adopted the JUnit testing framework. NICAD has a project size limit that can be searched at once.  In order to shorten the search time, large-scale projects were divided, small-scale projects were integrated, and multiple search processes were run in parallel, making it possible to search for similar code fragments in real time. The detection setting is implemented in the SuiteRec as a standard setting of NICAD.
+The Source Code Repository in Figure \ref{fig1} contains only target code fragments of the Github projects with test codes. Specifically, we selected projects that had  test folders in the projects and adopted the JUnit testing framework. 
+
+NICAD has a project size limit that can be searched at once. In order to shorten the search time, large-scale projects were divided, small-scale projects were integrated, and multiple search processes were run in parallel, making it possible to search for similar code fragments in real time. The detection setting is implemented in the SuiteRec as a standard setting of NICAD.
 
 \subsection{Test Code Detection}
-In order to search for test suites corresponding to similar code fragments, the target code is linked with test code fragments. In this research, the following two steps are taken in order to precisely link the target code with test code fragments.
+In order to search for test suites corresponding to similar code fragments, the target code is linked with test code fragments. In this research, the following 2 steps are taken in order to precisely link the target code with test code fragments.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=8.5cm]{mapping.pdf}}
@@ -157,12 +175,30 @@ In order to search for test suites corresponding to similar code fragments, the 
 \item Divide the test method with a delimiter or capital letter and link it when the target method partially matches.
 \end{enumerate}
 
-In the unit test, the target object is generated in the test code as shown in the figure \ref{fig2}, and it is executed by calling a method of the target code. Therefore, to link the test target code to the test code, the test code in the test code repository is statically analyzed and the method call is obtained. However, multiple methods may be called in the test method, so the method names are also compared. It is recommended to faithfully represent the contents of the processing of the target method as the test method name description method, and the name of the target method is often described in the test method name\cite{b22}. Therefore, the name of the test method is divided by a delimiter or capital letter, and it is linked if it partially matches the target method.
+In the unit test, the target object is generated in the test code as shown in the figure \ref{fig2}, and it is executed by calling a method of the target code. Therefore, to link the test target code to the test code, the test code in the Test Code Repository is statically analyzed and the method call is obtained. However, multiple methods may be called in the test method, so the method names are also compared. It is recommended to faithfully represent the contents of the processing of the target method as the test method name description method, and the name of the target method is often described in the test method name\cite{b22}. Therefore, the name of the test method is divided by a delimiter or capital letter, and it is linked if it partially matches the target method.
 
-The test code repository in Figure \ref{fig1} stores test code corresponding to the production code in the source code repository. As a pre-processing, static analysis was performed on large-scale projects in advance, and information that linked target code and test code was stored in the DB, so that test code could be searched at high speed via the DB.
+The Test Code Repository in Figure \ref{fig1} stores test code corresponding to the production code in the Source Code Repository. As a pre-processing, static analysis was performed on large-scale projects in advance, and information that linked target code and test code was stored in the DB, so that test code could be searched at high speed via the DB.
 
 \subsection{Test Smells Detection}
 In this study, tsDetect\cite{b10} was adopted as a test smell detection tool. tsDetect is a tool implemented with an AST-based detection method that can detect 19 test smells. It has also been reported that test smells can be detected correctly with 85\% to 100\% accuracy and 90\% to 100\% recall. In this study, we implemented the following 6 test smells, which are important in considering the recommendation of test codes among 19 test smells that can be detected by tsDetect\cite{b9}.
+
+\begin{table*}[t]
+\caption{Subject Test Smells}
+\begin{tabular}{|l|p{14.5cm}|}
+\hline
+\textbf{Name}                   & \textbf{Description}                                                                                                       \\ \hline
+\textbf{Assetion Roulette}        & Occurs when a test method has multiple assertions. Multiple assertion statements in a test method without a descriptive message  impacts readability/understandability/maintainability  as  it’s  not  possible  to  understand  the  reason  for  thefailure of the test.  \\ \hline
+\textbf{Conditional Test Logic} & Test methods need to be simple and execute all statements in the production method. Conditional code with in a test method negatively impacts the ease of comprehension by developers.\\ \hline
+\textbf{Default Test}            & Test code in which the test class or test method name is the default in test code using a testing framework such as JUnit. It is necessary to change the name appropriately to improve the readability of the code.                                                                                                      \\ \hline
+\textbf{Eager Test }             & Occurs when a test method invokes several methods of the production object. This smell results in difficulties in test comprehension and maintenance. \\ \hline
+\textbf{Exception Handling}      & This smell occurs when a test method explicitly a passing or failing of a test method is dependent on the production method throwing an exception. Developers should utilize JUnit's exception handling to automatically pass/fail the test instead of writing custom exception handling code or throwing an exception. \\ \hline
+\textbf{Mystery Guest}          & Occurs when a test method utilizes external resources (e.g. files, database, etc.). Use of external resources in test methods will result in stability and performance issues. Developers should use mock objects in place of external resources. \\ \hline
+\end{tabular}
+\end{table*}
+
+
+\begin{comment}
+
 \begin{table}[hbtp]
 \caption{Subject Test Smells}
 \begin{tabular}{|l|p{5.2cm}|}
@@ -176,6 +212,8 @@ In this study, tsDetect\cite{b10} was adopted as a test smell detection tool. ts
 \textbf{Mystery Guest}          & Occurs when a test method utilizes external resources (e.g. files, database, etc.). Use of external resources in test methods will result in stability and performance issues. Developers should use mock objects in place of external resources. \\ \hline
 \end{tabular}
 \end{table}
+
+\end{comment}
 
 In addition, the test suites including the following 4 test smells that are not suitable as recommended test code has been deleted from the test code repository in advance, so that it is not output as a recommended test suites.　
 
@@ -221,15 +259,6 @@ By collecting data on code coverage, time to complete experimental tasks and tes
 \item RQ3: \textbf{Can SuiteRec support high quality test creation?} Can developers create high-quality test code by referring to the test code recommended by SuiteRec?
 \item RQ4: \textbf{How do using SuiteRec influence the developers’ perception of test code creation tasks tasks? } Do developers find it easier to create test code when using SuiteRec, and are they more confident in their created test code?
 \end{itemize}
-
-\begin{comment}
-\begin{description}
-\item[{\it RQ1}] {\it \textbf{Can SuiteRec support the creation of tests with high coverage?}} Coverage is an important factor as an indicator of software quality. If there is a statement that is never executed in the test code, the quality of that part cannot be ensured. Can SuiteRec help increase coverage?
-\item[{\it RQ2}] {\it \textbf{Can SuiteRec reduce test code creation time?}} Can developers shorten test code creation time by referring to test codes recommended by SuiteRec?
-\item[{\it RQ3}] {\it \textbf{Can SuiteRec support high quality test creation?}} Can developers create high-quality test code by referring to the test code recommended by SuiteRec?
-\item[{\it RQ4}] {\it \textbf{How do using SuiteRec influence the developers’ perception of test code creation tasks tasks?}} Do developers find it easier to create test code when using SuiteRec, and are they more confident in their created test code?
-\end{description}
-\end{comment}
 
 \subsection{Participant Selection}
 We recruited the subjects with basic programming skills and an understanding of software testing. The experiment was conducted with 10 master students who majored in information science. According to the preliminary questionnaire, more than 90\% of the subjects had more than 2 years of programming experience, and more than 80\% of the subjects had more than 1 year of Java language experience. All the subjects had basic knowledge about software testing in lectures and other situations, and more than 80\% had experience creating unit tests.
