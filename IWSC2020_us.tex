@@ -388,8 +388,7 @@ In this experiment, we calculated two types of code coverage: statement coverage
 
 Regarding the branch coverage in Fig. \ref{fig6}, it can be seen that there is almost no difference between TASK1 and TASK2 with 8,16 branches depending on whether SuiteRec is used or not. However, the results of TASK3 with the largest number of branches showed that there was a difference of more than 10\% in the average coverage of the subjects.
 
-This result suggests that the test code recommended by SuiteRec is useful for increasing the coverage rate when creating test code for production code with many branches. In fact, in the questionnaire after the experiment, there were multiple reports that the subjects were able to follow the test items that were overlooked by the recommendation code.
-
+This result suggests that the test code recommended by SuiteRec may be useful for increasing the coverage when creating test code for production code with many branches.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=8.5cm]{C0.pdf}}
@@ -404,7 +403,7 @@ This result suggests that the test code recommended by SuiteRec is useful for in
 \end{figure}
 
 \subsection{RQ2: Can SuiteRec reduce test code creation time?}
-Figure \ref{fig7} shows the results of comparing the time spent completing the test code creation task with and without SuiteRec. It can be seen that the test creation time is longer when SuiteRec is used for tasks 1 and 3 than when it is not. This result can take time to read and understand multiple test suites recommended by SuiteRec. The subjects will not be able to reuse the recommended test code without modification. It is necessary to rewrite the test code by looking at the difference between the input production code and the detected similar code. In addition, according to the questionnaire after the experiment, it was necessary to rewrite each time the object creation statement was reused, and it took time.
+Figure \ref{fig7} shows the results of comparing the time spent completing the test code creation task with and without SuiteRec. It can be seen that the test creation time is longer when SuiteRec is used for tasks 1 and 3 than when it is not. This result can take time to read and understand multiple test suites recommended by SuiteRec. The subjects will not be able to reuse the recommended test code without modification. It is necessary to rewrite the test code by looking at the difference between the input production code and the detected similar code. 
 
 For Task 2, it can be seen that the test creation time is shorter when SuiteRec is used. We examined the submitted test code and found that there were many test cases (test items) when SuiteRec was not used, although there was no difference in coverage. This result suggests that the subjects may have wasted time creating many useless test cases.
 
@@ -415,9 +414,11 @@ For Task 2, it can be seen that the test creation time is shorter when SuiteRec 
 \end{figure}
 
 \subsection{RQ3: Can SuiteRec support high quality test creation?}
-Figure \ref{fig8} shows the results of comparing the number of test smells in the submitted test suites with and without SuiteRec. For all tasks, the test code created using SuiteRec contains less test smell than if it were not used. This result suggests that the quality of the recommended test code is high, and the subjects can create the test code while maintaining the quality by reusing it. Also, by presenting the test smells included in the recommended test suite, the test code may be rewritten based on it and a high quality test code may have been submitted. In the actual questionnaire responses, it was reported that the test smells presented were understood and refactored to eliminate them.
+Figure \ref{fig8} shows the results of comparing the number of test smells in the submitted test suites with and without SuiteRec. For all tasks, the test code created using SuiteRec contains less test smell than if it were not used. This result suggests that the quality of the recommended test code is high, and the subjects can create the test code while maintaining the quality by reusing it. Also, by presenting the test smells included in the recommended test suite, the test code may be rewritten based on it and a high quality test code may have been submitted. 
 
-On the other hand, some subjects were aware that test smells were included, but did not know how to refactor. This is a topic for the future and needs to be improved to show how to refactor test smells.
+%In the actual questionnaire responses, it was reported that the test smells presented were understood and refactored to eliminate them.
+
+%On the other hand, some subjects were aware that test smells were included, but did not know how to refactor. This is a topic for the future and needs to be improved to show how to refactor test smells.
 
 When SuiteRec was not used, the subjects embedded more than five times the test smells compared to the case where it was used. This is probably because many subjects did not rename the default test method and wrote the Assert statement by copy and paste within one test method. In fact, it has been reported that many of these test smells are detected in existing projects \cite{b9}.
 
