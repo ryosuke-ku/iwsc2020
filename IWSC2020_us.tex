@@ -355,7 +355,8 @@ By collecting data on code coverage, time to complete experimental tasks and tes
 
 
 \begin{itemize}
-\item RQ1: \textbf{Can SuiteRec support the creation of tests with high coverage?} Coverage is an important factor as an indicator of software quality. If there is a statement that is never executed in the test code, the quality of that part cannot be ensured. Can SuiteRec help increase coverage?
+\item RQ1: \textbf{Can SuiteRec support the creation of tests with high coverage?} Coverage is an important factor as an indicator of software quality. Can SuiteRec help increase coverage?
+%If there is a statement that is never executed in the test code, the quality of that part cannot be ensured.
 \item RQ2: \textbf{Can SuiteRec reduce test code creation time?} Can developers shorten test code creation time by referring to test codes recommended by SuiteRec?
 \item RQ3: \textbf{Can SuiteRec support high quality test creation?} Can developers create high-quality test code by referring to the test code recommended by SuiteRec?
 \item RQ4: \textbf{How do using SuiteRec influence the developers’ perception of test code creation tasks tasks? } Do developers find it easier to create test code when using SuiteRec, and are they more confident in their created test code?
@@ -377,9 +378,7 @@ To conduct the experiment we prepared three production codes. It is assumed that
 % \end{figure}
 
 \subsection{Experiment Procedure}
-First, we conducted a 30-minute lecture and practice task on using JUnit from basic knowledge about software testing, and confirmed understanding of the test code description. And we asked them to create test suites for the three production codes for the actual experiment.
-
-Ask the subjects to judge the end of the experimental task. Specifically, the task was completed when the subjects were satisfied with the coverage and quality of the test code they created. The experiment time was a maximum of 25 minutes per task.
+First, we conducted a 30-minute lecture and practice task on using JUnit from basic knowledge about software testing, and confirmed understanding of the test code description. And we asked them to create test suites for the three production codes for the actual experiment. Ask the subjects to judge the end of the experimental task. Specifically, the task was completed when the subjects were satisfied with the coverage and quality of the test code they created. The experiment time was a maximum of 25 minutes per task.
 
 To prevent the use effect of SuiteRec from being biased by tasks, subjects were assigned to change whether or not SuiteRec was used depending on the task. In order to prevent the learning effect when SuiteRec is used, tasks are assigned so that SuiteRec is not used continuously in three tasks. The subjects were not allowed to refer to past answers. Finally, after the completion of the experimental task, subjects were asked to answer a questionnaire on test code development.
 
@@ -387,26 +386,53 @@ To prevent the use effect of SuiteRec from being biased by tasks, subjects were 
 In this section we present the quantitative and qualitative evaluation results of SuiteRec by 10 subjects, as described in the previous section, for each of the research questions.
 
 \subsection{RQ1: Can SuiteRec support the creation of tests with high coverage?}
-In this experiment, we calculated two types of code coverage: statement coverage(C0) and branch coverage(C1) of test suites submitted by the subjects. To calculate the coverage, we used EclEmma\cite{b11}, which is installed as a plug-in of the integrated development environment Eclipse\cite{b21}. Figures \ref{fig5} and \ref{fig6} show the average coverage of statement coverage and branch coverage, respectively. As a result, there is almost no difference in the coverage rate of statement coverage in all three tasks depending on whether SuiteRec is used or not, and the coverage of each task exceeds 90\%.
+In this experiment, we calculated two types of code coverage: statement coverage(C0) and branch coverage(C1) of test suites submitted by the subjects. To calculate the coverage, we used EclEmma\footnote[1]{https://www.eclemma.org/}, which is installed as a plug-in of the integrated development environment Eclipse\footnote[2]{https://www.eclipse.org/}. Figures \ref{fig5} and \ref{fig6} show the average coverage of statement coverage and branch coverage, respectively. As a result, there is almost no difference in the coverage rate of statement coverage in all three tasks depending on whether SuiteRec is used or not, and the coverage of each task exceeds 90\%.
 
 Regarding the branch coverage in Fig. \ref{fig6}, it can be seen that there is almost no difference between TASK1 and TASK2 with 8,16 branches depending on whether SuiteRec is used or not. However, the results of TASK3 with the largest number of branches showed that there was a difference of more than 10\% in the average coverage of the subjects.
 
 This result suggests that the test code recommended by SuiteRec may be useful for increasing the coverage when creating test code for production code with many branches.
 
-\begin{figure}[htbp]
-\centerline{\includegraphics[width=8.5cm]{C0.pdf}}
-\caption{Statement coverage (C0).}
-\label{fig5}
-\end{figure}
+%\begin{figure}[htbp]
+%\centerline{\includegraphics[width=8.5cm]{coverage.pdf}}
+%\caption{Code coverage (C0,C1).}
+%\label{fig5}
+%\end{figure}
+
+%\begin{figure}[htbp]
+%\centerline{\includegraphics[width=8.5cm]{C1.pdf}}
+%\caption{Branch coverage (C1).}
+%\label{fig6}
+%\end{figure}
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[width=8.5cm]{C1.pdf}}
-\caption{Branch coverage (C1).}
-\label{fig6}
+  \begin{center}
+    \begin{tabular}{c}
+
+      % 1
+      \begin{minipage}{0.5\hsize}
+        \begin{center}
+          \includegraphics[clip, width=4.2cm]{C0.pdf}
+		{\scriptsize [1] Statement coverage (C0)}
+        \end{center}
+      \end{minipage}
+
+      % 2
+      \begin{minipage}{0.4\hsize}
+        \begin{center}
+          \includegraphics[clip, width=4.2cm]{C1.pdf}
+          {\scriptsize [2] Branch coverage (C1)}
+        \end{center}
+      \end{minipage}
+    \end{tabular}
+	\caption{Code coverage (C0,C1).}
+    \label{fig:lena}
+  \end{center}
 \end{figure}
+
+
 
 \subsection{RQ2: Can SuiteRec reduce test code creation time?}
-Figure \ref{fig7} shows the results of comparing the time spent completing the test code creation task with and without SuiteRec. It can be seen that the test creation time is longer when SuiteRec is used for tasks 1 and 3 than when it is not. This result can take time to read and understand multiple test suites recommended by SuiteRec. The subjects will not be able to reuse the recommended test code without modification. It is necessary to rewrite the test code by looking at the difference between the input production code and the detected similar code. 
+Figure \ref{fig7} shows the results of comparing the time spent completing the test code creation task with and without SuiteRec. It can be seen that the test creation time is longer when SuiteRec is used for tasks 1 and 3 than when it is not. This result can take time to read and understand multiple test suites recommended by SuiteRec. The subjects will not be able to reuse the recommended test code without modification. It is necessary to rewrite the test code by looking at the difference between the input code and the detected similar code. 
 
 For Task 2, it can be seen that the test creation time is shorter when SuiteRec is used. We examined the submitted test code and found that there were many test cases (test items) when SuiteRec was not used, although there was no difference in coverage. This result suggests that the subjects may have wasted time creating many useless test cases.
 
@@ -488,9 +514,9 @@ As a future task, SuiteRec needs to be improved for more practical use. Specific
 
 \bibitem{b10} S. U. T. Smells. http://testsmells.github.io/, 2018.
 
-\bibitem{b11} https://www.eclemma.org/
+%\bibitem{b11} https://www.eclemma.org/
 
-\bibitem{b21} https://www.eclipse.org/
+%\bibitem{b21} https://www.eclipse.org/
 
 \bibitem{b12} P. Machado and A. Sampaio, ``Automatic Test-Case Generation," Testing Techniques in Software Eng., vol. 6153, pp. 59--103, 2010. 
 
