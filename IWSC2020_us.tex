@@ -9,7 +9,27 @@
 \usepackage{textcomp}
 \usepackage{xcolor}
 \usepackage{comment}
+\usepackage{listings}
 
+\lstset{%
+  language={Java},
+  basicstyle={\scriptsize},%
+  identifierstyle={\scriptsize},%
+  commentstyle={\scriptsize\itshape},%
+  keywordstyle={\color{red}\scriptsize\bfseries},  
+  ndkeywordstyle={\scriptsize},%
+  stringstyle={\scriptsize\ttfamily},
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},%
+  numbers=left,%
+  xrightmargin=0cm,%
+  xleftmargin=0.3cm,%
+  numberstyle={\scriptsize},%
+  stepnumber=1,
+  numbersep=0.2cm,%
+  lineskip=-0.1ex%
+}
 
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
@@ -61,7 +81,8 @@
 \maketitle
 
 \begin{abstract}
-Software testing is vital to ensure the quality of software. In previous studies, various techniques to automatically generate test codes have been proposed to reduce development costs. However, automatically generated tests tend to ignore the development process and intention behind the target code, and therefore generally considered to be less readable and maintainable. This places a question mark over their practical value. To solve this problem, we propose SuiteRec, a recommendation tool to find existing high-quality test codes from OSS projects. The basic idea behind SuiteRec is that test codes can be reused between clone pairs. SuiteRec finds code clones of the input code from OSS projects and recommends test suites corresponding to the clones. The recommended test suites are sorted by their quality and presented to the developer. Furthermore, test smells, which indicate bad implementation of test codes, are shown for each test suite. In the evaluation, we asked subjects to develop test codes with and without using SuiteRec and compared the developed test codes. We show that (1) SuiteRec improves code coverage when developing test codes for target codes with many conditional branches, (2) test codes created using SuiteRec have higher quality and less test smells, and (3) developers feel that it is easier to develop test codes, and they are more confident in the resulting test codes when using SuiteRec.
+%Software testing is vital to ensure the quality of software. In previous studies, various techniques to automatically generate test codes have been proposed to reduce development costs. However, automatically generated tests tend to ignore the development process and intention behind the target code, and therefore generally considered to be less readable and maintainable. This places a question mark over their practical value. To solve this problem, we propose SuiteRec, a recommendation tool to find existing high-quality test codes from OSS projects. The basic idea behind SuiteRec is that test codes can be reused between clone pairs. SuiteRec finds code clones of the input code from OSS projects and recommends test suites corresponding to the clones. The recommended test suites are sorted by their quality and presented to the developer. Furthermore, test smells, which indicate bad implementation of test codes, are shown for each test suite. In the evaluation, we asked subjects to develop test codes with and without using SuiteRec and compared the developed test codes. We show that (1) SuiteRec improves code coverage when developing test codes for target codes with many conditional branches, (2) test codes created using SuiteRec have higher quality and less test smells, and (3) developers feel that it is easier to develop test codes, and they are more confident in the resulting test codes when using SuiteRec.
+Automatically generated tests generally ignore the development process and intention behind the target code, and therefore generally tend to be less readable and maintainable. Reusing existing tests might solve this problem. To this end, we developed a tool named SuiteRec, which recommends high-quality test suites based on code clone detection. SuiteRec detects code clones from the input code and then suggests test suites of cloned code. It ranks the test suites based on the number of test smells and similarity between the input code and the corresponding code. We evaluated SuiteRec with a human study of 10 student developers, and the results showed that SuiteRec support developers to generate high-quality test suites.
 
 \begin{comment}
 ソフトウェアの品質確保の要と言えるソフトウェアテストを支援することは重要です．これまでに，テスト作成コストを削減するために様々な自動生成技術が提案されてきました．しかし，自動生成されたテストコードはテスト対象コードの作成経緯や意図に基づいて生成されていないという性質から後のメンテナンス活動を困難にさせる課題があり，これは自動生成技術の実用的な利用の価値に疑問を提示させます．本研究では，この課題を解決するために，OSSに上に存在する既存の品質の高いテストコード推薦するツールSuiteRecを紹介します．SuiteRecは，類似コード検索ツールを用いてクローンペア間でのテスト再利用を考えます．入力コードに対して類似コードを検出し，その類似コードに対応するテストスイートを開発者に推薦します．さらに，テストコードの良くない実装を表すメトリクスであるテストスメルを開発者に提示し，より品質の高いテストスイートを推薦できるように推薦順位がランキングされています．提案ツールの評価では，被験者によってSuiteRecの使用した場合とそうでない場合でテストコードの作成してもらい，テスト作成をどの程度支援できるかを定量的および定性的に評価しました．その結果，(1) 条件分岐が多いプログラムのテストコードを作成する際にコードカバレッジの向上に効果的であること，(2) SuiteRecを使用した場合，テストコードの作成に時間がかかること，(3) SuiteRecを使用して作成したテストコードは検出されたテストスメルの数が少なく品質が高いこと，(4) SuiteRecを使用してテストコードを作成した場合は使用しなかった場合と比べて開発者は，自身で作成したテストコードに自信が持てることが分かった．
@@ -97,10 +118,87 @@ $\bullet$ \textbf{Quantitative and qualitative evaluation of SuiteRec.} We asked
 
 
 \section{BACKGROUND AND RELETED WORK}
+
+\begin{figure*}[t]
+\begin{center}
+  \begin{tabular}{c}
+
+    % 1枚目の画像
+    \begin{minipage}{0.5\hsize}
+      \begin{center}
+\begin{lstlisting}
+public class ConvertString {
+    public static String convertSnakeCase(String name) {
+        if (name == null) throw new NullPointerException();
+        String method = name;
+        Pattern p = Pattern.compile("([A-Z])");
+        for (;;) {
+            Matcher m = p.matcher(name);
+            if (!m.find()) break;
+            method = m.replaceFirst("_" + m.group(1).toLowerCase());
+        }
+        return method.replaceFirst("^_", "");
+    }
+}
+\end{lstlisting}
+{\scriptsize (a) Target Code fragment}
+\end{center}
+\end{minipage}
+
+    % 2枚目の画像
+    \begin{minipage}{0.5\hsize}
+      \begin{center}
+\begin{lstlisting}
+public class StringUtils {
+    public String toSnakeCase(String text) {
+        if (text == null) throw new NullPointerException();
+        String snake = text;
+        Pattern p = Pattern.compile("([A-Z])");
+        for (;;) {
+            Matcher m = p.matcher(snake);
+            if (!m.find()) break;
+            snake = m.replaceFirst("_" + m.group(1).toLowerCase());
+        }
+        return snake.replaceFirst("^_", "");
+    }
+}
+\end{lstlisting}
+{\scriptsize (b) Similar Code fragment}
+      \end{center}
+    \end{minipage}
+  \end{tabular}
+  \end{center}
+\end{figure*}
+
+\begin{figure}[htbp]
+\begin{center}
+\begin{lstlisting}
+ public class StringUtilsTest {
+     @Test(expected = NullPointerException.class)
+     public void expectedExceptionfor_null() throws Exception {
+    	 StringUtils sut = new StringUtils();
+    	 sut.toSnakeCase(null);
+     }
+    
+     @Test
+     public void returnSnakeCasefor_HelloWorld() throws Exception {
+     	 StringUtils sut = new StringUtils();
+    	 String expected = "hello_world";
+    	 String actual = sut.toSnakeCase("HelloWorld");
+         assertThat(actual, is(expected));
+     }
+     ...
+ }
+\end{lstlisting}
+{\scriptsize (c) Test suite for similar code fragments}
+\end{center}
+\end{figure}
+
 In the unit test execution task, the software is run, and it is confirmed whether the software behaves as expected in each test case. In order to reduce the cost of the test process, in test execution tasks, the use of automatic test execution tools such as JUnit is advancing in the industry for unit tests. However, test design tasks are still often performed manually, and the practical application and popularization of automation technology is expected.
 
 Test cases created by unit test design tasks consist of test procedures, test input values, and expected test results. The test input value is given to the software under test according to the test procedure, and the output result is compared with the expected test result. If they match, the test passes, otherwise it fails. In unit test design tasks, test input values are often created using test case creation techniques such as equivalence partitioning and boundary analysis, but there are many variations to verify that the software works as required. You need to create test input values for.
 
+\begin{comment}
 \textbf {Test case generation.} Existing research \cite {b12} demonstrates that existing test cases can be reused, automatically generated, or reapplied to save significant time and money in the software development testing process. It shows. There are five main test generation techniques: random test (RT), symbol execution (SE), search base test (SBST), model base (MBT), and combination test. SE is further divided into static symbol execution (SSE) and dynamic symbol execution (DSE).
 
 RT is a test method that gives random input to the software. Random tests that run randomly and uniformly are suitable for automation, but the efficiency per test case is extremely poor in terms of improving code coverage and bug detection.
@@ -112,7 +210,7 @@ SBST is a generic name for technologies that generate test suites that satisfy t
 MBT is a general term for technologies that generate test suites based on models. The model describes the test target in some form. The model for requirements analysis and design may be used, or the model may be created for testing.
 
 CT is a method of generating combinations of values assigned to parameters as test cases in order to effectively find defects caused by interaction between parameters.
-
+\end{comment}
 
 % \textbf{Unit testing. }単体テストの実行タスクでは，ソフトウェアを動作させ，それぞれのテストケースにおいてソフトウェアが期待通りの振る舞いをするかを確認する．テスト工程のコスト削減のため，テスト実行タスクにおいて，単体テストではJUnitなどのテスト自動実行ツールの利用が産業界で進んでいる．しかし，テスト設計タスクは未だ手動で行うことが多く，自動化技術の実用化および普及が期待されている．
 
@@ -269,11 +367,11 @@ To conduct the experiment we prepared three production codes. It is assumed that
 Figure \ref{fig4} is an example of the production code that was presented. In the post-experimental questionnaire, it was confirmed that all the subjects expressed a positive opinion about the understanding of the experimental task. Also, there was no negative answer to the question about whether there was enough experiment time. Therefore, it can be seen that the subjects fully understood the given experimental task and had sufficient work time.
 
 
-\begin{figure}[htbp]
-\centerline{\includegraphics[width=8.5cm]{task.pdf}}
-\caption{Example of a experimental task.}
-\label{fig4}
-\end{figure}
+% \begin{figure}[htbp]
+% \centerline{\includegraphics[width=8.5cm]{task.pdf}}
+% \caption{Example of a experimental task.}
+% \label{fig4}
+% \end{figure}
 
 \subsection{Experiment Procedure}
 First, we conducted a 30-minute lecture and practice task on using JUnit from basic knowledge about software testing, and confirmed understanding of the test code description. And we asked them to create test suites for the three production codes for the actual experiment.

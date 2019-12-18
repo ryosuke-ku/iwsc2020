@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.sjis) (TeX Live 2019/W32TeX) (preloaded format=platex 2019.9.17)  16 DEC 2019 15:41
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.sjis) (TeX Live 2019/W32TeX) (preloaded format=platex 2019.9.17)  18 DEC 2019 11:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -510,95 +510,145 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 (c:/texlive/2019/texmf-dist/tex/latex/comment/comment.sty
 \CommentStream=\write3
 
-Excluding comment 'comment') (./IWSC2020_us.aux)
+Excluding comment 'comment')
+(c:/texlive/2019/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count114
+\lst@gtempboxa=\box47
+\lst@token=\toks22
+\lst@length=\count115
+\lst@currlwidth=\dimen153
+\lst@column=\count116
+\lst@pos=\count117
+\lst@lostspace=\dimen154
+\lst@width=\dimen155
+\lst@newlines=\count118
+\lst@lineno=\count119
+\lst@maxwidth=\dimen156
+
+(c:/texlive/2019/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2019/02/27 1.8b (Carsten Heinz)
+\c@lstnumber=\count120
+\lst@skipnumbers=\count121
+\lst@framebox=\box48
+)
+(c:/texlive/2019/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2019/02/27 1.8b listings configuration
+))
+Package: listings 2019/02/27 1.8b (Carsten Heinz)
+
+(c:/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2019/02/27 1.8b listings language file
+) (./IWSC2020_us.aux)
 \openout1 = `IWSC2020_us.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 17.
-
-(c:/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 37.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 37.
+ (c:/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    ... okay on input line 37.
 LaTeX Font Info:    Font shape `JT1/mc/bx/it' in size <5> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 17.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 37.
 LaTeX Font Info:    Font shape `JY1/mc/bx/it' in size <5> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 17.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 37.
 
 -- Lines per column: 56 (exact).
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 62.
-LaTeX Font Info:    Try loading font information for U+msa on input line 62.
+\c@lstlisting=\count122
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 81.
+LaTeX Font Info:    Try loading font information for U+msa on input line 81.
 (c:/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 62.
+LaTeX Font Info:    Try loading font information for U+msb on input line 81.
 
 (c:/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 81.
+
+(c:/texlive/2019/texmf-dist/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 81.
+
 Excluding 'comment' comment.
 
 LaTeX Font Warning: Font shape `JT1/mc/m/sc' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 79.
+(Font)              using `JT1/mc/m/n' instead on input line 99.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 79.
+(Font)              using `JY1/mc/m/n' instead on input line 99.
 
-[1
+Excluding 'comment' comment.
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <7> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 130.
+ (I search kanjifont definition file: . . )
+(I search font definition file: . . . . . . . . )
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 134.
 
 
-] Excluding 'comment' comment.
-File: SuiteRec-outline.pdf Graphic file (type pdf)
-<SuiteRec-outline.pdf>
-File: mapping.pdf Graphic file (type pdf)
-<mapping.pdf>
- [2]
-Underfull \hbox (badness 2961) in paragraph at lines 171--171
-[]\OT1/ptm/m/n/8 Occurs when a test method has mul-ti-
+(c:/texlive/2019/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+Overfull \hbox (15.50008pt too wide) in paragraph at lines 124--170
+ [][][] 
  []
 
+Excluding 'comment' comment. [1
+
+
+]
+File: SuiteRec-outline.pdf Graphic file (type pdf)
+<SuiteRec-outline.pdf>
+
+Underfull \vbox (badness 1057) has occurred while \output is active []
+
+ [2]
+File: mapping.pdf Graphic file (type pdf)
+<mapping.pdf>
+
+Excluding 'comment' comment.
 File: SuiteRec.pdf Graphic file (type pdf)
 <SuiteRec.pdf>
-[3] Excluding 'comment' comment.
-File: task.pdf Graphic file (type pdf)
-<task.pdf>
- [4]
+ [3] [4]
 File: C0.pdf Graphic file (type pdf)
 <C0.pdf>
 File: C1.pdf Graphic file (type pdf)
 <C1.pdf>
 File: duration.pdf Graphic file (type pdf)
 <duration.pdf>
+ [5]
 File: smells.pdf Graphic file (type pdf)
 <smells.pdf>
 File: suiterec-expt.pdf Graphic file (type pdf)
 <suiterec-expt.pdf>
 
-Overfull \hbox (10.37598pt too wide) in paragraph at lines 306--307
+Overfull \hbox (10.37598pt too wide) in paragraph at lines 433--434
  [] 
  []
 
-[5] Excluding 'comment' comment.
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Excluding 'comment' comment. [6]
+Underfull \vbox (badness 1810) has occurred while \output is active []
 
- [6]
+
 Excluding 'comment' comment.
 
 ** Conference Paper **
@@ -611,20 +661,21 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[7
-
-] (./IWSC2020_us.aux)
+[7] (./IWSC2020_us.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 3869 strings out of 493230
- 54424 string characters out of 6147555
- 131861 words of memory out of 5000000
- 7800 multiletter control sequences out of 15000+600000
- 44033 words of font info for 132 fonts, out of 8000000 for 9000
+ 5628 strings out of 493230
+ 77464 string characters out of 6147555
+ 475723 words of memory out of 5000000
+ 9530 multiletter control sequences out of 15000+600000
+ 44249 words of font info for 133 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 30i,11n,35p,1458b,428s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 33i,14n,40p,1458b,1809s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on IWSC2020_us.dvi (7 pages, 46648 bytes).
+Output written on IWSC2020_us.dvi (7 pages, 51752 bytes).
