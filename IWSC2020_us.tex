@@ -258,6 +258,20 @@ The Source Code Repository in Figure \ref{fig1} contains only target code fragme
 
 NICAD has a project size limit that can be searched at once. In order to shorten the search time, large-scale projects were divided, small-scale projects were integrated, and multiple search processes were run in parallel, making it possible to search for similar code fragments in real time. The detection setting is implemented in the SuiteRec as a standard setting of NICAD.
 
+\begin{table*}[t]
+\caption{Subject Test Smells}
+\begin{tabular}{|l|p{14.5cm}|}
+\hline
+\textbf{Name}                   & \textbf{Description}                                                                                                       \\ \hline
+\textbf{Assetion Roulette}        & Occurs when a test method has multiple assertions. Multiple assertion statements in a test method without a descriptive message  impacts readability/understandability/maintainability  as  it’s  not  possible  to  understand  the  reason  for  thefailure of the test.  \\ \hline
+\textbf{Conditional Test Logic} & Test methods need to be simple and execute all statements in the production method. Conditional code with in a test method negatively impacts the ease of comprehension by developers.\\ \hline
+\textbf{Default Test}            & Test code in which the test class or test method name is the default in test code using a testing framework such as JUnit. It is necessary to change the name appropriately to improve the readability of the code.                                                                                                      \\ \hline
+\textbf{Eager Test }             & Occurs when a test method invokes several methods of the production object. This smell results in difficulties in test comprehension and maintenance. \\ \hline
+\textbf{Exception Handling}      & This smell occurs when a test method explicitly a passing or failing of a test method is dependent on the production method throwing an exception. Developers should utilize JUnit's exception handling to automatically pass/fail the test instead of writing custom exception handling code or throwing an exception. \\ \hline
+\textbf{Mystery Guest}          & Occurs when a test method utilizes external resources (e.g. files, database, etc.). Use of external resources in test methods will result in stability and performance issues. Developers should use mock objects in place of external resources. \\ \hline
+\end{tabular}
+\end{table*}
+
 \subsection{Test Code Detection}
 In order to search for test suites corresponding to similar code fragments, the target code is linked with test code fragments. In this research, the following 2 steps are taken in order to precisely link the target code with test code fragments.
 
@@ -277,22 +291,11 @@ In the unit test, the target object is generated in the test code as shown in th
 
 The Test Code Repository in Figure \ref{fig1} stores test code corresponding to the production code in the Source Code Repository. As a pre-processing, static analysis was performed on large-scale projects in advance, and information that linked target code and test code was stored in the DB, so that test code could be searched at high speed via the DB.
 
+
 \subsection{Test Smells Detection}
 In this study, tsDetect\cite{b10} was adopted as a test smell detection tool. tsDetect is a tool implemented with an AST-based detection method that can detect 19 test smells. It has also been reported that test smells can be detected correctly with 85\% to 100\% accuracy and 90\% to 100\% recall. In this study, we implemented the following 6 test smells, which are important in considering the recommendation of test codes among 19 test smells that can be detected by tsDetect\cite{b9}.
 
-\begin{table*}[t]
-\caption{Subject Test Smells}
-\begin{tabular}{|l|p{14.5cm}|}
-\hline
-\textbf{Name}                   & \textbf{Description}                                                                                                       \\ \hline
-\textbf{Assetion Roulette}        & Occurs when a test method has multiple assertions. Multiple assertion statements in a test method without a descriptive message  impacts readability/understandability/maintainability  as  it’s  not  possible  to  understand  the  reason  for  thefailure of the test.  \\ \hline
-\textbf{Conditional Test Logic} & Test methods need to be simple and execute all statements in the production method. Conditional code with in a test method negatively impacts the ease of comprehension by developers.\\ \hline
-\textbf{Default Test}            & Test code in which the test class or test method name is the default in test code using a testing framework such as JUnit. It is necessary to change the name appropriately to improve the readability of the code.                                                                                                      \\ \hline
-\textbf{Eager Test }             & Occurs when a test method invokes several methods of the production object. This smell results in difficulties in test comprehension and maintenance. \\ \hline
-\textbf{Exception Handling}      & This smell occurs when a test method explicitly a passing or failing of a test method is dependent on the production method throwing an exception. Developers should utilize JUnit's exception handling to automatically pass/fail the test instead of writing custom exception handling code or throwing an exception. \\ \hline
-\textbf{Mystery Guest}          & Occurs when a test method utilizes external resources (e.g. files, database, etc.). Use of external resources in test methods will result in stability and performance issues. Developers should use mock objects in place of external resources. \\ \hline
-\end{tabular}
-\end{table*}
+
 
 
 \begin{comment}
@@ -364,7 +367,7 @@ We recruited the subjects with basic programming skills and an understanding of 
 \subsection{Object Selection}
 To conduct the experiment we prepared three production codes. It is assumed that the subjects fully understand the specifications of production code in order to create test code. Therefore, we selected a typical computational problem that often uses competitive programming as production code. In addition, specifications written in natural language were prepared so that the specification of the production code could be confirmed. In order to make a difference in each task, the number of conditional branches in each task was increased to 8, 16, and 24.
 
-Figure \ref{fig4} is an example of the production code that was presented. In the post-experimental questionnaire, it was confirmed that all the subjects expressed a positive opinion about the understanding of the experimental task. Also, there was no negative answer to the question about whether there was enough experiment time. Therefore, it can be seen that the subjects fully understood the given experimental task and had sufficient work time.
+%Figure \ref{fig4} is an example of the production code that was presented. In the post-experimental questionnaire, it was confirmed that all the subjects expressed a positive opinion about the understanding of the experimental task. Also, there was no negative answer to the question about whether there was enough experiment time. Therefore, it can be seen that the subjects fully understood the given experimental task and had sufficient work time.
 
 
 % \begin{figure}[htbp]
