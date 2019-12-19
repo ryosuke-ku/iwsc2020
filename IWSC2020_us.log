@@ -577,4 +577,127 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 81.
 
-(c:/texlive/2019/te
+(c:/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 81.
+
+(c:/texlive/2019/texmf-dist/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 81.
+
+Excluding 'comment' comment.
+
+LaTeX Font Warning: Font shape `JT1/mc/m/sc' undefined
+(Font)              using `JT1/mc/m/n' instead on input line 99.
+
+
+LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
+(Font)              using `JY1/mc/m/n' instead on input line 99.
+
+Excluding 'comment' comment.
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <7> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 130.
+ (I search kanjifont definition file: . . )
+(I search font definition file: . . . . . . . . )
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 134.
+
+
+(c:/texlive/2019/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+Overfull \hbox (15.50008pt too wide) in paragraph at lines 124--170
+ [][][] 
+ []
+
+Excluding 'comment' comment. [1
+
+
+]
+File: SuiteRec-outline.pdf Graphic file (type pdf)
+<SuiteRec-outline.pdf>
+
+Underfull \vbox (badness 1057) has occurred while \output is active []
+
+ [2]
+File: mapping.pdf Graphic file (type pdf)
+<mapping.pdf>
+
+Excluding 'comment' comment.
+File: SuiteRec.pdf Graphic file (type pdf)
+<SuiteRec.pdf>
+ [3]
+
+LaTeX Warning: Reference `fig6' on page 4 undefined on input line 389.
+
+[4]
+
+LaTeX Warning: Reference `fig6' on page 5 undefined on input line 391.
+
+File: coverage.pdf Graphic file (type pdf)
+<coverage.pdf>
+Excluding 'comment' comment.
+
+LaTeX Warning: Reference `fig7' on page 5 undefined on input line 436.
+
+File: duration.pdf Graphic file (type pdf)
+<duration.pdf>
+
+LaTeX Warning: Reference `fig8' on page 5 undefined on input line 447.
+
+File: smells.pdf Graphic file (type pdf)
+<smells.pdf>
+File: suiterec-expt.pdf Graphic file (type pdf)
+<suiterec-expt.pdf>
+
+Overfull \hbox (10.37598pt too wide) in paragraph at lines 464--465
+ [] 
+ []
+
+
+LaTeX Warning: Reference `fig9' on page 5 undefined on input line 471.
+
+[5]
+
+LaTeX Warning: Reference `fig6' on page 6 undefined on input line 477.
+
+
+LaTeX Warning: Reference `fig8' on page 6 undefined on input line 479.
+
+Excluding 'comment' comment. [6] Excluding 'comment' comment.
+
+** Conference Paper **
+Before submitting the final camera ready copy, remember to:
+
+ 1. Manually equalize the lengths of two columns on the last page
+ of your paper;
+
+ 2. Ensure that any PostScript and/or PDF output post-processing
+ uses only Type 1 fonts and that every step in the generation
+ process uses the appropriate paper size.
+
+[7
+
+] (./IWSC2020_us.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 5626 strings out of 493230
+ 77458 string characters out of 6147555
+ 475723 words of memory out of 5000000
+ 9528 multiletter control sequences out of 15000+600000
+ 45219 words of font info for 136 fonts, out of 8000000 for 9000
+ 929 hyphenation exceptions out of 8191
+ 33i,14n,40p,1458b,1809s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on IWSC2020_us.dvi (7 pages, 50000 bytes).
